@@ -17,7 +17,7 @@ public class ArticleVendu implements Serializable {
 	private int prixVente;
 	private String etatVente;
 
-	// constructeur vide
+	// Constructeur vide
 	public ArticleVendu() {
 
 	}
