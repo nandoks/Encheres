@@ -14,10 +14,10 @@ public class UtilisateurManager {
 		utilisateurDAO = DAOFactory.getUtilisateurDAO();
 	}
 	
-	public List<Utilisateur> getUtilisateur(){
+	public List<Utilisateur> getUtilisateurs(){
 		return utilisateurDAO.selectAll();
 	}
-	
+
 	
 	
 }

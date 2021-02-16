@@ -14,7 +14,7 @@ public class DAOFactory {
 
 	public static ArticleVenduDAO getArticleVenduDAO() {
 		if ( articleVenduDAO == null ) {
-			articleVenduDAO = new ArticlevenduJdbcImpl();
+			
 		}
 		return articleVenduDAO;
 	}
