@@ -18,7 +18,7 @@ public class UtilisateurDAOJdbcImpl implements UtilisateurDAO {
 	private final String sqlUpdate = "UPDATE utilisateurs pseudo=?,nom=?,prenom=?,email=?,telephone=?,rue=?,code_postal=?,"
 			+ "ville=?,mot_de_passe=?,credit=?,administrateur=? where no_utilisateur = ?";
 
-	private final String sqlDelete = "";
+	private final String sqlDelete = "delete from utilisateur where no_utilisateur=?";
 
 	private final String sqlGetElementByPseudo = "";
 
