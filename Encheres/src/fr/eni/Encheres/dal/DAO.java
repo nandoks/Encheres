@@ -11,7 +11,7 @@ public interface DAO<T> {
 	/*methode générique pour récupérer dans la BDD toutes les valeurs correspondante
 	 * à un int id passé en parametre
 	 * retourne une liste de type T*/
-	List<T> selectById(int id);
+	T selectById(int id);
 	
 	/*methode générique pour insérer un objet dans la BDD
 	 prend en parametre un objet*/

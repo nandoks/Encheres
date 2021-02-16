@@ -1,5 +1,10 @@
 package fr.eni.Encheres.dal;
 
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.util.ArrayList;
 import java.util.List;
 
 import fr.eni.Encheres.bo.Utilisateur;
@@ -20,22 +25,38 @@ public class UtilisateurDAOJdbcImpl implements UtilisateurDAO {
 
 	private final String sqlDelete = "delete from utilisateur where no_utilisateur=?";
 
-	private final String sqlGetElementByPseudo = "";
-
-	private final String sqlGetElementByEmail = "";
-
+	private final String sqlUtilisateurExiste = "select * from utilisateurs where pseudo=? or email=?";
+	
+	/*Retourne tous les utilisateurs de la BDD*/
 	@Override
 	public List<Utilisateur> selectAll() {
-		// TODO Auto-generated method stub
-		return null;
+		List<Utilisateur> listeUtilisateur = new ArrayList<>();
+		
+		try(Connection conn = ConnectionProvider.getConnection();
+				PreparedStatement prst = conn.prepareStatement(sqlSelectAll)){
+			ResultSet rs = prst.executeQuery();
+			while(rs.next()) {
+				Utilisateur utilisateur = utilisateurBuilder(rs);
+				listeUtilisateur.add(utilisateur);				
+			}
+		} catch (SQLException e) {
+			
+			e.printStackTrace();
+		}
+		return listeUtilisateur;
 	}
 
+	
+
+	/* Prends en paramentre un int ID
+	 * retourne un utilisateur*/
 	@Override
-	public List<Utilisateur> selectById(int id) {
+	public Utilisateur selectById(int id) {
 		// TODO Auto-generated method stub
 		return null;
 	}
 
+	
 	@Override
 	public void insert(Utilisateur obj) {
 		// TODO Auto-generated method stub
@@ -54,16 +75,35 @@ public class UtilisateurDAOJdbcImpl implements UtilisateurDAO {
 
 	}
 
+	
+	/*Cherche dans la BDD si le pseudo ou le mail existe
+	 * si dans le ResultSet est vide alors il n'existe aucune ocurence
+	 * du pseudo ou du mail dans ce cas on retourne false 
+	 * sinon retourne true*/
 	@Override
-	public Utilisateur getUtilisateurByPseudo(String pseudo) {
-		// TODO Auto-generated method stub
-		return null;
+	public boolean utilisateurExisteDansLaBDD(String pseudo, String email) {
+		boolean utilisateurExiste = false;
+
+
+		return utilisateurExiste ;
 	}
 
-	@Override
-	public Utilisateur getUtilisateurByEmail(String email) {
-		// TODO Auto-generated method stub
-		return null;
+	
+	/*Methode qui prends en parametre un ResultSet rs
+	 * et qui retourne un objet du type Utilisateur*/
+	private Utilisateur utilisateurBuilder(ResultSet rs) throws SQLException {
+		Utilisateur utilisateur = new Utilisateur();
+		utilisateur.setNumeroUtilisateur(rs.getInt("no_utilisateur"));
+		utilisateur.setPseudo(rs.getString("pseudo"));
+		utilisateur.setNom(rs.getString("nom"));
+		utilisateur.setPrenom(rs.getString("prenom"));
+		utilisateur.setTelephone(rs.getString("telephone"));
+		utilisateur.setRue(rs.getString("rue"));
+		utilisateur.setCodePostal(rs.getString("code_postal"));
+		utilisateur.setVille(rs.getString("ville"));
+		utilisateur.setMotDePasse(rs.getString("mot_de_passe"));
+		utilisateur.setCredit(rs.getInt("credit"));
+		utilisateur.setAdministrateur(rs.getBoolean("administrateur"));
+		return utilisateur;
 	}
-
 }
