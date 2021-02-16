@@ -1,5 +1,7 @@
 package fr.eni.Encheres.bo;
 
+import java.util.List;
+
 public class Utilisateur {
 	
 	private int numeroUtilisateur;
@@ -14,9 +16,28 @@ public class Utilisateur {
 	private String motDePasse;
 	private int credit;
 	private boolean administrateur;
+	private List<ArticleVendu> listeArticlesVendus;
+	private List<Enchere> listeEncheres;
 	
+
 	public Utilisateur() {
 		
+	}
+	
+	public List<ArticleVendu> getListeArticlesVendus() {
+		return listeArticlesVendus;
+	}
+
+	public void setListeArticlesVendus(List<ArticleVendu> listeArticlesVendus) {
+		this.listeArticlesVendus = listeArticlesVendus;
+	}
+
+	public List<Enchere> getListeEncheres() {
+		return listeEncheres;
+	}
+
+	public void setListeEncheres(List<Enchere> listeEncheres) {
+		this.listeEncheres = listeEncheres;
 	}
 	
 	public int getNumeroUtilisateur() {

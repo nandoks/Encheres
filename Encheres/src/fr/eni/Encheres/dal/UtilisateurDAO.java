@@ -7,5 +7,4 @@ public interface UtilisateurDAO extends DAO<Utilisateur>{
 	/* Cherche dans la BDD s'il existe une ligne contenant le String pseudo*/
 	boolean utilisateurExisteDansLaBDD(String pseudo, String email);
 	
-	
 }
