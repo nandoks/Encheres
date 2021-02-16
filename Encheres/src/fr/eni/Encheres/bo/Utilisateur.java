@@ -113,7 +113,14 @@ public class Utilisateur {
 		this.administrateur = administrateur;
 	}
 
-	
-	
+	public boolean equals(String pseudo, String motDePasse) {
+		if(!this.motDePasse.equals(motDePasse)) {
+			return false;
+		}
+		if(!this.pseudo.equals(motDePasse)) {
+			return false;
+		}
+		return true;
+	}	
 	
 }
