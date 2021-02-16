@@ -7,6 +7,8 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
+import fr.eni.Encheres.bll.ArticleVenduManager;
+import fr.eni.Encheres.bo.ArticleVendu;
 import fr.eni.Encheres.bo.Utilisateur;
 
 public class UtilisateurDAOJdbcImpl implements UtilisateurDAO {
@@ -31,7 +33,7 @@ public class UtilisateurDAOJdbcImpl implements UtilisateurDAO {
 	@Override
 	public List<Utilisateur> selectAll() {
 		List<Utilisateur> listeUtilisateur = new ArrayList<>();
-
+		
 		try (Connection conn = ConnectionProvider.getConnection();
 				PreparedStatement prst = conn.prepareStatement(sqlSelectAll)) {
 			ResultSet rs = prst.executeQuery();
@@ -39,6 +41,7 @@ public class UtilisateurDAOJdbcImpl implements UtilisateurDAO {
 				Utilisateur utilisateur = utilisateurBuilder(rs);
 				listeUtilisateur.add(utilisateur);
 			}
+			
 		} catch (SQLException e) {
 
 			e.printStackTrace();
@@ -59,6 +62,9 @@ public class UtilisateurDAOJdbcImpl implements UtilisateurDAO {
 			if (rs.next()) {
 				utilisateur = utilisateurBuilder(rs);
 			}
+			ArticleVenduManager am = new ArticleVenduManager();
+			utilisateur.setListeArticlesVendus(am.getArticlesByNumeroUtilisateur(utilisateur.getNumeroUtilisateur()));
+			
 		} catch (SQLException e) {
 
 			e.printStackTrace();
