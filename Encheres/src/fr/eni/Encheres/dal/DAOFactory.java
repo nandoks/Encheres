@@ -8,12 +8,6 @@ public class DAOFactory {
 		return new UtilisateurDAOJdbcImpl();
 	}
 	
-	public static ArticleVenduDAO  getArticleVenduDAO() {
-		if (articleVenduDAO == null) {
-			articleVenduDAO = new ArticleVenduDAOJdbcImpl();
-		}
-		return articleVenduDAO;
-	}
 	
 	
 }
