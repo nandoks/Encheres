@@ -22,7 +22,7 @@ abstract class ConnectionProvider {
 			ConnectionProvider.dataSource = (DataSource)context.lookup("java:comp/env/jdbc/pool_cnx");
 		} catch (NamingException e) {
 			e.printStackTrace();
-			throw new RuntimeException("Impossible d'acc�der � la base de donn�es");
+			throw new RuntimeException("Impossible d'accéder à la base de données");
 		}
 	}
 	
