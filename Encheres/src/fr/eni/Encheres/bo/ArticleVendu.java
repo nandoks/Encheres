@@ -17,10 +17,11 @@ public class ArticleVendu implements Serializable {
 	private int prixVente;
 	private String etatVente;
 
+	// constructeur vide
 	public ArticleVendu() {
 
 	}
-
+	// Constructeur avec tous les paramètres
 	public ArticleVendu(List<ArticleVendu> noArticle, String nomArticle,
 			String description, LocalDate dateDebutEncheres,
 			LocalDate dateFinEncheres, int miseAPrix, int prixVente,
