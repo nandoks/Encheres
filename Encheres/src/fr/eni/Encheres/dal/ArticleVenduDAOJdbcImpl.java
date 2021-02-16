@@ -1,5 +1,9 @@
 package fr.eni.Encheres.dal;
 
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.util.List;
 
 import fr.eni.Encheres.bo.ArticleVendu;
@@ -11,17 +15,16 @@ public class ArticleVenduDAOJdbcImpl implements ArticleVenduDAO {
 			"INNER JOIN retraits r ON a.no_article = r.no_article";
 
 	private final String sqlSelectById = "SELECT no_article,nom_article,description,date_debut_encheres,date_fin_encheres,"
-			+ "prix_initial, prix_vente, no_utilisateur, no_categorie from articles_vendus where no_article = ?;";
+			+ "prix_initial, prix_vente, no_utilisateur, no_categorie from articles_vendus where no_article = ?;";*/
 
-	private final String sqlInsert = "INSERT INTO articles_vendus (nom_article,description,date_debut_encheres,date_fin_encheres,"
-			+ "prix_initial,prix_vente,no_utilisateur,no_categorie,rue,code_postal,ville) values (?,?,?,?,?,?,?,?,?,?,?)";
+	private final String SQL_INSERT = "INSERT INTO articles_vendus (nom_article,description,date_debut_encheres,date_fin_encheres,"
+			+ "prix_initial,prix_vente,no_utilisateur,no_categorie) values (?,?,?,?,?,?,?,?)";
 
-	private final String sqlUpdate = "UPDATE utilisateurs pseudo=?,nom=?,prenom=?,email=?,telephone=?,rue=?,code_postal=?,"
-			+ "ville=?,mot_de_passe=?,credit=?,administrateur=? where no_utilisateur = ?";
+	private final String SQL_UPDATE = "UPDATE articles_vendus nom_article=?,description=?,date_debut_encheres=?,date_fin_encheres=?,"
+			+ "prix_initial=?,prix_vente=?,no_utilisateur=?,no_categorie=? where no_article = ?";
 
-	private final String sqlDelete = "delete from utilisateur where no_utilisateur=?";
+	private final String SQL_DELETE = "DELETE FROM articles_vendus where no_article=?";
 
-	private final String sqlUtilisateurExiste = "select * from utilisateurs where pseudo=? or email=?";*/
 	
 	@Override
 	public List<ArticleVendu> selectAll() {
@@ -36,21 +39,64 @@ public class ArticleVenduDAOJdbcImpl implements ArticleVenduDAO {
 	}
 
 	@Override
-	public void insert(ArticleVendu obj) {
-		// TODO Auto-generated method stub
-		
+	public void insert(ArticleVendu articleVendu) {
+		try(Connection cnx = ConnectionProvider.getConnection()){
+			PreparedStatement stmt = cnx.prepareStatement(SQL_INSERT, PreparedStatement.RETURN_GENERATED_KEYS);
+			stmt.setString(1, articleVendu.getNomArticle());
+			stmt.setString(2, articleVendu.getDescription());
+			stmt.setDate(3, java.sql.Date.valueOf(articleVendu.getDateDebutEncheres()));
+			stmt.setDate(4, java.sql.Date.valueOf(articleVendu.getDateFinEncheres()));
+			stmt.setInt(5, articleVendu.getMiseAPrix());
+			stmt.setInt(6, articleVendu.getPrixVente());
+			stmt.executeUpdate();
+			ResultSet rs = stmt.getGeneratedKeys();
+			if(rs.next()) {
+				articleVendu.setNoArticle(1);
+			}
+			rs.close();
+			stmt.close();
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 	}
 
 	@Override
-	public void update(ArticleVendu obj) {
-		// TODO Auto-generated method stub
+	public void update(ArticleVendu articleVendu) {
+		try(Connection cnx = ConnectionProvider.getConnection()){
+			PreparedStatement stmt = cnx.prepareStatement(SQL_UPDATE);
+			stmt.setString(1, articleVendu.getNomArticle());
+			stmt.setString(2, articleVendu.getDescription());
+			stmt.setDate(3, java.sql.Date.valueOf(articleVendu.getDateDebutEncheres()));
+			stmt.setDate(4, java.sql.Date.valueOf(articleVendu.getDateFinEncheres()));
+			stmt.setInt(5, articleVendu.getMiseAPrix());
+			stmt.setInt(6, articleVendu.getPrixVente());
+			stmt.executeUpdate();
+			stmt.close();
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 		
 	}
 
 	@Override
 	public void delete(int id) {
+		try(Connection cnx = ConnectionProvider.getConnection()){
+			PreparedStatement stmt = cnx.prepareStatement(SQL_DELETE);
+			stmt.setInt(1, id);
+			stmt.executeUpdate();
+			stmt.close();
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+	}
+
+	@Override
+	public List<ArticleVendu> getArticlesByNumeroUtilisateur(int numeroUtilisateur) {
 		// TODO Auto-generated method stub
-		
+		return null;
 	}
 
 }

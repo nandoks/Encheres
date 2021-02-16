@@ -44,7 +44,7 @@ public class ArticleVendu implements Serializable {
 		return noArticle;
 	}
 
-	public void setNoArticles(int noArticle) {
+	public void setNoArticle(int noArticle) {
 		this.noArticle = noArticle;
 	}
 
