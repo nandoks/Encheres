@@ -29,11 +29,13 @@ public class UtilisateurDAOJdbcImpl implements UtilisateurDAO {
 
 	private final String sqlUtilisateurExiste = "select * from utilisateurs where pseudo=? or email=?";
 
+	private final String sqlAuthentificationValide = "select * from utilisateurs where mot_de_passe=? et email=?";
+
 	/* Retourne tous les utilisateurs de la BDD */
 	@Override
 	public List<Utilisateur> selectAll() {
 		List<Utilisateur> listeUtilisateur = new ArrayList<>();
-		
+
 		try (Connection conn = ConnectionProvider.getConnection();
 				PreparedStatement prst = conn.prepareStatement(sqlSelectAll)) {
 			ResultSet rs = prst.executeQuery();
@@ -41,7 +43,7 @@ public class UtilisateurDAOJdbcImpl implements UtilisateurDAO {
 				Utilisateur utilisateur = utilisateurBuilder(rs);
 				listeUtilisateur.add(utilisateur);
 			}
-			
+
 		} catch (SQLException e) {
 
 			e.printStackTrace();
@@ -64,7 +66,7 @@ public class UtilisateurDAOJdbcImpl implements UtilisateurDAO {
 			}
 			ArticleVenduManager am = new ArticleVenduManager();
 			utilisateur.setListeArticlesVendus(am.getArticlesByNumeroUtilisateur(utilisateur.getNumeroUtilisateur()));
-			
+
 		} catch (SQLException e) {
 
 			e.printStackTrace();
@@ -167,16 +169,14 @@ public class UtilisateurDAOJdbcImpl implements UtilisateurDAO {
 			prst.setString(1, pseudo);
 			prst.setString(2, email);
 			ResultSet rs = prst.executeQuery();
-			if(rs.next()) {
+			if (rs.next()) {
 				utilisateurExiste = true;
 			}
-			
+
 		} catch (SQLException e) {
 
 			e.printStackTrace();
 		}
-		
-		
 		return utilisateurExiste;
 	}
 
@@ -199,4 +199,5 @@ public class UtilisateurDAOJdbcImpl implements UtilisateurDAO {
 		utilisateur.setAdministrateur(rs.getBoolean("administrateur"));
 		return utilisateur;
 	}
+
 }

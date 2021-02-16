@@ -8,7 +8,7 @@ import java.util.List;
 public class ArticleVendu implements Serializable {
 	private static final long serialVersionUID = 1L;
 
-	private List<ArticleVendu> noArticle = new ArrayList<ArticleVendu>();
+	private int noArticle;
 	private String nomArticle;
 	private String description;
 	private LocalDate dateDebutEncheres;
@@ -16,13 +16,16 @@ public class ArticleVendu implements Serializable {
 	private int miseAPrix;
 	private int prixVente;
 	private String etatVente;
+	private Retrait adresseRetrait;
+	private List<Enchere> listeEncheres;
+
 
 	// Constructeur vide
 	public ArticleVendu() {
 
 	}
 	// Constructeur avec tous les paramètres
-	public ArticleVendu(List<ArticleVendu> noArticle, String nomArticle,
+	public ArticleVendu(int noArticle, String nomArticle,
 			String description, LocalDate dateDebutEncheres,
 			LocalDate dateFinEncheres, int miseAPrix, int prixVente,
 			String etatVente) {
@@ -37,11 +40,11 @@ public class ArticleVendu implements Serializable {
 		this.etatVente = etatVente;
 	}
 
-	public List<ArticleVendu> getNoArticle() {
+	public int getNoArticle() {
 		return noArticle;
 	}
 
-	public void setNoArticles(List<ArticleVendu> noArticle) {
+	public void setNoArticles(int noArticle) {
 		this.noArticle = noArticle;
 	}
 
