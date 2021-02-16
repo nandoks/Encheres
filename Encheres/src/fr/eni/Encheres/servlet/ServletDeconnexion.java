@@ -12,14 +12,14 @@ import javax.servlet.http.HttpSession;
 /**
  * Servlet implementation class ServletLogout
  */
-@WebServlet("/ServletLogout")
-public class ServletLogout extends HttpServlet {
+@WebServlet("/deconnexion")
+public class ServletDeconnexion extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public ServletLogout() {
+    public ServletDeconnexion() {
         super();
         // TODO Auto-generated constructor stub
     }

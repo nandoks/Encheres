@@ -22,7 +22,7 @@ public class CategorieDAOJdbcImpl implements CategorieDAO {
 	}
 
 	@Override
-	public List<Categorie> selectById(int id) {
+	public Categorie selectById(int id) {
 		// TODO Auto-generated method stub
 		return null;
 	}
