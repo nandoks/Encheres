@@ -63,7 +63,7 @@
 	</div>
 	</div>
 	
-	<c:if test="${cookie.seRappelerDeMoi != null]}">
+	<c:if test="${cookie.seRappelerDeMoi != null or session.getAttribute(utilisateurConnecte) != null} ">
 		<a href="#"><button type="submit">Modifier</button></a>
 	</c:if>
 
