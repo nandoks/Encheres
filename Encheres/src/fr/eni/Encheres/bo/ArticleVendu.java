@@ -16,6 +16,8 @@ public class ArticleVendu implements Serializable {
 	private int miseAPrix;
 	private int prixVente;
 	private String etatVente;
+	private String libelleCategorie;
+	private String pseudoVendeur;
 	private Retrait adresseRetrait;
 	private List<Enchere> listeEncheres;
 
@@ -103,5 +105,20 @@ public class ArticleVendu implements Serializable {
 	public void setEtatVente(String etatVente) {
 		this.etatVente = etatVente;
 	}
-
+	
+	public String getLibelleCategorie() {
+		return libelleCategorie;
+	}
+	
+	public void setLibelleCategorie(String libelleCategorie) {
+		this.libelleCategorie = libelleCategorie;
+	}
+	
+	public String getPseudoVendeur() {
+		return pseudoVendeur;
+	}
+	
+	public void setPseudoVendeur(String pseudoVendeur) {
+		this.pseudoVendeur = pseudoVendeur;
+	}
 }

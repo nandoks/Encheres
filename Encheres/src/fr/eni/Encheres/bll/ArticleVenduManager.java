@@ -18,11 +18,46 @@ private ArticleVenduDAO articleVenduDAO;
 		return articleVenduDAO.getArticlesByNumeroUtilisateur(numeroUtilisateur);
 	}
 
-	public List<ArticleVendu>  selectByNoCategorie() {
-		return articleVenduDAO.selectAll();		
-	}
-
-	public List<ArticleVendu> selectAll() {
+	public List<ArticleVendu> getAllArticles() {
 		return articleVenduDAO.selectAll();
+	}
+	
+	public List<ArticleVendu> getArticlesByLibelleCategorie(String libelle, String motCle){
+		
+		List<ArticleVendu> listeArticlesRecherches = null;
+
+		switch("categorie") {
+		case "Toutes" : listeArticlesRecherches = articleVenduDAO.selectAll();
+		break;
+		case "Informatique" : listeArticlesRecherches = articleVenduDAO.getArticlesByLibelleCategorie(libelle);
+		break;
+		case "Ameublement" : listeArticlesRecherches = articleVenduDAO.getArticlesByLibelleCategorie(libelle);
+		break;
+		case "Vêtement" : listeArticlesRecherches = articleVenduDAO.getArticlesByLibelleCategorie(libelle);
+		break;
+		case "Sport&Loisirs" : listeArticlesRecherches = articleVenduDAO.getArticlesByLibelleCategorie(libelle);
+		break;
+	}
+		
+		return listeArticlesRecherches;
+	}
+	
+	public List<ArticleVendu> getArticlesByMotCle(String motCle, List<ArticleVendu> liste){
+		
+		List<ArticleVendu> listeArticlesRecherches;
+
+		for (ArticleVendu a : liste) {
+			listeArticlesRecherches = null;
+			String nomArticle = a.getNomArticle();
+			String[] tableauNomArticle = nomArticle.split(" ");
+			for (String s : tableauNomArticle) {
+				if(s.equalsIgnoreCase(motCle)) {
+					listeArticlesRecherches.add(a);
+					
+				}
+			}
+			
+		}
+		return listeArticlesRecherches ;
 	}
 }
