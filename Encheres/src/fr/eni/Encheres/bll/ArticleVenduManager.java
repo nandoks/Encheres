@@ -1,5 +1,7 @@
 package fr.eni.Encheres.bll;
 
+import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 import fr.eni.Encheres.bo.ArticleVendu;
@@ -22,7 +24,7 @@ private ArticleVenduDAO articleVenduDAO;
 		return articleVenduDAO.selectAll();
 	}
 	
-	public List<ArticleVendu> getArticlesByLibelleCategorie(String libelle, String motCle){
+	public List<ArticleVendu> getArticlesByLibelleCategorie(String libelle){
 		
 		List<ArticleVendu> listeArticlesRecherches = null;
 
@@ -43,21 +45,26 @@ private ArticleVenduDAO articleVenduDAO;
 	}
 	
 	public List<ArticleVendu> getArticlesByMotCle(String motCle, List<ArticleVendu> liste){
-		
-		List<ArticleVendu> listeArticlesRecherches;
+		List<String> listeMotNomArticle = null;
+		List<ArticleVendu> listeArticlesRecherches = null;
 
 		for (ArticleVendu a : liste) {
-			listeArticlesRecherches = null;
+			listeArticlesRecherches = new ArrayList<>();
 			String nomArticle = a.getNomArticle();
-			String[] tableauNomArticle = nomArticle.split(" ");
-			for (String s : tableauNomArticle) {
+			listeMotNomArticle = Arrays.asList(nomArticle.split(" "));
+			
+			for(String s : listeMotNomArticle) {
 				if(s.equalsIgnoreCase(motCle)) {
 					listeArticlesRecherches.add(a);
-					
 				}
 			}
-			
 		}
-		return listeArticlesRecherches ;
+		return listeArticlesRecherches;
 	}
+	
+	
+	
+	
+	
+	
 }
