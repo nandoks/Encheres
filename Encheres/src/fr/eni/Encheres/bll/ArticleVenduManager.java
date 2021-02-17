@@ -17,4 +17,12 @@ private ArticleVenduDAO articleVenduDAO;
 	public List<ArticleVendu> getArticlesByNumeroUtilisateur(int numeroUtilisateur) {
 		return articleVenduDAO.getArticlesByNumeroUtilisateur(numeroUtilisateur);
 	}
+
+	public List<ArticleVendu>  selectByNoCategorie() {
+		return articleVenduDAO.selectAll();		
+	}
+
+	public List<ArticleVendu> selectAll() {
+		return articleVenduDAO.selectAll();
+	}
 }

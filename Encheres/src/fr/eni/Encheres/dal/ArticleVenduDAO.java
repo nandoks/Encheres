@@ -9,5 +9,6 @@ public interface ArticleVenduDAO extends DAO<ArticleVendu> {
 	
 	public List<ArticleVendu> getArticlesByNumeroUtilisateur(int numeroUtilisateur);
 	
+	public List<ArticleVendu> selectByNoCategorie(int noCategorie);
 	
 }

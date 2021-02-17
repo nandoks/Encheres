@@ -99,4 +99,10 @@ public class ArticleVenduDAOJdbcImpl implements ArticleVenduDAO {
 		return null;
 	}
 
+	@Override
+	public List<ArticleVendu> selectByNoCategorie(int noCategorie) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
 }
