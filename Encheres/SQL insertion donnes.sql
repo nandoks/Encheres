@@ -18,10 +18,10 @@ INSERT INTO [dbo].[UTILISATEURS] ([pseudo], [nom] ,[prenom],[email],[telephone],
 GO
 
 --insertion categories
-insert into CATEGORIES (libelle) values ('cycle');
-insert into CATEGORIES (libelle) values ('electromenager');
-insert into CATEGORIES (libelle) values ('jardin');
-insert into CATEGORIES (libelle) values ('bricolage');
+insert into CATEGORIES (libelle) values ('Informatique');
+insert into CATEGORIES (libelle) values ('Ameublement');
+insert into CATEGORIES (libelle) values ('Vêtements');
+insert into CATEGORIES (libelle) values ('Sport&Loisir');
 GO
 
 --insertion encheres
@@ -32,26 +32,18 @@ GO
 --insert articles_vendus
 INSERT INTO [dbo].[ARTICLES_VENDUS]([nom_article],[description],[date_debut_encheres],[date_fin_encheres] ,[prix_initial],[prix_vente],[no_utilisateur],[no_categorie])
      VALUES
-           ('Velo Bwtin','Velo Electrique','2021-02-15','2021-03-15',250
-           ,300,1,1)
+           ('Ordinateur portable','Lenovo 15 pouces 8go mémoire i3-8900k','2021-02-15','2021-03-15',250,250,1,1)
 
 INSERT INTO [dbo].[ARTICLES_VENDUS]([nom_article],[description],[date_debut_encheres],[date_fin_encheres] ,[prix_initial],[prix_vente],[no_utilisateur],[no_categorie])
      VALUES
-           ('Scie sauteuse','Scie sauteuse Dewalt 500w','2021-01-15','2021-01-20',100
-           ,200,2,3)
+           ('Commode','Commode en pin 1 tirroir','2021-01-15','2021-01-20',100,100,2,2)
+
+INSERT INTO [dbo].[ARTICLES_VENDUS]([nom_article],[description],[date_debut_encheres],[date_fin_encheres] ,[prix_initial],[prix_vente],[no_utilisateur],[no_categorie])
+     VALUES ('Kayak','bleu et vert','2021-01-15','2021-01-20',100,100,2,4)
 
 -- insert encheres
-USE [ENCHERES_DB]
-GO
-
 INSERT INTO [dbo].[ENCHERES]([no_utilisateur],[no_article],[date_enchere],[montant_enchere])
-     VALUES(1,1,'2021-7-4 04:13:54',200)
-	
-INSERT INTO [dbo].[ENCHERES]([no_utilisateur],[no_article],[date_enchere],[montant_enchere])
-     VALUES(3,2,'2021-7-4 04:13:54',200)
-
-INSERT INTO [dbo].[ENCHERES]([no_utilisateur],[no_article],[date_enchere],[montant_enchere])
-     VALUES(2,2,'2021-7-4 04:13:54',200)
+     VALUES(1,1,'2021-7-4 04:13:54',300)
 
 
 -- insert retraits

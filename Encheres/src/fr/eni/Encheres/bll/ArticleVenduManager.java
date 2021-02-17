@@ -1,5 +1,7 @@
 package fr.eni.Encheres.bll;
 
+import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 import fr.eni.Encheres.bo.ArticleVendu;
@@ -18,11 +20,51 @@ private ArticleVenduDAO articleVenduDAO;
 		return articleVenduDAO.getArticlesByNumeroUtilisateur(numeroUtilisateur);
 	}
 
-	public List<ArticleVendu>  selectByNoCategorie() {
-		return articleVenduDAO.selectAll();		
-	}
-
-	public List<ArticleVendu> selectAll() {
+	public List<ArticleVendu> getAllArticles() {
 		return articleVenduDAO.selectAll();
 	}
+	
+	public List<ArticleVendu> getArticlesByLibelleCategorie(String libelle){
+		
+		List<ArticleVendu> listeArticlesRecherches = null;
+
+		switch("categorie") {
+		case "Toutes" : listeArticlesRecherches = articleVenduDAO.selectAll();
+		break;
+		case "Informatique" : listeArticlesRecherches = articleVenduDAO.getArticlesByLibelleCategorie(libelle);
+		break;
+		case "Ameublement" : listeArticlesRecherches = articleVenduDAO.getArticlesByLibelleCategorie(libelle);
+		break;
+		case "Vêtement" : listeArticlesRecherches = articleVenduDAO.getArticlesByLibelleCategorie(libelle);
+		break;
+		case "Sport&Loisirs" : listeArticlesRecherches = articleVenduDAO.getArticlesByLibelleCategorie(libelle);
+		break;
+	}
+		
+		return listeArticlesRecherches;
+	}
+	
+	public List<ArticleVendu> getArticlesByMotCle(String motCle, List<ArticleVendu> liste){
+		List<String> listeMotNomArticle = null;
+		List<ArticleVendu> listeArticlesRecherches = null;
+
+		for (ArticleVendu a : liste) {
+			listeArticlesRecherches = new ArrayList<>();
+			String nomArticle = a.getNomArticle();
+			listeMotNomArticle = Arrays.asList(nomArticle.split(" "));
+			
+			for(String s : listeMotNomArticle) {
+				if(s.equalsIgnoreCase(motCle)) {
+					listeArticlesRecherches.add(a);
+				}
+			}
+		}
+		return listeArticlesRecherches;
+	}
+	
+	
+	
+	
+	
+	
 }

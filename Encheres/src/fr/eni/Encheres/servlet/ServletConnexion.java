@@ -3,8 +3,10 @@ package fr.eni.Encheres.servlet;
 import java.io.IOException;
 import java.util.List;
 
+import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
+import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -34,9 +36,11 @@ public class ServletConnexion extends HttpServlet {
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
-		String nomUtilisateur = (String) request.getAttribute("Identifiant");
-		String motDePasse= (String) request.getAttribute("pass");
-		System.out.println(nomUtilisateur  + "," + motDePasse);
+		String nomUtilisateur = (String) request.getParameter("identifiant");
+		String motDePasse= (String) request.getParameter("pass");
+				
+		System.out.println("form: " + nomUtilisateur  + "," + motDePasse);
+		
 		Utilisateur utilisateur  = null; 
 		List<Utilisateur> listeUtilisateur = utilisateurManager.getUtilisateurs();
 		for (Utilisateur u : listeUtilisateur) {
@@ -46,19 +50,29 @@ public class ServletConnexion extends HttpServlet {
 			}
 		}
 		
-		
+		String url = "";
 		if(utilisateur != null) {
-			boolean seRappelerDeMoi = request.getAttribute("seRappelerDeMoi") == null; 
-			if(seRappelerDeMoi) {
+			boolean seRappelerDeMoi = request.getParameter("Se-souvenir-de-moi") != null; 
+			System.out.println(seRappelerDeMoi);
+			if(!seRappelerDeMoi) {
 				HttpSession session = request.getSession();
 				session.setAttribute("utilisateurConnecte", utilisateur);
+				
+			} else {
+				Cookie resterConnecte = new Cookie("seRappelerDeMoi", "true");
+				resterConnecte.setMaxAge(1800);
 				System.out.println("creation cookie");
+				response.addCookie(resterConnecte);
 			}
-			response.sendRedirect("/Connexion.jsp");
+			url = "/WEB-INF/jsp/testlogin.jsp";
 		} else {
-			request.setAttribute("messageErreur", "cet utilisateur n'existe pas, mot de passe ou mail incorrect");
-			response.sendRedirect("/Connextion.jsp");
+			request.setAttribute("messageErreur", "Mot de passe ou mail incorrect");
+			url = "/WEB-INF/jsp/Connexion.jsp";
 		}
+		
+		RequestDispatcher rd = request.getRequestDispatcher(url);
+		
+		rd.forward(request, response);
 	}
 }
 
