@@ -25,9 +25,22 @@ public class ServletAccueil extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		ArticleVenduManager articleVenduManager = new ArticleVenduManager();
 		List<ArticleVendu> listeArticleVendu = null;
+		String filtreMotCle = null;
+		//On lit le paramètre mot clé
+		request.setAttribute("filtreMotCle", request.getParameter("filtreMotCle"));
+		//On lit le paramètre catégorie
 		request.setAttribute("categorie", request.getParameter("categorie"));
+		//Selon la catégorie, on retourne une liste d'articles correspondant
 		switch("categorie") {
-			case "Informatique" : ArticleVenduManager.selectByCategorie();
+			case "Toutes" : listeArticleVendu = articleVenduManager.selectAll();
+			break;
+			case "Informatique" : listeArticleVendu = articleVenduManager.selectByNoCategorie();
+			break;
+			case "Ameublement" : listeArticleVendu = articleVenduManager.selectByNoCategorie();
+			break;
+			case "Vêtement" : listeArticleVendu = articleVenduManager.selectByNoCategorie();
+			break;
+			case "Sport&Loisirs" : listeArticleVendu = articleVenduManager.selectByNoCategorie();
 			break;
 		}
 	
