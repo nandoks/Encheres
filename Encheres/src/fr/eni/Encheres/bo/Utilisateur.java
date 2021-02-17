@@ -112,7 +112,7 @@ public class Utilisateur {
 	public void setAdministrateur(boolean administrateur) {
 		this.administrateur = administrateur;
 	}
-
+	
 	public boolean equals(String pseudo, String motDePasse) {
 		if(!this.pseudo.equals(pseudo)) {
 			return false;

@@ -19,7 +19,7 @@ public class UtilisateurDAOJdbcImpl implements UtilisateurDAO {
 	private final String sqlSelectById = "SELECT no_utilisateur,pseudo,nom,prenom,email,telephone,rue,code_postal,"
 			+ "ville,mot_de_passe,credit,administrateur	from utilisateurs where no_utilisateur = ?;";
 
-	private final String sqlInsert = "INSERT INTO utilisateur (pseudo,nom,prenom,email,telephone,rue,code_postal,"
+	private final String sqlInsert = "INSERT INTO utilisateurs (pseudo,nom,prenom,email,telephone,rue,code_postal,"
 			+ "ville,mot_de_passe,credit,administrateur) values (?,?,?,?,?,?,?,?,?,?,?)";
 
 	private final String sqlUpdate = "UPDATE utilisateurs pseudo=?,nom=?,prenom=?,email=?,telephone=?,rue=?,code_postal=?,"
@@ -92,7 +92,6 @@ public class UtilisateurDAOJdbcImpl implements UtilisateurDAO {
 			prst.setString(index++, utilisateur.getEmail());
 			prst.setString(index++, utilisateur.getTelephone());
 			prst.setString(index++, utilisateur.getRue());
-			prst.setString(index++, utilisateur.getTelephone());
 			prst.setString(index++, utilisateur.getCodePostal());
 			prst.setString(index++, utilisateur.getVille());
 			prst.setString(index++, utilisateur.getMotDePasse());
@@ -190,6 +189,7 @@ public class UtilisateurDAOJdbcImpl implements UtilisateurDAO {
 		utilisateur.setPseudo(rs.getString("pseudo"));
 		utilisateur.setNom(rs.getString("nom"));
 		utilisateur.setPrenom(rs.getString("prenom"));
+		utilisateur.setEmail(rs.getString("email"));
 		utilisateur.setTelephone(rs.getString("telephone"));
 		utilisateur.setRue(rs.getString("rue"));
 		utilisateur.setCodePostal(rs.getString("code_postal"));
