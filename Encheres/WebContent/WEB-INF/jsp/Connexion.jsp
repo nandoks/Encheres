@@ -1,7 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
-
+<%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <html>
 
 <head>
@@ -15,7 +15,7 @@
 <body>
 	<div class="page">
 		<div class="page-contenu-motdepasse-formulaire">
-			<form action="/authentification" method="post"
+			<form action="<%=request.getContextPath()%>/authentification" method="post"
 				class="page-formulaire-motdepasse">
 				<img src="images/photo-1582139329536-e7284fece509.jpg" alt=""
 					sizes="(max-width: 479px) 100vw, 260px"
@@ -23,11 +23,11 @@
 					class="image-2">
 				<h2>Connexion</h2>
 				<label class="champs-label-2">Identifiant</label> <input type="text"
-					class="entree" maxlength="256" name="Identifiant"
-					data-name="Identifiant" placeholder="email ou nom d'utilisateur"
-					id="Identifiant" required=""> <label for="Identifiant"
+					class="entree" maxlength="256" name="identifiant"
+					data-name="identifiant" placeholder="email ou nom d'utilisateur"
+					id="identifiant" required="" autofocus="true"> <label for="identifiant"
 					class="champs-label">Mot de passe</label> <input type="password"
-					autofocus="true" maxlength="256" name="pass" id="pass"
+					maxlength="256" name="pass" id="pass"
 					placeholder="Entrez votre mot de passe"
 					class="texte-champs motdepasse entree"> <label
 					class="cocher cocher-champs"> <input type="checkbox"
@@ -41,9 +41,11 @@
 						data-wait="Veuillez patienter..."
 						class="soumettre-bouton motdepasse bouton">
 				</div>
-				<div class="motdepasse formulaire-echec">
-					<div>Mauvais mot de passe.</div>
-				</div>
+				<c:if test="${!empty messageErreur}">
+					<div class="motdepasse formulaire-echec">
+						<div><c:out value="${messageErreur}"/></div>
+					</div>
+				</c:if>
 			</form>
 		</div>
 	</div>

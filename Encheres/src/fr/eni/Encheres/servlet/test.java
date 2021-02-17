@@ -1,6 +1,7 @@
 package fr.eni.Encheres.servlet;
 
 import java.io.IOException;
+import java.sql.Connection;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -20,8 +21,6 @@ public class test extends HttpServlet {
      * @see HttpServlet#HttpServlet()
      */
     public test() {
-        super();
-        // TODO Auto-generated constructor stub
     }
 
 	/**

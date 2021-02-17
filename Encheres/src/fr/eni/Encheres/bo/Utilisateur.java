@@ -114,10 +114,11 @@ public class Utilisateur {
 	}
 
 	public boolean equals(String pseudo, String motDePasse) {
-		if(!this.motDePasse.equals(motDePasse)) {
+		if(!this.pseudo.equals(pseudo)) {
 			return false;
 		}
-		if(!this.pseudo.equals(motDePasse)) {
+		
+		if(!this.motDePasse.equals(motDePasse)) {
 			return false;
 		}
 		return true;
