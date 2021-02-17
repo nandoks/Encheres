@@ -6,6 +6,7 @@ import java.util.List;
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
+import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -53,10 +54,15 @@ public class ServletConnexion extends HttpServlet {
 		if(utilisateur != null) {
 			boolean seRappelerDeMoi = request.getParameter("Se-souvenir-de-moi") != null; 
 			System.out.println(seRappelerDeMoi);
-			if(seRappelerDeMoi) {
+			if(!seRappelerDeMoi) {
 				HttpSession session = request.getSession();
 				session.setAttribute("utilisateurConnecte", utilisateur);
+				
+			} else {
+				Cookie resterConnecte = new Cookie("seRappelerDeMoi", "true");
+				resterConnecte.setMaxAge(1800);
 				System.out.println("creation cookie");
+				response.addCookie(resterConnecte);
 			}
 			url = "/WEB-INF/jsp/testlogin.jsp";
 		} else {
