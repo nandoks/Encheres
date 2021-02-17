@@ -38,6 +38,10 @@ public class UtilisateurManager {
 		return null;
 	}
 
+	public Utilisateur getUtilisateursById(int id) {
+		return utilisateurDAO.selectById(id);
+	}
+
 	
 	
 }
