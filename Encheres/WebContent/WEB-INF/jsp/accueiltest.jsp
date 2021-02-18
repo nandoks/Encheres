@@ -15,9 +15,9 @@
     <div class="section">
         <div class="div-block">
             <div class="div-block-2">
-                <img src="img/ENIEcole-1.jpg" loading="lazy" sizes="(max-width: 479px) 100vw, 75px" alt="" class="image-5">
+                <a href="accueil"><img src="img/ENIEcole-1.jpg" loading="lazy" sizes="(max-width: 479px) 100vw, 75px" alt="" class="image-5"></a>
             </div>
-            <a href="index.html" aria-current="page" class="lien-block ligne-block rangee1">
+            <a href="accueil" aria-current="page" class="lien-block ligne-block rangee1">
                 <h1 class="titre">ENI Enchères</h1>
             </a>
             <a href="authentification" class="lien">Connection</a>
@@ -28,7 +28,7 @@
         <h1 class="titre1">Liste des enchères</h1>
     </div>
     <div class="conteneur">
-        <form action="/recherche" class="correction formulaire" method=>
+        <form action="<%=request.getContextPath()%>/recherche" class="correction formulaire" method="get">
             <div class="div-block-4">
                 <input type="search" class="entree" maxlength="256" name="query" placeholder="Le nom de l'article contient…" id="search" required="">
                 <div data-hover="" data-delay="0" class="deroulant">
@@ -81,7 +81,16 @@
     </div>
     <div class="conteneur-grille conteneur">
         <div class="grille-acceuil">
+         <%
+					List<ArticleVendu> listeArticles = (List<ArticleVendu>) request.getAttribute("listeArticles");
+					if(listeRepas!=null && listeRepas.size()>0)
+					{
+				%>
             <div class="rangee">
+           <%
+							for(ArticleVendu a : listeArticles)
+							{
+							%>
                 <div class="col col-3">
                     <div>
                         <img src="img/ENIEcole-1.jpg" loading="lazy" sizes="75px" alt="" class="image-4">

@@ -24,25 +24,13 @@ public class ServletAccueil extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-//		ArticleVenduManager articleManager = new ArticleVenduManager();
-//		List<ArticleVendu> listeArticlesRecherches = null;
-//		
-//		//On lit le paramètre mot clé
-//		request.setAttribute("motCle", request.getParameter("motCle").trim());
-//		
-//		//On lit le paramètre catégorie
-//		request.setAttribute("categorie", request.getParameter("categorie"));
-//		
-//		//Selon la catégorie, on retourne une liste d'articles correspondants
-//		listeArticlesRecherches = articleManager.getArticlesByLibelleCategorie("categorie");
-//		
-//		//A partir de la liste filtrée par catégorie, recherche des articles par mot cle
-//		listeArticlesRecherches = articleManager.getArticlesByMotCle("motCle", listeArticlesRecherches);
-//		
-//		request.setAttribute("listeArticlesRecherches", listeArticlesRecherches);
-//		
+		ArticleVenduManager articleManager = new ArticleVenduManager();
+		List<ArticleVendu> listeArticles = articleManager.getAllArticles();
+		
+		request.setAttribute("listeArticles", listeArticles);
+
 		// Transfert de l'affichage à la JSP
-		RequestDispatcher rd = request.getRequestDispatcher("/WEB-INF/jsp/Accueil.jsp");
+		RequestDispatcher rd = request.getRequestDispatcher("/WEB-INF/jsp/accueiltest.jsp");
 		rd.forward(request, response);
 	}
 	
