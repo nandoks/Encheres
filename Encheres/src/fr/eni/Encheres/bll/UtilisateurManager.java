@@ -31,7 +31,7 @@ public class UtilisateurManager {
 			System.out.println(u.getEmail());
 			System.out.println(u.getPseudo());
 			if(u.getEmail().equals(emailNouvelUtilisateur) && u.getPseudo().equals(pseudoNouvelUtilisateur)) {
-				return "utilisateur existant dans la BDD";
+				return "peuso ou email déjà enregistré";
 			}
 		}
 		utilisateurDAO.insert(utilisateur);

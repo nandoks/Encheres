@@ -48,15 +48,14 @@ public class ServletCreationCompte extends HttpServlet {
 		Utilisateur utilisateur = UtilisateurBuilder.execute(request, response);
 		
 		String messageErreur = utilisateurManager.ajouteUtilisateur(utilisateur);
-		
+		String url = "accueil";
 		request.setAttribute("messageErreur", messageErreur);
 		if(messageErreur != null) {
-			RequestDispatcher rd = request.getRequestDispatcher("");
-			rd.forward(request, response);
+			url = ("/WEB-INF/jsp/CreationCompte.jsp");
 		}
-		RequestDispatcher rd = request.getRequestDispatcher("");
-		rd.forward(request, response);
 		
+		RequestDispatcher rd = request.getRequestDispatcher(url);
+		rd.forward(request, response);
 	}
 
 }
