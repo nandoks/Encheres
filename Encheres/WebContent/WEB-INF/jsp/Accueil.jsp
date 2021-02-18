@@ -15,7 +15,7 @@
     <div class="section">
         <div class="div-block">
             <div class="div-block-2">
-                <img src="images/ENIEcole-1.jpg" loading="lazy" sizes="(max-width: 479px) 100vw, 75px" alt="" class="image-5">
+                <img src="img/ENIEcole-1.jpg" loading="lazy" sizes="(max-width: 479px) 100vw, 75px" alt="" class="image-5">
             </div>
             <a href="index.html" aria-current="page" class="lien-block ligne-block rangee1">
                 <h1 class="titre">ENI Enchères</h1>

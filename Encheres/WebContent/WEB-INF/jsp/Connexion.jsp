@@ -15,7 +15,7 @@
 				<div class="page-contenu-motdepasse-formulaire">
 					<form action="<%=request.getContextPath()%>/authentification" method="post"
 						class="page-formulaire-motdepasse">
-						<img src="images/photo-1582139329536-e7284fece509.jpg" alt=""
+						<img src="img/photo-1582139329536-e7284fece509.jpg" alt=""
 							sizes="(max-width: 479px) 100vw, 260px"
 							srcset="images/photo-1582139329536-e7284fece509-p-500.jpeg 500w, images/photo-1582139329536-e7284fece509.jpg 800w"
 							class="image-2">
