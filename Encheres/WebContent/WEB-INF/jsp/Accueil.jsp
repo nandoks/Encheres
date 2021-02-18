@@ -20,8 +20,8 @@
             <a href="index.html" aria-current="page" class="lien-block ligne-block rangee1">
                 <h1 class="titre">ENI Enchères</h1>
             </a>
-            <a href="#" class="lien">Connection</a>
-            <a href="#" class="lien">Inscription</a>
+            <a href="authentification" class="lien">Connection</a>
+            <a href="creationCompte" class="lien">Inscription</a>
         </div>
     </div>
     <div class="conteneur conteneur-1">

@@ -16,48 +16,58 @@ import fr.eni.Encheres.bll.UtilisateurManager;
 import fr.eni.Encheres.bo.Utilisateur;
 
 /**
- * Servlet implementation class ServletLogin
+ * Servlet implementation class ServletAuthentification
  */
 @WebServlet("/authentification")
-public class ServletConnexion extends HttpServlet {
+public class ServletAuthentification extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-       
-	private static UtilisateurManager utilisateurManager;
-	
-    /**
-     * @see HttpServlet#HttpServlet()
-     */
-    public ServletConnexion() {
-        utilisateurManager = new UtilisateurManager();
-    }
+
+	UtilisateurManager utilisateurManager;
 
 	/**
-	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
+	 * @see HttpServlet#HttpServlet()
 	 */
-	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		
+	public ServletAuthentification() {
+		utilisateurManager = new UtilisateurManager();
+	}
+
+	protected void doGet(HttpServletRequest request, HttpServletResponse response)
+			throws ServletException, IOException {
+
+		RequestDispatcher rd = request.getRequestDispatcher("/WEB-INF/jsp/Connexion.jsp");
+
+		rd.forward(request, response);
+	}
+
+	/**
+	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse
+	 *      response)
+	 */
+	protected void doPost(HttpServletRequest request, HttpServletResponse response)
+			throws ServletException, IOException {
+
 		String nomUtilisateur = (String) request.getParameter("identifiant");
-		String motDePasse= (String) request.getParameter("pass");
-				
-		System.out.println("form: " + nomUtilisateur  + "," + motDePasse);
-		
-		Utilisateur utilisateur  = null; 
+		String motDePasse = (String) request.getParameter("pass");
+
+		System.out.println("form: " + nomUtilisateur + "," + motDePasse);
+
+		Utilisateur utilisateur = null;
 		List<Utilisateur> listeUtilisateur = utilisateurManager.getUtilisateurs();
 		for (Utilisateur u : listeUtilisateur) {
-			if(u.equals(nomUtilisateur, motDePasse)) {
-				utilisateur  = u;
+			if (u.equals(nomUtilisateur, motDePasse)) {
+				utilisateur = u;
 				System.out.println("Utilisateur trouvé");
 			}
 		}
-		
+
 		String url = "";
-		if(utilisateur != null) {
-			boolean seRappelerDeMoi = request.getParameter("Se-souvenir-de-moi") != null; 
+		if (utilisateur != null) {
+			boolean seRappelerDeMoi = request.getParameter("Se-souvenir-de-moi") != null;
 			System.out.println(seRappelerDeMoi);
-			if(!seRappelerDeMoi) {
+			if (!seRappelerDeMoi) {
 				HttpSession session = request.getSession();
 				session.setAttribute("utilisateurConnecte", utilisateur);
-				
+
 			} else {
 				Cookie resterConnecte = new Cookie("seRappelerDeMoi", "true");
 				resterConnecte.setMaxAge(1800);
@@ -69,30 +79,9 @@ public class ServletConnexion extends HttpServlet {
 			request.setAttribute("messageErreur", "Mot de passe ou mail incorrect");
 			url = "/WEB-INF/jsp/Connexion.jsp";
 		}
-		
+
 		RequestDispatcher rd = request.getRequestDispatcher(url);
-		
+
 		rd.forward(request, response);
 	}
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-

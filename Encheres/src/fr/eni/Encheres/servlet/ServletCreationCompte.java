@@ -16,7 +16,7 @@ import fr.eni.Encheres.bo.Utilisateur;
 /**
  * Servlet implementation class ServletCreationCompte
  */
-@WebServlet("/ServletCreationCompte")
+@WebServlet("/creationCompte")
 public class ServletCreationCompte extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
@@ -29,6 +29,15 @@ public class ServletCreationCompte extends HttpServlet {
         utilisateurManager = new UtilisateurManager();
     }
 
+    
+    protected void doGet(HttpServletRequest request, HttpServletResponse response)
+			throws ServletException, IOException {
+
+		RequestDispatcher rd = request.getRequestDispatcher("/WEB-INF/jsp/CreationCompte.jsp");
+
+		rd.forward(request, response);
+	}
+    
 	/**
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse
 	 *      response)
@@ -41,8 +50,11 @@ public class ServletCreationCompte extends HttpServlet {
 		String messageErreur = utilisateurManager.ajouteUtilisateur(utilisateur);
 		
 		request.setAttribute("messageErreur", messageErreur);
-		
-		RequestDispatcher rd = request.getRequestDispatcher("testAjout.jsp");
+		if(messageErreur != null) {
+			RequestDispatcher rd = request.getRequestDispatcher("");
+			rd.forward(request, response);
+		}
+		RequestDispatcher rd = request.getRequestDispatcher("");
 		rd.forward(request, response);
 		
 	}
