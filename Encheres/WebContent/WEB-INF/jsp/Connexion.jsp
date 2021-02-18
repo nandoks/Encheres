@@ -11,7 +11,7 @@
 		</head>
 
 		<body>
-			<div class="page">
+			<div class="page"	>
 				<div class="page-contenu-motdepasse-formulaire">
 					<form action="<%=request.getContextPath()%>/authentification" method="post"
 						class="page-formulaire-motdepasse">
