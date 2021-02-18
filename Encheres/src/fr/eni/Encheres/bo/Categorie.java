@@ -10,7 +10,7 @@ public class Categorie implements Serializable {
 
 	// Constructeur vide
 	public Categorie() {
-super	}
+	}
 
 	// Constructeur avec tous les paramètres
 	public Categorie(int libelle, int noCategorie) {
