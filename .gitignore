@@ -1,6 +1,6 @@
 .metadata
-/Encheres/WebContent/WEB-INF/lib/
-/Servers
 /Encheres/.settings/
 /Encheres/.classpath
-/Encheres/.settings/org.eclipse.wst.common.project.facet.core.xml
+/Encheres/WebContent/WEB-INF/lib/
+/Servers
+
