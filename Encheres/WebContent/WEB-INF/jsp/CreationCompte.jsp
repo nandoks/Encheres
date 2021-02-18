@@ -1,6 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
-<%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+<%-- <%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>--%>
 <html>
 
 <%-- head de la Connexion.jsp--%>
@@ -8,8 +8,8 @@
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>Page sécurisée</title>
 <meta content="width=device-width, initial-scale=1" name="viewport">
-<link href="css/main.css" rel="stylesheet" type="text/css">
-<link href="css/eni1.css" rel="stylesheet" type="text/css">
+<%-- <link href="css/main.css" rel="stylesheet" type="text/css">
+<link href="css/eni1.css" rel="stylesheet" type="text/css">--%>
 </head>
 
 <body>
@@ -53,7 +53,7 @@
 				<br />
 			
 				<%-- Confirmation du mot de passe, doit être le même que le mot de passe--%>	
-				<label for = "confirmation">confirmation: </label> 
+				<label for = "confirmation">Confirmation: </label> 
 				<input type="password"	name="confirm_password" id="confirm_password" onkeyup='check();' />
 					<span id='message'></span>
 				</label>
