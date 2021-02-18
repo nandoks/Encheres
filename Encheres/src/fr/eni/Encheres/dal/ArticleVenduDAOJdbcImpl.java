@@ -11,12 +11,9 @@ import fr.eni.Encheres.bo.ArticleVendu;
 
 public class ArticleVenduDAOJdbcImpl implements ArticleVenduDAO {
 
-	/*private static final String sqlSelectAll = "SELECT no_article,nom_article,description,date_debut_encheres,date_fin_encheres,"
-			+ "prix_initial, prix_vente, no_utilisateur, no_categorie, libelle, rue, code_postal, ville, from articles_vendus a"+
-			"INNER JOIN retraits r ON a.no_article = r.no_article";
-
-	private final String sqlSelectById = "SELECT no_article,nom_article,description,date_debut_encheres,date_fin_encheres,"
-			+ "prix_initial, prix_vente, no_utilisateur, no_categorie from articles_vendus where no_article = ?;";*/
+	private static final String SQL_SELECT_ALL = "SELECT nom_article, prix_initial, date_fin_encheres, pseudo, libelle"
+			+"FROM articles_vendus a INNER JOIN utilisateurs u ON a.no_utilisateur = u.no_utilisateur"
+			+"INNER JOIN categories c ON a.no_categorie = c.no_categorie";
 
 	private final String SQL_INSERT = "INSERT INTO articles_vendus (nom_article,description,date_debut_encheres,date_fin_encheres,"
 			+ "prix_initial,prix_vente,no_utilisateur,no_categorie) values (?,?,?,?,?,?,?,?)";
@@ -29,12 +26,35 @@ public class ArticleVenduDAOJdbcImpl implements ArticleVenduDAO {
 	private final String SQL_SELECT_BY_LIBELLE_CATEGORIE = "SELECT nom_article, prix_initial, date_fin_encheres, pseudo, libelle"
 			+"FROM articles_vendus a INNER JOIN utilisateurs u ON a.no_utilisateur = u.no_utilisateur"
 			+"INNER JOIN categories c ON a.no_categorie = c.no_categorie WHERE libelle = ?";
+	
+	private final String SQL_SELECT_BY_MOT_CLE = "SELECT nom_article, prix_initial, date_fin_encheres, pseudo, libelle"
+			+"FROM articles_vendus a INNER JOIN utilisateurs u ON a.no_utilisateur = u.no_utilisateur"
+			+"INNER JOIN categories c ON a.no_categorie = c.no_categorie WHERE nom_article = ?";
 
 	
 	@Override
 	public List<ArticleVendu> selectAll() {
-		// TODO Auto-generated method stub
-		return null;
+		List<ArticleVendu> listeArticles = new ArrayList<>();
+		try(Connection cnx = ConnectionProvider.getConnection()){
+			PreparedStatement stmt = cnx.prepareStatement(SQL_SELECT_ALL);
+			ResultSet rs = stmt.executeQuery();
+			ArticleVendu articleCourant = new ArticleVendu();
+			while(rs.next()) {
+				articleCourant.setNomArticle(rs.getString("nom_article"));
+				articleCourant.setMiseAPrix(rs.getInt("prix_initial"));
+				articleCourant.setDateFinEncheres(rs.getDate("date_fin_encheres").toLocalDate());
+				articleCourant.setPseudoVendeur(rs.getString("pseudo"));
+				articleCourant.setLibelleCategorie(rs.getString("libelle"));
+
+				listeArticles.add(articleCourant);
+			}
+			rs.close();
+			stmt.close();
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return listeArticles;
 	}
 
 	@Override
@@ -99,13 +119,7 @@ public class ArticleVenduDAOJdbcImpl implements ArticleVenduDAO {
 	}
 
 	@Override
-	public List<ArticleVendu> getArticlesByNumeroUtilisateur(int numeroUtilisateur) {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
-	@Override
-	public List<ArticleVendu> getArticlesByLibelleCategorie(String libelle){
+	public List<ArticleVendu> selectArticlesByLibelleCategorie(String libelle){
 		List<ArticleVendu> listeArticles = new ArrayList<>();
 		try(Connection cnx = ConnectionProvider.getConnection()){
 			PreparedStatement stmt = cnx.prepareStatement(SQL_SELECT_BY_LIBELLE_CATEGORIE);
@@ -129,11 +143,34 @@ public class ArticleVenduDAOJdbcImpl implements ArticleVenduDAO {
 	}
 
 	@Override
-	public List<ArticleVendu> getArticleByMotCle(String motCle) {
-		
-		return null;
+	public List<ArticleVendu> selectArticlesByMotCle(String motCle) {
+		List<ArticleVendu> listeArticles = new ArrayList<>();
+		try(Connection cnx = ConnectionProvider.getConnection()){
+			PreparedStatement stmt = cnx.prepareStatement(SQL_SELECT_BY_MOT_CLE);
+			ResultSet rs = stmt.executeQuery();
+			ArticleVendu articleCourant = new ArticleVendu();
+			while(rs.next()) {
+				articleCourant.setNomArticle(rs.getString("nom_article"));
+				articleCourant.setMiseAPrix(rs.getInt("prix_initial"));
+				articleCourant.setDateFinEncheres(rs.getDate("date_fin_encheres").toLocalDate());
+				articleCourant.setPseudoVendeur(rs.getString("pseudo"));
+				articleCourant.setLibelleCategorie(rs.getString("libelle"));
+
+				listeArticles.add(articleCourant);
+			}
+			rs.close();
+			stmt.close();
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return listeArticles;
 	}
 	
-	
+	@Override
+	public List<ArticleVendu> selectArticlesByNumeroUtilisateur(int numeroUtilisateur) {
+		// TODO Auto-generated method stub
+		return null;
+	}
 	
 }
