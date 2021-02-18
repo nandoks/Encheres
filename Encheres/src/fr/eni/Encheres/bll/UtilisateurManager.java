@@ -31,16 +31,17 @@ public class UtilisateurManager {
 			System.out.println(u.getEmail());
 			System.out.println(u.getPseudo());
 			if(u.getEmail().equals(emailNouvelUtilisateur) && u.getPseudo().equals(pseudoNouvelUtilisateur)) {
-				return "peuso ou email déjà enregistré";
+				return "pseudo ou email déjà enregistré";
 			}
 		}
 		utilisateurDAO.insert(utilisateur);
 		return null;
 	}
 
-	public Utilisateur getUtilisateursById(int id) {
+	public Utilisateur getUtilisateurById(int id) {
 		return utilisateurDAO.selectById(id);
 	}
+
 
 	
 	

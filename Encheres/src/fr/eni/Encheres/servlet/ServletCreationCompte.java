@@ -25,7 +25,7 @@ public class ServletCreationCompte extends HttpServlet {
 	/**
      * @see HttpServlet#HttpServlet()
      */
-    public ServletCreationCompte() {
+	public void init() {
         utilisateurManager = new UtilisateurManager();
     }
 
