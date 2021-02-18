@@ -15,7 +15,7 @@
 <body>
 	<div class="page">
 		<div class=" page-contenu-creationCompte-formulaire" required="required">
-			<form method="post" action="<%=request.getContextPath()%>/ServletCreationCompte"class="page-formulaire-creationcompte">
+			<form method="post" action="<%=request.getContextPath()%>/creationCompte"class="page-formulaire-creationcompte">
 				<label for="pseudo">Pseudo :</label> 
 				<input name="pseudo" id="pseudo" type="text" value="" size="20"maxlength="20" /> 
 				<br />
