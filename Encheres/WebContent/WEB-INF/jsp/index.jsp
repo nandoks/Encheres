@@ -1,6 +1,8 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
+
 
 <!DOCTYPE html>
 <html>
@@ -31,7 +33,7 @@
     <div class="conteneur">
         <form action="${pageContext.request.contextPath}/accueil" class="correction formulaire" method="post">
             <div class="div-block-4">
-                <input type="search" class="entree" maxlength="256" name="query" placeholder="Le nom de l'article contientâ¦" id="search" required="">
+                <input type="search" class="entree" maxlength="256" name="recherche" placeholder="Le nom de l'article contientâ¦" id="search" required="">
                 <div data-hover="" data-delay="0" class="deroulant">
                     <div class="deroulant">
                         <button class="bouton">Toutes les catégories</button>

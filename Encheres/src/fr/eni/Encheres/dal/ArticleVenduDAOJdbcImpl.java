@@ -14,54 +14,22 @@ public class ArticleVenduDAOJdbcImpl implements ArticleVenduDAO {
 
 	private static final String SQL_SELECT_ALL = "SELECT nom_article, prix_initial, date_fin_encheres, pseudo, libelle FROM articles_vendus INNER JOIN utilisateurs u ON articles_vendus.no_utilisateur = u.no_utilisateur INNER JOIN categories c ON articles_vendus.no_categorie = c.no_categorie";
 		
-	private final String SQL_INSERT = "INSERT INTO articles_vendus (nom_article,description,date_debut_encheres,date_fin_encheres,"
-			+ "prix_initial,prix_vente,no_utilisateur,no_categorie) values (?,?,?,?,?,?,?,?)";
+	private final String SQL_INSERT = "INSERT INTO articles_vendus (nom_article,description,date_debut_encheres,date_fin_encheres, "
+			+ " prix_initial,prix_vente,no_utilisateur,no_categorie) values (?,?,?,?,?,?,?,?)";
 
-	private final String SQL_UPDATE = "UPDATE articles_vendus nom_article=?,description=?,date_debut_encheres=?,date_fin_encheres=?,"
-			+ "prix_initial=?,prix_vente=?,no_utilisateur=?,no_categorie=? where no_article = ?";
+	private final String SQL_UPDATE = "UPDATE articles_vendus nom_article=?,description=?,date_debut_encheres=?,date_fin_encheres=?, "
+			+ " prix_initial=?,prix_vente=?,no_utilisateur=?,no_categorie=? where no_article = ?";
 
 	private final String SQL_DELETE = "DELETE FROM articles_vendus where no_article=?";
 	
-	private final String SQL_SELECT_BY_LIBELLE_CATEGORIE = "SELECT nom_article, prix_initial, date_fin_encheres, pseudo, libelle"
-			+"FROM articles_vendus a INNER JOIN utilisateurs u ON a.no_utilisateur = u.no_utilisateur"
-			+"INNER JOIN categories c ON a.no_categorie = c.no_categorie WHERE libelle = ?";
+	private final String SQL_SELECT_BY_LIBELLE_CATEGORIE = "SELECT nom_article, prix_initial, date_fin_encheres, pseudo, libelle "
+			+" FROM articles_vendus a INNER JOIN utilisateurs u ON a.no_utilisateur = u.no_utilisateur"
+			+" INNER JOIN categories c ON a.no_categorie = c.no_categorie WHERE libelle = ?";
 	
-	private final String SQL_SELECT_BY_MOT_CLE = "SELECT nom_article, prix_initial, date_fin_encheres, pseudo, libelle"
-			+"FROM articles_vendus a INNER JOIN utilisateurs u ON a.no_utilisateur = u.no_utilisateur"
-			+"INNER JOIN categories c ON a.no_categorie = c.no_categorie WHERE nom_article like %?%";
+	private final String SQL_SELECT_BY_MOT_CLE = "SELECT nom_article, prix_initial, date_fin_encheres, pseudo, libelle "
+			+" FROM articles_vendus a INNER JOIN utilisateurs u ON a.no_utilisateur = u.no_utilisateur "
+			+" INNER JOIN categories c ON a.no_categorie = c.no_categorie WHERE nom_article like '%?%'";
 
-	
-	@Override
-	public List<ArticleVendu> selectAll() {
-		List<ArticleVendu> listeArticles = new ArrayList<>();
-		try(Connection cnx = ConnectionProvider.getConnection();
-			PreparedStatement stmt = cnx.prepareStatement(SQL_SELECT_ALL);){
-			ResultSet rs = stmt.executeQuery();
-			ArticleVendu articleCourant = null;
-			while(rs.next()) {
-				articleCourant = new ArticleVendu();
-
-				articleCourant.setNomArticle(rs.getString("nom_article"));
-				articleCourant.setMiseAPrix(rs.getInt("prix_initial"));
-				articleCourant.setDateFinEncheres(rs.getDate("date_fin_encheres").toLocalDate());
-				articleCourant.setPseudoVendeur(rs.getString("pseudo"));
-				articleCourant.setLibelleCategorie(rs.getString("libelle"));
-
-				listeArticles.add(articleCourant);
-			}
-			rs.close();
-		} catch (SQLException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-		return listeArticles;
-	}
-
-	@Override
-	public ArticleVendu selectById(int id) {
-		// TODO Auto-generated method stub
-		return null;
-	}
 
 	@Override
 	public void insert(ArticleVendu articleVendu) {
@@ -119,13 +87,42 @@ public class ArticleVenduDAOJdbcImpl implements ArticleVenduDAO {
 	}
 
 	@Override
+	public List<ArticleVendu> selectAll() {
+		List<ArticleVendu> listeArticles = new ArrayList<>();
+		try(Connection cnx = ConnectionProvider.getConnection();
+			PreparedStatement stmt = cnx.prepareStatement(SQL_SELECT_ALL);){
+			ResultSet rs = stmt.executeQuery();
+			ArticleVendu articleCourant = null;
+			while(rs.next()) {
+				articleCourant = new ArticleVendu();
+
+				articleCourant.setNomArticle(rs.getString("nom_article"));
+				articleCourant.setMiseAPrix(rs.getInt("prix_initial"));
+				articleCourant.setDateFinEncheres(rs.getDate("date_fin_encheres").toLocalDate());
+				articleCourant.setPseudoVendeur(rs.getString("pseudo"));
+				articleCourant.setLibelleCategorie(rs.getString("libelle"));
+
+				listeArticles.add(articleCourant);
+			}
+			rs.close();
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return listeArticles;
+	}
+	
+	@Override
 	public List<ArticleVendu> selectArticlesByLibelleCategorie(String libelle){
 		List<ArticleVendu> listeArticles = new ArrayList<>();
 		try(Connection cnx = ConnectionProvider.getConnection()){
 			PreparedStatement stmt = cnx.prepareStatement(SQL_SELECT_BY_LIBELLE_CATEGORIE);
+			stmt.setString(1, libelle);
 			ResultSet rs = stmt.executeQuery();
-			ArticleVendu articleCourant = new ArticleVendu();
+			ArticleVendu articleCourant = null;
 			while(rs.next()) {
+				articleCourant = new ArticleVendu();
+
 				articleCourant.setNomArticle(rs.getString("nom_article"));
 				articleCourant.setMiseAPrix(rs.getInt("prix_initial"));
 				articleCourant.setDateFinEncheres(rs.getDate("date_fin_encheres").toLocalDate());
@@ -149,8 +146,10 @@ public class ArticleVenduDAOJdbcImpl implements ArticleVenduDAO {
 			PreparedStatement stmt = cnx.prepareStatement(SQL_SELECT_BY_MOT_CLE);
 			stmt.setString(1, motCle);
 			ResultSet rs = stmt.executeQuery();
-			ArticleVendu articleCourant = new ArticleVendu();
+			ArticleVendu articleCourant = null;
 			while(rs.next()) {
+				articleCourant = new ArticleVendu();
+
 				articleCourant.setNomArticle(rs.getString("nom_article"));
 				articleCourant.setMiseAPrix(rs.getInt("prix_initial"));
 				articleCourant.setDateFinEncheres(rs.getDate("date_fin_encheres").toLocalDate());
@@ -170,6 +169,12 @@ public class ArticleVenduDAOJdbcImpl implements ArticleVenduDAO {
 	
 	@Override
 	public List<ArticleVendu> selectArticlesByNumeroUtilisateur(int numeroUtilisateur) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public ArticleVendu selectById(int id) {
 		// TODO Auto-generated method stub
 		return null;
 	}
