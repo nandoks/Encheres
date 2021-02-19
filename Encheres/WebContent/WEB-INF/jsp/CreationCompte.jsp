@@ -1,6 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
-<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<!DOCTYPE html>
 <html>
 
 <%-- head de la Connexion.jsp--%>
@@ -36,7 +36,7 @@
 				<label for="nom">Nom :</label> <input name="nom" id="nom" type="text" value="" size="20"maxlength="20" /> 
 				<br />
 				
-				<label for="email">Adresse email <span class="requis">*</span></label>
+				<label for="email">Adresse email:</label>
                 <input type="text" id="email" name="email" value="" size="20" maxlength="60" required/>
                 <br />
 				
@@ -80,9 +80,9 @@
 			 var confirmation = document.getElementById("confirm_password").value;
 
 			 if (password == confirmation){
-				 document.getElementById("message").innerHTML = "match"
+				 document.getElementById("message").innerHTML = "Mot de passe identique"
 			 } else {
-				 document.getElementById("message").innerHTML = "dont match";
+				 document.getElementById("message").innerHTML = "Mot de passe pas identique! ";
 			 }
 		}
 		

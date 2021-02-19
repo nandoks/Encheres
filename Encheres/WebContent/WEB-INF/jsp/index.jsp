@@ -1,9 +1,11 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+	pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
 
 <head>
     <meta charset="UTF-8">
-    <title>ENI Ench�res</title>
+    <title>ENI Enchères</title>
     <meta content="width=device-width, initial-scale=1" name="viewport">
     <link href="css/style.css" rel="stylesheet" type="text/css">
 </head>
@@ -15,27 +17,27 @@
                 <img src="images/ENIEcole-1.jpg" loading="lazy" sizes="(max-width: 479px) 100vw, 75px" alt="" class="image-5">
             </div>
             <a href="index.html" aria-current="page" class="lien-block ligne-block rangee1">
-                <h1 class="titre">ENI Ench�res</h1>
+                <h1 class="titre">ENI Enchères</h1>
             </a>
             <a href="#" class="lien">Connection</a>
             <a href="#" class="lien">Inscription</a>
         </div>
     </div>
     <div class="conteneur conteneur-1">
-        <h1 class="titre1">Liste des ench�res</h1>
+        <h1 class="titre1">Liste des enchères</h1>
     </div>
     <div class="conteneur">
         <form action="/search" class="correction formulaire">
             <div class="div-block-4">
-                <input type="search" class="entree" maxlength="256" name="query" placeholder="Le nom de l'article contient…" id="search" required="">
+                <input type="search" class="entree" maxlength="256" name="query" placeholder="Le nom de l'article contientâ¦" id="search" required="">
                 <div data-hover="" data-delay="0" class="deroulant">
                     <div class="deroulant">
-                        <button class="bouton">Toutes les cat�gories</button>
+                        <button class="bouton">Toutes les catégories</button>
                         <div class="deroulant-choix">
                             <a class="informatique" href="#">Informatique</a>
                             <a class="ameublement" href="#">Ameublement</a>
                             <a class="sport" href="#">Sport et Loisirs</a>
-                            <a class="vetements" href="#">V�tements</a>
+                            <a class="vetements" href="#">Vétements</a>
                         </div>
                     </div>
                 </div>
@@ -55,7 +57,7 @@
                     <ul role="list" class="liste-style">
                         <li class="liste-item-3">PC Gamer pour travailler</li>
                         <li>Prix : 210 points</li>
-                        <li>Fin de l'ench�re : 10/08/2018</li>
+                        <li>Fin de l'enchère : 10/08/2018</li>
                         <li>Vendeur : jojo44</li>
                     </ul>
                 </div>
@@ -70,7 +72,7 @@
                     <ul role="list" class="liste-style">
                         <li class="liste-item-4">PC Gamer pour travailler</li>
                         <li>Prix : 210 points</li>
-                        <li>Fin de l'ench�re : 10/08/2018</li>
+                        <li>Fin de l'enchère : 10/08/2018</li>
                         <li>Vendeur : jojo44</li>
                     </ul>
                 </div>
@@ -85,7 +87,7 @@
                     <ul role="list" class="liste-style">
                         <li class="liste-item-8">PC Gamer pour travailler</li>
                         <li>Prix : 210 points</li>
-                        <li>Fin de l'ench�re : 10/08/2018</li>
+                        <li>Fin de l'enchère : 10/08/2018</li>
                         <li>Vendeur : jojo44</li>
                     </ul>
                 </div>
@@ -100,7 +102,7 @@
                     <ul role="list" class="liste-style">
                         <li class="liste-item-5">PC Gamer pour travailler</li>
                         <li>Prix : 210 points</li>
-                        <li>Fin de l'ench�re : 10/08/2018</li>
+                        <li>Fin de l'enchère : 10/08/2018</li>
                         <li>Vendeur : jojo44</li>
                     </ul>
                 </div>
@@ -115,7 +117,7 @@
                     <ul role="list" class="liste-style">
                         <li class="liste-item-7">PC Gamer pour travailler</li>
                         <li>Prix : 210 points</li>
-                        <li>Fin de l'ench�re : 10/08/2018</li>
+                        <li>Fin de l'enchère : 10/08/2018</li>
                         <li>Vendeur : jojo44</li>
                     </ul>
                 </div>
@@ -130,7 +132,7 @@
                     <ul role="list" class="liste-style">
                         <li class="liste-item-6">PC Gamer pour travailler</li>
                         <li>Prix : 210 points</li>
-                        <li>Fin de l'ench�re : 10/08/2018</li>
+                        <li>Fin de l'enchère : 10/08/2018</li>
                         <li>Vendeur : jojo44</li>
                     </ul>
                 </div>
@@ -176,7 +178,7 @@
                         <h2 class="pied-titre">Partenaires</h2>
                         <ul role="list" class="liste-3 liste-style">
                             <li>
-                                <a href="#" class="pied-lien">Collectivit�s territoriales</a>
+                                <a href="#" class="pied-lien">Collectivités territoriales</a>
                             </li>
                             <li>
                                 <a href="#" class="pied-lien">Associations</a>
@@ -187,7 +189,7 @@
                         </ul>
                     </div>
                 </div>
-                <div class="texte-block-2">Copyright © 2021 Groupe E Project 1 ENI. Tous droits réservés.</div>
+                <div class="texte-block-2">Copyright Â© 2021 Groupe E Project 1 ENI. Tous droits rÃ©servÃ©s.</div>
             </div>
         </footer>
     </div>
