@@ -51,7 +51,7 @@ public class ServletAuthentification extends HttpServlet {
 		String motDePasse = (String) request.getParameter("pass");
 
 		System.out.println("form: " + identifiant + "," + motDePasse);
-
+		
 		Utilisateur utilisateur = null;
 		List<Utilisateur> listeUtilisateur = utilisateurManager.getUtilisateurs();
 		for (Utilisateur u : listeUtilisateur) {
