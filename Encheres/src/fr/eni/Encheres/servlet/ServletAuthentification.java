@@ -31,6 +31,7 @@ public class ServletAuthentification extends HttpServlet {
 		utilisateurManager = new UtilisateurManager();
 	}
 
+		
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 

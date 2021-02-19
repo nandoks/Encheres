@@ -29,7 +29,7 @@ public class ServletAccueil extends HttpServlet {
 		
 		request.setAttribute("listeArticles", listeArticles);
 
-		// Transfert de l'affichage à la JSP
+		//Transfert de l'affichage à la JSP
 		RequestDispatcher rd = request.getRequestDispatcher("/WEB-INF/jsp/accueiltest.jsp");
 		rd.forward(request, response);
 	}
@@ -39,7 +39,16 @@ public class ServletAccueil extends HttpServlet {
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		doGet(request, response);
+		ArticleVenduManager articleManager = new ArticleVenduManager();
+		
+		//Récupération du champ de recherche
+		String nomArticle = request.getParameter("recherche");
+		List<ArticleVendu> listeArticles = articleManager.getArticlesByMotCle(nomArticle);
+		request.setAttribute("listeArticles", listeArticles);
+		
+		//Transfert de l'affichage à la JSP
+		RequestDispatcher rd = request.getRequestDispatcher("/WEB-INF/jsp/accueiltest.jsp");
+		rd.forward(request, response);
 	}
 
 }

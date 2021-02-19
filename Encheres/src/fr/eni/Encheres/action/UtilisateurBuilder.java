@@ -1,8 +1,7 @@
 package fr.eni.Encheres.action;
 
-import java.util.ArrayList;
-import java.util.List;
-import java.util.regex.Pattern;
+import java.util.HashMap;
+import java.util.Map;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -15,16 +14,16 @@ public class UtilisateurBuilder {
 
 		Utilisateur utilisateur = new Utilisateur();
 
-		String pseudo = (String) request.getParameter("pseudo");
-		String nom = (String) request.getParameter("nom");
-		String prenom = (String) request.getParameter("prenom");
-		String email = (String) request.getParameter("email");
-		String telephone = (String) request.getParameter("telephone");
-		String rue = (String) request.getParameter("rue");
-		String codePostal = (String) request.getParameter("codePostal");
-		String ville = (String) request.getParameter("ville");
-		String motDePasse = (String) request.getParameter("password");
-
+		String pseudo = request.getParameter( "pseudo");
+		String nom = request.getParameter( "nom");
+		String prenom = request.getParameter( "prenom");
+		String email = request.getParameter( "email");
+		String telephone = request.getParameter( "telephone");
+		String rue = request.getParameter( "rue");
+		String codePostal = request.getParameter( "codePostal");
+		String ville = request.getParameter( "ville");
+		String motDePasse = request.getParameter( "password");
+		
 		
 		utilisateur.setPseudo(pseudo);
 		utilisateur.setNom(nom);

@@ -17,7 +17,7 @@ private ArticleVenduDAO articleVenduDAO;
 	}
 
 	public List<ArticleVendu> getArticlesByNumeroUtilisateur(int numeroUtilisateur) {
-		return articleVenduDAO.getArticlesByNumeroUtilisateur(numeroUtilisateur);
+		return articleVenduDAO.selectArticlesByNumeroUtilisateur(numeroUtilisateur);
 	}
 
 	public List<ArticleVendu> getAllArticles() {
@@ -31,40 +31,41 @@ private ArticleVenduDAO articleVenduDAO;
 		switch("categorie") {
 		case "Toutes" : listeArticlesRecherches = articleVenduDAO.selectAll();
 		break;
-		case "Informatique" : listeArticlesRecherches = articleVenduDAO.getArticlesByLibelleCategorie(libelle);
+		case "Informatique" : listeArticlesRecherches = articleVenduDAO.selectArticlesByLibelleCategorie(libelle);
 		break;
-		case "Ameublement" : listeArticlesRecherches = articleVenduDAO.getArticlesByLibelleCategorie(libelle);
+		case "Ameublement" : listeArticlesRecherches = articleVenduDAO.selectArticlesByLibelleCategorie(libelle);
 		break;
-		case "Vêtement" : listeArticlesRecherches = articleVenduDAO.getArticlesByLibelleCategorie(libelle);
+		case "Vêtement" : listeArticlesRecherches = articleVenduDAO.selectArticlesByLibelleCategorie(libelle);
 		break;
-		case "Sport&Loisirs" : listeArticlesRecherches = articleVenduDAO.getArticlesByLibelleCategorie(libelle);
+		case "Sport&Loisirs" : listeArticlesRecherches = articleVenduDAO.selectArticlesByLibelleCategorie(libelle);
 		break;
 	}
 		
 		return listeArticlesRecherches;
 	}
 	
-	public List<ArticleVendu> getArticlesByMotCle(String motCle, List<ArticleVendu> liste){
-		List<String> listeMotNomArticle = null;
-		List<ArticleVendu> listeArticlesRecherches = null;
-
-		for (ArticleVendu a : liste) {
-			listeArticlesRecherches = new ArrayList<>();
-			String nomArticle = a.getNomArticle();
-			listeMotNomArticle = Arrays.asList(nomArticle.split(" "));
-			
-			for(String s : listeMotNomArticle) {
-				if(s.equalsIgnoreCase(motCle)) {
-					listeArticlesRecherches.add(a);
-				}
-			}
-		}
+	public List<ArticleVendu> getArticlesByMotCle(String motCle){
+		
+		List<ArticleVendu> listeArticlesRecherches = articleVenduDAO.selectArticlesByMotCle(motCle);
+		
 		return listeArticlesRecherches;
 	}
-	
-	
-	
-	
-	
-	
+
+//	public List<ArticleVendu> getArticlesByMotCleBis(String motCle){
+//		List<String> listeMotNomArticle = null;
+//		List<ArticleVendu> listeArticlesRecherches = null;
+//
+//		for (ArticleVendu a : liste) {
+//			listeArticlesRecherches = new ArrayList<>();
+//			String nomArticle = a.getNomArticle();
+//			listeMotNomArticle = Arrays.asList(nomArticle.split(" "));
+//			
+//			for(String s : listeMotNomArticle) {
+//				if(s.equalsIgnoreCase(motCle)) {
+//					listeArticlesRecherches.add(a);
+//				}
+//			}
+//		}
+//		return listeArticlesRecherches;
+//	}
 }

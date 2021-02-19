@@ -7,9 +7,10 @@ import fr.eni.Encheres.bo.ArticleVendu;
 public interface ArticleVenduDAO extends DAO<ArticleVendu> {
 
 	
-	public List<ArticleVendu> getArticlesByNumeroUtilisateur(int numeroUtilisateur);
+	public List<ArticleVendu> selectArticlesByNumeroUtilisateur(int numeroUtilisateur);
 	
-	public List<ArticleVendu> getArticlesByLibelleCategorie(String libelle);
+	public List<ArticleVendu> selectArticlesByLibelleCategorie(String libelle);
 	
-	public List<ArticleVendu> getArticleByMotCle(String motCle);
+	public List<ArticleVendu> selectArticlesByMotCle(String motCle);
+
 }

@@ -11,27 +11,8 @@
 <title>Utilisateur - ${utilisateur.pseudo}</title>
 </head>
 <body>
-	
-	<%
-         Cookie cookie = null;
-         Cookie[] cookies = null;
-         
-         // Get an array of Cookies associated with the this domain
-         cookies = request.getCookies();
-         
-         if( cookies != null ) {
-            out.println("<h2> Found Cookies Name and Value</h2>");
-            
-            for (int i = 0; i < cookies.length; i++) {
-               cookie = cookies[i];
-               out.print("Name : " + cookie.getName( ) + ",  ");
-               out.print("Value: " + cookie.getValue( )+" <br/>");
-            }
-         } else {
-            out.println("<h2>No cookies founds</h2>");
-         }
-      %>
-	
+
+
 	<div>
 	<div>
 	<p>Pseudo:</p>
@@ -63,9 +44,6 @@
 	</div>
 	</div>
 	
-	<c:if test="${cookie.seRappelerDeMoi != null or session.getAttribute(utilisateurConnecte) != null} ">
-		<a href="#"><button type="submit">Modifier</button></a>
-	</c:if>
 
 </body>
 </html>
