@@ -1,6 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
-<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+ <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <html>
 
 <%-- head de la Connexion.jsp--%>
@@ -60,8 +60,8 @@
 				</label>
 				<br />
 				
-				<%@ tag  var check = function() {
- 					if (document.getElementById('password').value ==
+				<%= tag  var check = function() {
+ 					if (document.getElementById('password').value) ==
     				document.getElementById('confirm_password').value) {
     				document.getElementById('message').style.color = 'green';
     				document.getElementById('message').innerHTML = 'matching';
