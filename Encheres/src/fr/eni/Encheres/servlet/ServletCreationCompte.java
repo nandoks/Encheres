@@ -23,53 +23,47 @@ public class ServletCreationCompte extends HttpServlet {
 	private static UtilisateurManager utilisateurManager;
 
 	/**
-     * @see HttpServlet#HttpServlet()
-     */
+	 * @see HttpServlet#HttpServlet()
+	 */
 	public void init() {
-        utilisateurManager = new UtilisateurManager();
-    }
+		utilisateurManager = new UtilisateurManager();
+	}
 
-    
-    protected void doGet(HttpServletRequest request, HttpServletResponse response)
-			throws ServletException, IOException {
+	protected void doGet(HttpServletRequest request,
+			HttpServletResponse response) throws ServletException, IOException {
 
-		RequestDispatcher rd = request.getRequestDispatcher("/WEB-INF/jsp/CreationCompte.jsp");
+		RequestDispatcher rd = request
+				.getRequestDispatcher("/WEB-INF/jsp/creationCompte.jsp");
 
 		rd.forward(request, response);
 	}
-    
+
 	/**
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse
 	 *      response)
 	 */
-	protected void doPost(HttpServletRequest request, HttpServletResponse response)
-			throws ServletException, IOException {
-		
+	protected void doPost(HttpServletRequest request,
+			HttpServletResponse response) throws ServletException, IOException {
+
 		String pseudo = request.getParameter("pseudo");
 		String email = request.getParameter("email");
 		String messageErreur = null;
-		
+
 		String url = "accueil";
-		
-		if(utilisateurManager.getUtilisateurParIdentifiantOuMail(pseudo, email) != null) {
-			 messageErreur = "Pseudo ou email déjà enregistré";
-			 url = ("/WEB-INF/jsp/CreationCompte.jsp");
+
+		if (utilisateurManager.getUtilisateurParIdentifiantOuMail(pseudo,
+				email) != null) {
+			messageErreur = "Pseudo ou email déjà enregistré";
+			url = ("/WEB-INF/jsp/creationCompte.jsp");
 		} else {
-			Utilisateur utilisateur = UtilisateurBuilder.execute(request, response);
+			Utilisateur utilisateur = UtilisateurBuilder.execute(request,
+					response);
 			utilisateurManager.ajouteUtilisateur(utilisateur);
 		}
-		
+
 		request.setAttribute("messageErreur", messageErreur);
 		RequestDispatcher rd = request.getRequestDispatcher(url);
 		rd.forward(request, response);
 	}
 
 }
-
-
-
-
-
-
-
-
