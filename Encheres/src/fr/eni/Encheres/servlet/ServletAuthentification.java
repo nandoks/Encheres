@@ -35,6 +35,9 @@ public class ServletAuthentification extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 
+		
+		
+		
 		RequestDispatcher rd = request.getRequestDispatcher("/WEB-INF/jsp/Connexion.jsp");
 
 		rd.forward(request, response);
@@ -49,33 +52,21 @@ public class ServletAuthentification extends HttpServlet {
 
 		String identifiant = (String) request.getParameter("identifiant");
 		String motDePasse = (String) request.getParameter("pass");
-
-		System.out.println("form: " + identifiant + "," + motDePasse);
-		
-		Utilisateur utilisateur = null;
-		List<Utilisateur> listeUtilisateur = utilisateurManager.getUtilisateurs();
-		for (Utilisateur u : listeUtilisateur) {
-			if (u.equals(identifiant, motDePasse)) {
-				utilisateur = u;
-				System.out.println("Utilisateur trouvé");
-			}
-		}
-
-		String url = "";
-		if (utilisateur != null) {
+		String url = "";	
+		Utilisateur utilisateur = utilisateurManager.getUtilisateurParIdentifiantOuMail(identifiant,
+				identifiant);
+		if (utilisateur != null && utilisateur.getMotDePasse().equals(motDePasse)) {
 			boolean seRappelerDeMoi = request.getParameter("Se-souvenir-de-moi") != null;
-			System.out.println(seRappelerDeMoi);
 			if (!seRappelerDeMoi) {
 				HttpSession session = request.getSession();
 				session.setAttribute("utilisateurConnecte", utilisateur);
-
 			} else {
 				Cookie resterConnecte = new Cookie("seRappelerDeMoi", "true");
 				resterConnecte.setMaxAge(1800);
 				System.out.println("creation cookie");
 				response.addCookie(resterConnecte);
 			}
-			url = "/WEB-INF/jsp/testlogin.jsp";
+			url = "/WEB-INF/jsp/index.jsp";
 		} else {
 			request.setAttribute("messageErreur", "Mot de passe ou mail incorrect");
 			url = "/WEB-INF/jsp/Connexion.jsp";
