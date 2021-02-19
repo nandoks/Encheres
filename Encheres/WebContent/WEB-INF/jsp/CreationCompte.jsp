@@ -40,9 +40,9 @@
 				<label for="nom">Nom :</label> <input name="nom" id="nom" type="text" value="" size="20"maxlength="20" /> 
 				<br />
 				
-				<label for="email">Email :</label> 
-				<input name="email" id="email" type="text" value="" size="20"maxlength="20" /> 
-				<br />
+				<label for="email">Adresse email <span class="requis">*</span></label>
+                <input type="text" id="email" name="email" value="" size="20" maxlength="60" />
+                <br />
 				
 				<label for="rue">Rue :</label> 
 				<input name="rue" id="rue" type="text" value="" size="20"maxlength="20" /> 
