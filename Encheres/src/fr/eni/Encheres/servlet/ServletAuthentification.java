@@ -47,15 +47,15 @@ public class ServletAuthentification extends HttpServlet {
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 
-		String nomUtilisateur = (String) request.getParameter("identifiant");
+		String identifiant = (String) request.getParameter("identifiant");
 		String motDePasse = (String) request.getParameter("pass");
 
-		System.out.println("form: " + nomUtilisateur + "," + motDePasse);
+		System.out.println("form: " + identifiant + "," + motDePasse);
 
 		Utilisateur utilisateur = null;
 		List<Utilisateur> listeUtilisateur = utilisateurManager.getUtilisateurs();
 		for (Utilisateur u : listeUtilisateur) {
-			if (u.equals(nomUtilisateur, motDePasse)) {
+			if (u.equals(identifiant, motDePasse)) {
 				utilisateur = u;
 				System.out.println("Utilisateur trouvé");
 			}
