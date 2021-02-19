@@ -63,7 +63,7 @@
 				
 				<%-- Conteneur "Créer" et "Annuler"--%>
 				<div class="conteneur-2 conteneur">
-					<input type="submit" id = "btncree" value="Créer" class="soumettre-bouton créerMonProfil bouton">
+					<input type="submit" value="Créer" class="soumettre-bouton créerMonProfil bouton">
 					<a class = "btn" href = "ServletCreationCompte" ></a>			
 				</div>
 			</form>
@@ -80,11 +80,9 @@
 			 var confirmation = document.getElementById("confirm_password").value;
 
 			 if (password == confirmation){
-				 document.getElementById("message").innerHTML = "Mot de passe identique" 
-				 document.getElementById("btncree").disabled = false
+				 document.getElementById("message").innerHTML = "Mot de passe identique"
 			 } else {
-				 document.getElementById("message").innerHTML = "Mot de passe pas identique! "
-				 document.getElementById("btncree").disabled = true
+				 document.getElementById("message").innerHTML = "Mot de passe pas identique! ";
 			 }
 		}
 		

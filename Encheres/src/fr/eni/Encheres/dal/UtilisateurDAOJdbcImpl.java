@@ -166,7 +166,7 @@ public class UtilisateurDAOJdbcImpl implements UtilisateurDAO {
 		try (Connection conn = ConnectionProvider.getConnection();
 				PreparedStatement prst = conn.prepareStatement(sqlUtilisateurExiste)) {
 			prst.setString(1, identifiant);
-			prst.setString(2, email);
+			prst.setString(2, identifiant);
 			ResultSet rs = prst.executeQuery();
 			if (rs.next()) {
 				utilisateur = utilisateurBuilder(rs);
