@@ -1,7 +1,7 @@
 package fr.eni.Encheres.bll;
 
 import java.util.ArrayList;
-import java.util.Arrays;
+
 import java.util.List;
 
 import fr.eni.Encheres.bo.ArticleVendu;
@@ -24,26 +24,6 @@ private ArticleVenduDAO articleVenduDAO;
 		return articleVenduDAO.selectAll();
 	}
 	
-	public List<ArticleVendu> getArticlesByLibelleCategorie(String libelle){
-		
-		List<ArticleVendu> listeArticlesRecherches = null;
-
-		switch("categorie") {
-		case "Toutes" : listeArticlesRecherches = articleVenduDAO.selectAll();
-		break;
-		case "Informatique" : listeArticlesRecherches = articleVenduDAO.selectArticlesByLibelleCategorie(libelle);
-		break;
-		case "Ameublement" : listeArticlesRecherches = articleVenduDAO.selectArticlesByLibelleCategorie(libelle);
-		break;
-		case "Vêtement" : listeArticlesRecherches = articleVenduDAO.selectArticlesByLibelleCategorie(libelle);
-		break;
-		case "Sport&Loisirs" : listeArticlesRecherches = articleVenduDAO.selectArticlesByLibelleCategorie(libelle);
-		break;
-	}
-		
-		return listeArticlesRecherches;
-	}
-	
 	public List<ArticleVendu> getArticlesByMotCle(String motCle){
 		
 		List<ArticleVendu> listeArticlesRecherches = articleVenduDAO.selectArticlesByMotCle(motCle);
@@ -51,21 +31,80 @@ private ArticleVenduDAO articleVenduDAO;
 		return listeArticlesRecherches;
 	}
 
-//	public List<ArticleVendu> getArticlesByMotCleBis(String motCle){
-//		List<String> listeMotNomArticle = null;
-//		List<ArticleVendu> listeArticlesRecherches = null;
-//
-//		for (ArticleVendu a : liste) {
-//			listeArticlesRecherches = new ArrayList<>();
-//			String nomArticle = a.getNomArticle();
-//			listeMotNomArticle = Arrays.asList(nomArticle.split(" "));
-//			
-//			for(String s : listeMotNomArticle) {
-//				if(s.equalsIgnoreCase(motCle)) {
-//					listeArticlesRecherches.add(a);
-//				}
-//			}
-//		}
-//		return listeArticlesRecherches;
-//	}
+	public List<ArticleVendu> getArticlesByMotCle2(String motCle, List<ArticleVendu> liste){
+		List<ArticleVendu> listeArticlesRecherches = null;
+		
+		for (ArticleVendu a : liste) {
+			listeArticlesRecherches = new ArrayList<>();
+			String nomArticle = a.getNomArticle();
+			if(nomArticle.contains(motCle)) {
+				listeArticlesRecherches.add(a);
+			}
+		}
+		return listeArticlesRecherches;
+		}
+	
+	
+public List<ArticleVendu> getArticlesByLibelleCategorieEtMotCle(String libelle, String motCle){
+		
+		List<ArticleVendu> listeArticlesCategorie = null;
+		List<ArticleVendu> listeArticlesRecherches = null;
+
+		switch("categorie") {
+			case "Toutes" : listeArticlesCategorie = articleVenduDAO.selectAll();
+				listeArticlesRecherches = new ArrayList<>();
+				for (ArticleVendu a : listeArticlesCategorie) {
+					
+					String nomArticle = a.getNomArticle();
+					if(nomArticle.contains(motCle)) {
+						listeArticlesRecherches.add(a);
+					}
+			}
+			break;
+			case "Informatique" : listeArticlesCategorie = articleVenduDAO.selectArticlesByLibelleCategorie(libelle);
+				listeArticlesRecherches = new ArrayList<>();
+				for (ArticleVendu a : listeArticlesCategorie) {
+					
+					String nomArticle = a.getNomArticle();
+					if(nomArticle.contains(motCle)) {
+						listeArticlesRecherches.add(a);
+					}
+				}
+			break;
+			case "Ameublement" : listeArticlesCategorie = articleVenduDAO.selectArticlesByLibelleCategorie(libelle);
+				listeArticlesRecherches = new ArrayList<>();
+				for (ArticleVendu a : listeArticlesCategorie) {
+					
+					String nomArticle = a.getNomArticle();
+					if(nomArticle.contains(motCle)) {
+						listeArticlesRecherches.add(a);
+					}
+			}
+			break;
+			case "Vêtement" : listeArticlesCategorie = articleVenduDAO.selectArticlesByLibelleCategorie(libelle);
+				listeArticlesRecherches = new ArrayList<>();
+				for (ArticleVendu a : listeArticlesCategorie) {
+					String nomArticle = a.getNomArticle();
+					if(nomArticle.contains(motCle)) {
+						listeArticlesRecherches.add(a);
+					}
+			}
+			break;
+			case "Sport&Loisirs" : listeArticlesCategorie = articleVenduDAO.selectArticlesByLibelleCategorie(libelle);
+				listeArticlesRecherches = new ArrayList<>();
+				for (ArticleVendu a : listeArticlesCategorie) {
+					
+					String nomArticle = a.getNomArticle();
+					if(nomArticle.contains(motCle)) {
+						listeArticlesRecherches.add(a);
+					}
+				}
+			break;
+	}
+		
+		return listeArticlesRecherches;
+	}
+
+		
+	
 }

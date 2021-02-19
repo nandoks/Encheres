@@ -32,14 +32,27 @@ GO
 --insert articles_vendus
 INSERT INTO [dbo].[ARTICLES_VENDUS]([nom_article],[description],[date_debut_encheres],[date_fin_encheres] ,[prix_initial],[prix_vente],[no_utilisateur],[no_categorie])
      VALUES
-           ('Ordinateur portable','Lenovo 15 pouces 8go mémoire i3-8900k','2021-02-15','2021-03-15',250,250,1,1)
+           ('Ordinateur portable','Lenovo 15 pouces 8go mémoire i3-8900k','2021-02-15','2021-03-15',250,250,1,13)
 
 INSERT INTO [dbo].[ARTICLES_VENDUS]([nom_article],[description],[date_debut_encheres],[date_fin_encheres] ,[prix_initial],[prix_vente],[no_utilisateur],[no_categorie])
      VALUES
-           ('Commode','Commode en pin 1 tirroir','2021-01-15','2021-01-20',100,100,2,2)
+           ('Commode','Commode en pin 1 tirroir','2021-01-15','2021-01-20',100,100,2,14)
 
 INSERT INTO [dbo].[ARTICLES_VENDUS]([nom_article],[description],[date_debut_encheres],[date_fin_encheres] ,[prix_initial],[prix_vente],[no_utilisateur],[no_categorie])
-     VALUES ('Kayak','bleu et vert','2021-01-15','2021-01-20',100,100,2,4)
+     VALUES ('Kayak','bleu et vert','2021-01-15','2021-01-20',100,100,3,16)
+
+
+INSERT INTO [dbo].[ARTICLES_VENDUS]([nom_article],[description],[date_debut_encheres],[date_fin_encheres] ,[prix_initial],[prix_vente],[no_utilisateur],[no_categorie])
+     VALUES ('Souris ordinateur','Sans fil et sans usure','2021-01-19','2021-03-04',5,25,4,13)
+
+INSERT INTO [dbo].[ARTICLES_VENDUS]([nom_article],[description],[date_debut_encheres],[date_fin_encheres] ,[prix_initial],[prix_vente],[no_utilisateur],[no_categorie])
+VALUES ('Table basse','plateau en verre et strucutre en chêne','2021-01-15','2021-03-05',80,120,4,14)
+
+INSERT INTO [dbo].[ARTICLES_VENDUS]([nom_article],[description],[date_debut_encheres],[date_fin_encheres] ,[prix_initial],[prix_vente],[no_utilisateur],[no_categorie])
+VALUES ('Table à manger','en plexis pour effet rétro','2021-03-10','2021-03-25',200,320,3,14)
+
+INSERT INTO [dbo].[ARTICLES_VENDUS]([nom_article],[description],[date_debut_encheres],[date_fin_encheres] ,[prix_initial],[prix_vente],[no_utilisateur],[no_categorie])
+     VALUES ('Magnifique redingote','Très peu portée ou peut-être dans les années 20','2021-01-15','2021-02-28',20,100,3,15)
 
 -- insert encheres
 INSERT INTO [dbo].[ENCHERES]([no_utilisateur],[no_article],[date_enchere],[montant_enchere])

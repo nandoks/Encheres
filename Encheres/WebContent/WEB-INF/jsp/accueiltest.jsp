@@ -91,7 +91,7 @@
                 
                     <ul role="list" class="liste-style">
                     
-                        <li class="liste-item-3">${article.getNom}</li>
+                        <li class="liste-item-3">${article.nomArticle}</li>
                         <li>Prix : ${article.miseAPrix} points</li>
                         <li>Fin de l'enchère : ${article.dateFinEncheres}</li>
                         <li>Vendeur : ${article.pseudoVendeur}</li>
