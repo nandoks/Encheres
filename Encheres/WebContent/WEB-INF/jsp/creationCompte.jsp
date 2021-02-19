@@ -80,9 +80,9 @@
 			 var confirmation = document.getElementById("confirm_password").value;
 
 			 if (password == confirmation){
-				 document.getElementById("message").innerHTML = "match"
+				 document.getElementById("message").innerHTML = "Mot de passe identique"
 			 } else {
-				 document.getElementById("message").innerHTML = "dont match";
+				 document.getElementById("message").innerHTML = "Mot de passe pas identique! ";
 			 }
 		}
 		
