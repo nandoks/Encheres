@@ -31,4 +31,8 @@ public class UtilisateurManager {
 		return utilisateurDAO.selectById(id);
 	}
 
+	public void metAJourUtilisateur(Utilisateur utilisateur) {
+		utilisateurDAO.update(utilisateur);
+	}
+
 }

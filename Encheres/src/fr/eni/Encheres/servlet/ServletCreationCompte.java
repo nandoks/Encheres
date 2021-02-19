@@ -55,13 +55,14 @@ public class ServletCreationCompte extends HttpServlet {
 				email) != null) {
 			messageErreur = "Pseudo ou email déjà enregistré";
 			url = ("/WEB-INF/jsp/CreationCompte.jsp");
+			request.setAttribute("messageErreur", messageErreur);
 		} else {
 			Utilisateur utilisateur = UtilisateurBuilder.execute(request,
 					response);
 			utilisateurManager.ajouteUtilisateur(utilisateur);
 		}
 
-		request.setAttribute("messageErreur", messageErreur);
+		
 		RequestDispatcher rd = request.getRequestDispatcher(url);
 		rd.forward(request, response);
 	}

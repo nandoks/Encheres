@@ -31,13 +31,10 @@ public class ServletAuthentification extends HttpServlet {
 		utilisateurManager = new UtilisateurManager();
 	}
 
-		
+	
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 
-		
-		
-		
 		RequestDispatcher rd = request.getRequestDispatcher("/WEB-INF/jsp/Connexion.jsp");
 
 		rd.forward(request, response);
@@ -50,13 +47,36 @@ public class ServletAuthentification extends HttpServlet {
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 
+		// Recupere les parametres passés dans la requette
 		String identifiant = (String) request.getParameter("identifiant");
 		String motDePasse = (String) request.getParameter("pass");
-		String url = "";	
-		Utilisateur utilisateur = utilisateurManager.getUtilisateurParIdentifiantOuMail(identifiant,
-				identifiant);
+
+		String url = "";
+		/*
+		 * cherche dans la BDD s'il existe un utilisateur qui possède le pseudo ou //
+		 * l'email correspondant Á l'identifiant passé en parametre de la requette
+		 */
+		Utilisateur utilisateur = utilisateurManager.getUtilisateurParIdentifiantOuMail(identifiant, identifiant);
+		/*
+		 * teste si l'utilisateur retourné par la BDD est null (donc n'existe pas) et //
+		 * teste si le mot de passe passé en requette correspond // à l'utilisateur
+		 * retourné par la BDD si l'identifiant et l'utilisateur n'existent pas on le
+		 * renvoit avec une message d'erreur vers la page de connexion
+		 */
 		if (utilisateur != null && utilisateur.getMotDePasse().equals(motDePasse)) {
+
+			/*
+			 * cherche le parametre se-souvenir-de-moi de la page de connexion et test s'il
+			 * a été coché s'il n'a pas été coché seRappelerDeMoi sera null
+			 * 
+			 */
 			boolean seRappelerDeMoi = request.getParameter("Se-souvenir-de-moi") != null;
+			/*
+			 * si on ne doit pas se rappeler de moi on va créer une session pour //
+			 * l'utilisateur qui se terminera une fois la page fermé // sinon on va créer un
+			 * cookie qui sera gardé chez le client jusqu'à ce que le // cookie expire ou
+			 * qu'il demande la deconnexion
+			 */
 			if (!seRappelerDeMoi) {
 				HttpSession session = request.getSession();
 				session.setAttribute("utilisateurConnecte", utilisateur);
