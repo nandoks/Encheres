@@ -54,6 +54,10 @@ VALUES ('Table à manger','en plexis pour effet rétro','2021-03-10','2021-03-25',
 INSERT INTO [dbo].[ARTICLES_VENDUS]([nom_article],[description],[date_debut_encheres],[date_fin_encheres] ,[prix_initial],[prix_vente],[no_utilisateur],[no_categorie])
      VALUES ('Magnifique redingote','Très peu portée ou peut-être dans les années 20','2021-01-15','2021-02-28',20,100,3,15)
 
+INSERT INTO [dbo].[ARTICLES_VENDUS]([nom_article],[description],[date_debut_encheres],[date_fin_encheres] ,[prix_initial],[prix_vente],[no_utilisateur],[no_categorie])
+     VALUES ('Ordinateur neuf HP','Jamais utilisé, encore dans son emballage non ouvert','2021-03-15','2021-03-28',300,420,1,13)
+
+
 -- insert encheres
 INSERT INTO [dbo].[ENCHERES]([no_utilisateur],[no_article],[date_enchere],[montant_enchere])
      VALUES(1,1,'2021-7-4 04:13:54',300)

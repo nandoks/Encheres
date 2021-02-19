@@ -24,13 +24,13 @@ public class ServletAccueil extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		//ArticleVenduManager articleManager = new ArticleVenduManager();
-		//List<ArticleVendu> listeArticles = articleManager.getAllArticles();
+		ArticleVenduManager articleManager = new ArticleVenduManager();
+		List<ArticleVendu> listeArticles = articleManager.getAllArticles();
 		
-		//request.setAttribute("listeArticles", listeArticles);
+		request.setAttribute("listeArticles", listeArticles);
 
 		//Transfert de l'affichage à la JSP
-		RequestDispatcher rd = request.getRequestDispatcher("/WEB-INF/jsp/Accueil.jsp");
+		RequestDispatcher rd = request.getRequestDispatcher("/WEB-INF/jsp/index.jsp");
 		rd.forward(request, response);
 	}
 	
@@ -47,7 +47,7 @@ public class ServletAccueil extends HttpServlet {
 		request.setAttribute("listeArticles", listeArticles);
 		
 		//Transfert de l'affichage à la JSP
-		RequestDispatcher rd = request.getRequestDispatcher("/WEB-INF/jsp/accueiltest.jsp");
+		RequestDispatcher rd = request.getRequestDispatcher("/WEB-INF/jsp/index.jsp");
 		rd.forward(request, response);
 	}
 
