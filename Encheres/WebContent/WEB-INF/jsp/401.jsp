@@ -1,9 +1,10 @@
-<!DOCTYPE html>
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
+	<%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <html>
 
 <head>
     <meta charset="utf-8">
-    <title>Page sécurisée</title>
+    <title>Page sÃ©curisÃ©e</title>
     <meta content="width=device-width, initial-scale=1" name="viewport">
     <link href="css/style.css" rel="stylesheet" type="text/css">
 </head>
@@ -15,7 +16,7 @@
                 <img src="images/ENIEcole-1.jpg" loading="lazy" sizes="(max-width: 479px) 100vw, 75px" alt="" class="image-5">
             </div>
             <a href="index.html" class="lien-block ligne-block">
-                <h1 class="titre">ENI Enchères</h1>
+                <h1 class="titre">ENI EnchÃ¨res</h1>
             </a>
             <a href="#" class="lien">Connection</a>
             <a href="#" class="lien">Inscription</a>
@@ -47,7 +48,7 @@
                         <input type="submit" value="Je me connecte" data-wait="Veuillez patienter..." class="bouton-soumettre page s-bouton">
                     </div>
                     <div class="page s-formulaire-echec">
-                        <div>Mot de passe incorrect. Veuillez réessayer.</div>
+                        <div>Mot de passe incorrect. Veuillez rÃ©essayer.</div>
                     </div>
                 </form>
             </div>
@@ -92,7 +93,7 @@
                         <h2 class="pied-titre">Partenaires</h2>
                         <ul role="list" class="liste-3 liste-style">
                             <li>
-                                <a href="#" class="pied-lien">Collectivités territoriales</a>
+                                <a href="#" class="pied-lien">CollectivitÃ©s territoriales</a>
                             </li>
                             <li>
                                 <a href="#" class="pied-lien">Associations</a>
@@ -103,7 +104,7 @@
                         </ul>
                     </div>
                 </div>
-                <div class="texte-block-2">Copyright © 2021 Groupe E Project 1 ENI. Tous droits réservés.</div>
+                <div class="texte-block-2">Copyright Â© 2021 Groupe E Project 1 ENI. Tous droits rÃ©servÃ©s.</div>
             </div>
         </footer>
     </div>
