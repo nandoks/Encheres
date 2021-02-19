@@ -13,6 +13,7 @@ public interface DAO<T> {
 	 * retourne une liste de type T*/
 	T selectById(int id);
 	
+	
 	/*methode générique pour insérer un objet dans la BDD
 	 prend en parametre un objet*/
 	void insert(T obj);

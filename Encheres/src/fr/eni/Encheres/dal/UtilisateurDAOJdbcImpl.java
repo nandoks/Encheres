@@ -29,7 +29,7 @@ public class UtilisateurDAOJdbcImpl implements UtilisateurDAO {
 
 	private final String sqlUtilisateurExiste = "select * from utilisateurs where pseudo=? or email=?";
 
-	private final String sqlAuthentificationValide = "select * from utilisateurs where mot_de_passe=? et email=?";
+	private final String sqlSelecyByIdentifiant = "select * from utilisateurs where mot_de_passe=? ou email=?";
 
 	/* Retourne tous les utilisateurs de la BDD */
 	@Override
@@ -161,22 +161,21 @@ public class UtilisateurDAOJdbcImpl implements UtilisateurDAO {
 	 * retourne false sinon retourne true
 	 */
 	@Override
-	public boolean utilisateurExisteDansLaBDD(String pseudo, String email) {
-		boolean utilisateurExiste = false;
+	public Utilisateur selectByIdentifiantOuMail(String identifiant, String email) {
+		Utilisateur utilisateur = null;
 		try (Connection conn = ConnectionProvider.getConnection();
 				PreparedStatement prst = conn.prepareStatement(sqlUtilisateurExiste)) {
-			prst.setString(1, pseudo);
-			prst.setString(2, email);
+			prst.setString(1, identifiant);
+			prst.setString(2, identifiant);
 			ResultSet rs = prst.executeQuery();
 			if (rs.next()) {
-				utilisateurExiste = true;
+				utilisateur = utilisateurBuilder(rs);
 			}
-
 		} catch (SQLException e) {
 
 			e.printStackTrace();
 		}
-		return utilisateurExiste;
+		return utilisateur;
 	}
 
 	/*

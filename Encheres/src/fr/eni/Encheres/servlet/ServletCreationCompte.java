@@ -45,15 +45,21 @@ public class ServletCreationCompte extends HttpServlet {
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 		
-		Utilisateur utilisateur = UtilisateurBuilder.execute(request, response);
+		String pseudo = request.getParameter("pseudo");
+		String email = request.getParameter("email");
+		String messageErreur = null;
 		
-		String messageErreur = utilisateurManager.ajouteUtilisateur(utilisateur);
 		String url = "accueil";
-		request.setAttribute("messageErreur", messageErreur);
-		if(messageErreur != null) {
-			url = ("/WEB-INF/jsp/CreationCompte.jsp");
+		
+		if(utilisateurManager.getUtilisateurParIdentifiantOuMail(pseudo, email) != null) {
+			 messageErreur = "Pseudo ou email déjà enregistré";
+			 url = ("/WEB-INF/jsp/CreationCompte.jsp");
+		} else {
+			Utilisateur utilisateur = UtilisateurBuilder.execute(request, response);
+			utilisateurManager.ajouteUtilisateur(utilisateur);
 		}
 		
+		request.setAttribute("messageErreur", messageErreur);
 		RequestDispatcher rd = request.getRequestDispatcher(url);
 		rd.forward(request, response);
 	}
