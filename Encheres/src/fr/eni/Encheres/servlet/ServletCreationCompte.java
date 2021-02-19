@@ -33,7 +33,7 @@ public class ServletCreationCompte extends HttpServlet {
 			HttpServletResponse response) throws ServletException, IOException {
 
 		RequestDispatcher rd = request
-				.getRequestDispatcher("/WEB-INF/jsp/creationCompte.jsp");
+				.getRequestDispatcher("/WEB-INF/jsp/CreationCompte.jsp");
 
 		rd.forward(request, response);
 	}
@@ -54,7 +54,7 @@ public class ServletCreationCompte extends HttpServlet {
 		if (utilisateurManager.getUtilisateurParIdentifiantOuMail(pseudo,
 				email) != null) {
 			messageErreur = "Pseudo ou email déjà enregistré";
-			url = ("/WEB-INF/jsp/creationCompte.jsp");
+			url = ("/WEB-INF/jsp/CreationCompte.jsp");
 		} else {
 			Utilisateur utilisateur = UtilisateurBuilder.execute(request,
 					response);
