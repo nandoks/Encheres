@@ -36,9 +36,8 @@ public class ServletInformationUtilisateur extends HttpServlet {
 		int idUtilisateur = Integer.parseInt(request.getParameter("no_utilisateur"));
 		
 		Utilisateur utilisateur = utilisateurManager.getUtilisateurById(idUtilisateur);
+		utilisateur.setMotDePasse("");
 		request.setAttribute("utilisateur", utilisateur);
-		HttpSession session = request.getSession();
-		
 		
 		RequestDispatcher rd = request.getRequestDispatcher("/WEB-INF/jsp/informationUtilisateur.jsp");
 		rd.forward(request, response);

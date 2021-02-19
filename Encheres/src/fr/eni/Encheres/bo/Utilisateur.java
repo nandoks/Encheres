@@ -122,6 +122,15 @@ public class Utilisateur {
 			return false;
 		}
 		return true;
-	}	
+	}
+
+//	@Override
+//	public String toString() {
+//		return "Utilisateur [numeroUtilisateur=" + numeroUtilisateur + ", pseudo=" + pseudo + ", nom=" + nom
+//				+ ", prenom=" + prenom + ", email=" + email + ", telephone=" + telephone + ", rue=" + rue
+//				+ ", codePostal=" + codePostal + ", ville=" + ville + ", motDePasse=" + motDePasse + ", credit="
+//				+ credit + ", administrateur=" + administrateur + ", listeArticlesVendus=" + listeArticlesVendus
+//				+ ", listeEncheres=" + listeEncheres + "]";
+//	}	
 	
 }

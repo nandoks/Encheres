@@ -16,7 +16,7 @@ import fr.eni.Encheres.bo.Utilisateur;
 /**
  * Servlet implementation class ServletModificationCompte
  */
-@WebServlet("/ServletModificationCompte")
+@WebServlet("/modificationCompte")
 public class ServletModificationCompte extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
@@ -35,8 +35,18 @@ public class ServletModificationCompte extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-		// TODO Auto-generated method stub
-		response.getWriter().append("Served at: ").append(request.getContextPath());
+		//recupere le numero d'utilisateur de la requete
+		int no_utilisateur = Integer.valueOf(request.getParameter("no_utilisateur"));
+
+		//cherche dans la DB l'utilisateur correspondant au no_utilisateur
+		Utilisateur utilisateur = utilisateurManager.getUtilisateurById(no_utilisateur);
+		utilisateur.setMotDePasse("");
+		// ajoute à la réponse l'utilisateur pour être récupéré sur la JSP
+		request.setAttribute("utilisateur", utilisateur);
+				
+		RequestDispatcher rd = request.getRequestDispatcher("WEB-INF/jsp/modification-du-compte.jsp");
+		rd.forward(request, response);
+		
 	}
 
 	/**
@@ -47,9 +57,13 @@ public class ServletModificationCompte extends HttpServlet {
 			throws ServletException, IOException {
 		
 		Utilisateur utilisateur = UtilisateurBuilder.execute(request, response);
+		utilisateur.setNumeroUtilisateur(Integer.valueOf(request.getParameter("no_utilisateur")));
 		utilisateurManager.metAJourUtilisateur(utilisateur);
-
-		RequestDispatcher rd = request.getRequestDispatcher("");
+		
+		utilisateur.setMotDePasse("");
+		request.setAttribute("utilisateur", utilisateur);
+		
+		RequestDispatcher rd = request.getRequestDispatcher("/WEB-INF/jsp/modification-du-compte.jsp");
 		rd.forward(request, response);
 	}
 

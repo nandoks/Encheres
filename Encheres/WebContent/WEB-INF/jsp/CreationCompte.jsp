@@ -12,7 +12,7 @@
 <link href="css/eni1.css" rel="stylesheet" type="text/css">
 </head>
 
-<body>
+<body onload="check()">
 	<div class="page">
 		<div class=" page-contenu-creationCompte-formulaire" >
 			<form method="post" action="<%=request.getContextPath()%>/creationCompte"class="page-formulaire-creationcompte">
@@ -79,7 +79,7 @@
 			 var password = document.getElementById("password").value;
 			 var confirmation = document.getElementById("confirm_password").value;
 
-			 if (password == confirmation){
+			 if (password == confirmation && password.length!=0){
 				 document.getElementById("message").innerHTML = "Mot de passe identique" 
 				 document.getElementById("btncree").disabled = false
 			 } else {
