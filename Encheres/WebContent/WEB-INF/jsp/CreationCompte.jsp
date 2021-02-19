@@ -1,3 +1,4 @@
+<%@page import="javax.servlet.jsp.tagext.Tag"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
  <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
@@ -60,7 +61,7 @@
 				</label>
 				<br />
 				
-				<%= tag  var check = function() {
+				<%= var check = function() {
  					if (document.getElementById('password').value) ==
     				document.getElementById('confirm_password').value) {
     				document.getElementById('message').style.color = 'green';
