@@ -12,12 +12,13 @@ import javax.servlet.http.HttpServletResponse;
 
 import fr.eni.Encheres.bll.ArticleVenduManager;
 import fr.eni.Encheres.bll.UtilisateurManager;
+import fr.eni.Encheres.bo.Utilisateur;
 
 /**
  * Servlet implementation class ServletNouvelleVente
  */
 @WebServlet("/ServletNouvelleVente")
-public class ServletNouvelleVente extends HttpServlet {
+public class ServletModificationVente extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
 	private static UtilisateurManager utilisateurManager;
@@ -30,6 +31,16 @@ public class ServletNouvelleVente extends HttpServlet {
 
 	protected void doGet(HttpServletRequest request,
 			HttpServletResponse response) throws ServletException, IOException {
+		// recupere le numero d'utilisateur de la requete
+		int no_utilisateur = Integer
+				.valueOf(request.getParameter("no_utilisateur"));
+
+		// cherche dans la DB l'utilisateur correspondant au no_utilisateur
+		Utilisateur utilisateur = utilisateurManager
+				.getUtilisateurById(no_utilisateur);
+		utilisateur.setMotDePasse("");
+		// ajoute à la réponse l'utilisateur pour être récupéré sur la JSP
+		request.setAttribute("utilisateur", utilisateur);
 
 		RequestDispatcher rd = request
 				.getRequestDispatcher("/WEB-INF/jsp/Nouvelle-vente.jsp");
