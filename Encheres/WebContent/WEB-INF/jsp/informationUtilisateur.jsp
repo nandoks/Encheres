@@ -44,7 +44,6 @@
 	</div>
 	</div>
 	
-	${utilisateur.numeroUtilisateur}
 	
 	<c:if test="${sessionScope.utilisateurConnecte.numeroUtilisateur == utilisateur.numeroUtilisateur}">
 		<a href="modificationCompte?no_utilisateur=${utilisateur.numeroUtilisateur}" > <button> Modifier </button> </a>
