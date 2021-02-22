@@ -31,7 +31,7 @@ public class ServletNouvelleVente extends HttpServlet {
 	protected void doGet(HttpServletRequest request,
 			HttpServletResponse response) throws ServletException, IOException {
 		RequestDispatcher rd = request
-				.getRequestDispatcher("/WEB-INF/jsp/nouvelleVente.jsp");
+				.getRequestDispatcher("/WEB-INF/jsp/Nouvelle-vente.jsp");
 
 		rd.forward(request, response);
 	}
@@ -62,7 +62,7 @@ public class ServletNouvelleVente extends HttpServlet {
 		String codePostal = request.getParameter("codePostal");
 		String ville = request.getParameter("ville");
 
-		String url = ("/WEB-INF/jsp/nouvelleVente.jsp");
+		String url = ("/WEB-INF/jsp/Nouvelle-vente.jsp");
 
 		RequestDispatcher rd = request.getRequestDispatcher(url);
 		rd.forward(request, response);
