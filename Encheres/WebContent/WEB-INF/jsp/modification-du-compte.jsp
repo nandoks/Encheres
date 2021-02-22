@@ -18,7 +18,7 @@
                 <img src="images/ENIEcole-1.jpg" loading="lazy" sizes="(max-width: 479px) 100vw, 75px" alt="" class="image-5">
             </div>
             <a href="index.html" class="lien-block ligne-block">
-                <h1 class="titre">ENI EnchÃ¨res</h1>
+                <h1 class="titre">ENI Enchères</h1>
             </a>
             <a href="#" class="lien">Connection</a>
             <a href="#" class="lien">Inscription</a>
@@ -29,47 +29,43 @@
     </div>
     <div class="conteneur-13 conteneur">
         <div class="formulaire">
-            <form id="email-form" name="email-form" data-name="Email Form" class="clearfix" method="post" action="modificationCompte">
+            <form id="email-form" name="email-form" data-name="email Form" class="clearfix">
                 <div class="rangee">
                     <div class="colonne col-6">
                         <label for="Pseudo">Pseudo</label>
-                        <input type="text" class="entree" maxlength="256" name="pseudo" data-name="pseudo" placeholder="Azerty123" id="Pseudo" required 
-                        value="${utilisateur.pseudo}">
+                        <input type="email" class="entree" maxlength="256" name="pseudo" data-name="pseudo" placeholder="Azerty123" id="Pseudo" required="">
                         <label for="Email-2">Adresse email</label>
-                        <input type="email" class="entree" maxlength="256" name="email" data-name="email" placeholder="@email.com" id="Email-2" value="${utilisateur.email}" required>
-                        <label for="T-l-phone">TÃ©lÃ©phone</label>
-                        <input type="text" class="entree" maxlength="256" name="telephone" data-name="telephone" placeholder="06 06 06 06 06" id="T-l-phone" value="${utilisateur.telephone}" required>
+                        <input type="text" class="entree" maxlength="256" name="email" data-name="email" placeholder="@email.com" id="Email-2">
+                        <label for="T-l-phone">Téléphone</label>
+                        <input type="text" class="entree" maxlength="256" name="tlPhone" data-name="téléphone" placeholder="06 06 06 06 06" id="T-l-phone" required="">
                         <label for="Code-Postal">Code Postal</label>
-                        <input type="text" class="entree" maxlength="256" name="codePostal" data-name="codePostal" placeholder="00 000" id="Code-Postal" value="${utilisateur.codePostal}" required>
+                        <input type="text" class="entree" maxlength="256" name="codePostal" data-name="Code Postal" placeholder="00 000" id="Code-Postal" required="">
                         <label for="Rue">Rue</label>
-                        <input type="text" class="entree" maxlength="256" name="rue" data-name="rue" placeholder="Rue de la Fontaine" id="Rue" value="${utilisateur.rue}" required>
+                        <input type="text" class="entree" maxlength="256" name="rue" data-name="Rue" placeholder="Rue de la Fontaine" id="Rue" required="">
                         <label for="Ville">Ville</label>
-                        <input type="text" class="entree" maxlength="256" name="ville" data-name="ville" placeholder="Nantes" id="Ville" value="${utilisateur.ville}" required>
+                        <input type="text" class="entree" maxlength="256" name="ville" data-name="ville" placeholder="Nantes" id="Ville" required="">
                     </div>
                     <div class="colonne col-6">
-                        <label for="Pr-nom">PrÃ©nom</label>
-                        <input type="text" class="entree" maxlength="256" name="prenom" data-name="prenom" placeholder="Pierre" id="Pr-nom" value="${utilisateur.prenom}" required>
+                        <label for="Pr-nom">Prénom</label>
+                        <input type="text" class="entree" maxlength="256" name="prenom" data-name="prenom" placeholder="Pierre" id="Pr-nom" required="">
                         <label for="Nom">Nom de famille</label>
-                        <input type="text" class="entree" maxlength="256" name="nom" data-name="nom" placeholder="Lepaul" id="Nom" value="${utilisateur.nom}" required>
+                        <input type="text" class="entree" maxlength="256" name="nom" data-name="nom" placeholder="Lepaul" id="Nom" required="">
                         <label for="Mot-de-passe-actuel">Mot de passe actuel</label>
-                        <input type="password" class="entree" maxlength="256" name="motDePasseActuel" data-name="Mot de passe actuel" placeholder="Votre mot de passe actuel" required>
+                        <input type="text" class="entree" maxlength="256" name="motDePasseActuel" data-name="mot de passe actuel" placeholder="Votre mot de passe actuel" id="Mot-de-passe-actuel" required="">
                         <label for="Nouveau-mot-de-passe">Nouveau mot de passe</label>
-                        <input type="password" class="entree" maxlength="256" name="password" id="password" onkeyup='check();' data-name="Nouveau mot de passe" placeholder="Choisissez un nouveau mot de passe"  required>
-                        <label for="Confirmation-du-nouveau-mot-de-passe" class="champs-label-4" >Confirmation du nouveau mot de passe</label>
-                        <input type="password" class="entree" maxlength="256 " onkeyup='check();' name="confirm_password" id="confirm_password" data-name="Confirmation du nouveau mot de passe " placeholder="Confirmez votre nouveau mot de passe" required>
-                        <input type="hidden" name="no_utilisateur" value="${utilisateur.numeroUtilisateur}"/>
-                        <span id='message'></span>	
+                        <input type="text" class="entree" maxlength="256" name="nouveauMotDePasse" data-name="nouveau mot de passe" placeholder="Choisissez un nouveau mot de passe" id="Nouveau-mot-de-passe" required="">
+                        <label for="Confirmation-du-nouveau-mot-de-passe" class="champs-label-4">Confirmation du nouveau mot de passe</label>
+                        <input type="text" class="entree" maxlength="256 " name="confirmationDuNouveauMotDePasse" data-name="confirmation du nouveau mot de passe " placeholder="Confirmez votre nouveau mot de passe " id="Confirmation-du-nouveau-mot-de-passe" required=" ">
                     </div>
                 </div>
-                <input type="submit" value="Supprimer mon compte " onclick="alerteSupprimer();" id="supprimer" data-wait="Veuillez patienter... " class="bouton-soumettre-4 s-bouton ">
-                <input type="submit" value="Enregistrer " id="enregistrer" data-wait="Veuillez patienter... " class="bouton-soumettre-3 s-bouton ">
-                <span id='message'></span>	
+                <input type="soumettre " value="Supprimer mon compte " data-wait="Veuillez patienter... " class="bouton-soumettre-4 s-bouton ">
+                <input type="soumettre " value="Enregistrer " data-wait="Veuillez patienter... " class="bouton-soumettre-3 s-bouton ">
             </form>
             <div class="formulaire-rempli ">
-                <div>Merci! Votre formulaire a bien Ã©tÃ© rÃ©ceptionnÃ© !</div>
+                <div>Merci! Votre formulaire a bien été réceptionné !</div>
             </div>
             <div class="formulaire-echec ">
-                <div>Oups! Quelque chose s'est mal passÃ© durant l'envoi du formulaire.</div>
+                <div>Oups! Quelque chose s'est mal passé durant l'envoi du formulaire.</div>
             </div>
         </div>
     </div>
@@ -112,7 +108,7 @@
                         <h2 class="pied-titre ">Partenaires</h2>
                         <ul role="list " class="liste-3 liste-style ">
                             <li>
-                                <a href="# " class="pied-lien ">CollectivitÃ©s territoriales</a>
+                                <a href="# " class="pied-lien ">Collectivités territoriales</a>
                             </li>
                             <li>
                                 <a href="# " class="pied-lien ">Associations</a>
@@ -123,41 +119,10 @@
                         </ul>
                     </div>
                 </div>
-                <div class="texte-block-2 ">Copyright Â© 2021 Groupe E Project 1 ENI. Tous droits rÃ©servÃ©s.</div>
+                <div class="texte-block-2 ">Copyright © 2021 Groupe E Project 1 ENI. Tous droits réservés.</div>
             </div>
         </footer>
     </div>
-    </footer>
-    </div>
-    
-    <script type="text/javascript">
-     
-		var check = ()=>{
-			 var password = document.getElementById("password").value;
-			 var confirmation = document.getElementById("confirm_password").value;
-			 
-			 if (password == confirmation || password == 0){
-				 document.getElementById("message").innerHTML = "" 
-				 document.getElementById("enregistrer").disabled = false
-				 document.getElementById("enregistrer").style.background = "#3898EC"
-			 } else {
-				 document.getElementById("message").innerHTML = "La confirmation et le mot de passe ne sont pas identiques"
-				 document.getElementById("enregistrer").disabled = true
-				 document.getElementById("enregistrer").style.background = "#c4b7b9"
-			 }
-		}
-		
-		function alerteSupprimer() {
-			  if(!confirm("Do you really want to do this?")) {
-			    return false;
-			  }
-		  this.form.submit();
-		}
-		
-		
-		
-	</script>
-    
+  
 </body>
-
 </html>

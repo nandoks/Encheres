@@ -2,10 +2,9 @@
 	pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
-
 <head>
     <meta charset="utf-8">
-    <title>Vous avez remporté la vente</title>
+    <title>Un utilisateur remporté la vente</title>
     <meta content="width=device-width, initial-scale=1" name="viewport">
     <link href="css/style.css" rel="stylesheet" type="text/css">
 </head>
@@ -24,7 +23,10 @@
         </div>
     </div>
     <div class="colonnes conteneur">
-        <h1 class="conteneur conteneur-1 titre1">Vous avez remporté la vente !</h1>
+        <h1 class="conteneur conteneur-1 titre1">
+            <div class="jojo">Jojo44</div>
+            a remporté la vente
+        </h1>
     </div>
     <div class="colonnes rangee">
         <div class="col-14">
@@ -32,7 +34,7 @@
         </div>
         <div class="col col-13">
             <div class="conteneur-7 conteneur">
-                <h3 class="titre-4">PC Gamer pour travailler</h3>
+                <h3 class="titre-4">Rocket stove pour riz et pâtes</h3>
                 <div class="div-block-11">
                     <h4 class="titre-3">Description</h4>
                     <p class="paragraphe">
@@ -45,13 +47,12 @@
                     <p class="paragraphe">210 points</p>
                     <h4>Mise à prix</h4>
                     <p class="paragraphe">185 points</p>
-                    <h4>Retrait</h4>
+                    <h4>Fin de l'enchère</h4>
                     <p class="paragraphe">
-                        10 allée des Aloutettes
-                        <br> 44800 Saint Herbain
+                        09/10/2018
                     </p>
                     <h4>Vendeur</h4>
-                    <p class="paragraphe">jojo44</p>
+                    <p class="paragraphe">NineJea</p>
                     <h4>Tel</h4>
                     <p class="paragraphe">06 06 06 06 06</p>
                 </div>
@@ -115,5 +116,6 @@
             </div>
         </footer>
     </div>
-   
-</html>
+    </footer>
+    </div>
+</body>
