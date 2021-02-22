@@ -57,10 +57,11 @@
                 
                     <ul role="list" class="liste-style">
                     
-                        <li class="liste-item-3">${article.nomArticle}</li>
+                        <li class="liste-item-3">
+                        	<a href="ServletInformationUtilisateur?no_utilisateur=${article.numeroArticle}"> ${article.nomArticle}</a></li>
                         <li>Prix : ${article.miseAPrix} points</li>
                         <li>Fin de l'enchère : ${article.dateFinEncheres}</li>
-                        <li>Vendeur : ${article.pseudoVendeur}</li>
+                        <li>Vendeur : <a href="ServletInformationUtilisateur?no_utilisateur=${article.numeroUtilisateur}"> ${article.pseudoVendeur}</a></li>
                     </ul>
             </c:forEach>
     </div>
