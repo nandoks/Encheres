@@ -2,3 +2,4 @@ eclipse.preferences.version=1
 encoding//WebContent/WEB-INF/jsp/index.jsp=UTF-8
 encoding//WebContent/WEB-INF/jsp/modification-du-compte.jsp=UTF-8
 encoding//src/fr/eni/Encheres/servlet/ServletModificationCompte.java=UTF-8
+encoding//src/fr/eni/Encheres/servlet/ServletModificationVente.java=UTF-8
