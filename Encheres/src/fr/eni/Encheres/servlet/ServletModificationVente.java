@@ -12,7 +12,6 @@ import javax.servlet.http.HttpServletResponse;
 
 import fr.eni.Encheres.bll.ArticleVenduManager;
 import fr.eni.Encheres.bll.UtilisateurManager;
-import fr.eni.Encheres.bo.Utilisateur;
 
 /**
  * Servlet implementation class ServletNouvelleVente
@@ -31,17 +30,6 @@ public class ServletModificationVente extends HttpServlet {
 
 	protected void doGet(HttpServletRequest request,
 			HttpServletResponse response) throws ServletException, IOException {
-		// recupere le numero d'utilisateur de la requete
-		int no_utilisateur = Integer
-				.valueOf(request.getParameter("no_utilisateur"));
-
-		// cherche dans la DB l'utilisateur correspondant au no_utilisateur
-		Utilisateur utilisateur = utilisateurManager
-				.getUtilisateurById(no_utilisateur);
-		utilisateur.setMotDePasse("");
-		// ajoute à la réponse l'utilisateur pour être récupéré sur la JSP
-		request.setAttribute("utilisateur", utilisateur);
-
 		RequestDispatcher rd = request
 				.getRequestDispatcher("/WEB-INF/jsp/Nouvelle-vente.jsp");
 
@@ -63,7 +51,6 @@ public class ServletModificationVente extends HttpServlet {
 				.parse(request.getParameter("date_debut_encheres"));
 		LocalDate dateFinEncheres = LocalDate
 				.parse(request.getParameter("date_fin_encheres"));
-		// Adresse du vendeur : saisie automatique
 		String rue = request.getParameter("rue");
 		String codePostal = request.getParameter("codePostal");
 		String ville = request.getParameter("ville");

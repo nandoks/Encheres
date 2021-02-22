@@ -50,7 +50,6 @@ public class ServletNouvelleVente extends HttpServlet {
 				.parse(request.getParameter("date_debut_encheres"));
 		LocalDate dateFinEncheres = LocalDate
 				.parse(request.getParameter("date_fin_encheres"));
-		// Adresse du vendeur : saisie automatique
 		String rue = request.getParameter("rue");
 		String codePostal = request.getParameter("codePostal");
 		String ville = request.getParameter("ville");
