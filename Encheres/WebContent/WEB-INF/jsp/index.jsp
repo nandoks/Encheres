@@ -43,7 +43,7 @@
                         </select>
                 </div>
             </div>
-            <input type="submit " value="Recherche" class="bouton-recherche ">
+            <input type="submit" value="Recherche" class="bouton-recherche ">
         </form>
     </div>
     <div class="conteneur-grille conteneur ">
