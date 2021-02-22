@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -43,6 +44,16 @@
 	</div>
 	</div>
 	
-
+	
+	<c:if test="${sessionScope.utilisateurConnecte.numeroUtilisateur == utilisateur.numeroUtilisateur}">
+		<a href="modificationCompte?no_utilisateur=${utilisateur.numeroUtilisateur}" > <button> Modifier </button> </a>
+	</c:if>
+	
 </body>
 </html>
+
+
+
+
+
+
