@@ -1,7 +1,6 @@
 package fr.eni.Encheres.servlet;
 
 import java.io.IOException;
-import java.util.List;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -34,9 +33,21 @@ public class ServletAuthentification extends HttpServlet {
 	
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-
-		RequestDispatcher rd = request.getRequestDispatcher("/WEB-INF/jsp/Connexion.jsp");
-
+		String url = "/WEB-INF/jsp/Connexion.jsp";
+		Cookie[] cookies = request.getCookies();
+		for (Cookie cookie : cookies) {
+			String name = cookie.getName();
+			if(name.equals("seRappelerDeMoi")) {
+				String identifiant = cookie.getValue();
+				Utilisateur utilisateur = utilisateurManager.getUtilisateurParIdentifiantOuMail(identifiant, identifiant);
+				HttpSession session = request.getSession();
+				utilisateur.setMotDePasse("");
+				session.setAttribute("utilisateurConnecte", utilisateur);
+				url = "/accueil";
+			}
+		}
+		
+		RequestDispatcher rd = request.getRequestDispatcher(url);
 		rd.forward(request, response);
 	}
 
@@ -72,20 +83,20 @@ public class ServletAuthentification extends HttpServlet {
 			 */
 			boolean seRappelerDeMoi = request.getParameter("Se-souvenir-de-moi") != null;
 			/*
-			 * si on ne doit pas se rappeler de moi on va créer une session pour //
+			 * on va créer une session pour 
 			 * l'utilisateur qui se terminera une fois la page fermé // sinon on va créer un
 			 * cookie qui sera gardé chez le client jusqu'à ce que le // cookie expire ou
 			 * qu'il demande la deconnexion
 			 */
-			if (!seRappelerDeMoi) {
-				HttpSession session = request.getSession();
-				session.setAttribute("utilisateurConnecte", utilisateur);
-			} else {
-				Cookie resterConnecte = new Cookie("seRappelerDeMoi", "true");
+			if (seRappelerDeMoi) {
+				Cookie resterConnecte = new Cookie("seRappelerDeMoi", utilisateur.getPseudo());
 				resterConnecte.setMaxAge(1800);
 				System.out.println("creation cookie");
 				response.addCookie(resterConnecte);
 			}
+			HttpSession session = request.getSession();
+			utilisateur.setMotDePasse("");
+			session.setAttribute("utilisateurConnecte", utilisateur);
 			url = "/WEB-INF/jsp/index.jsp";
 		} else {
 			request.setAttribute("messageErreur", "Mot de passe ou mail incorrect");
