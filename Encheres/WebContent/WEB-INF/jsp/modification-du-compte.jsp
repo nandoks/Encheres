@@ -123,6 +123,32 @@
             </div>
         </footer>
     </div>
-  
+     <script type="text/javascript">
+     
+		var check = ()=>{
+			 var password = document.getElementById("password").value;
+			 var confirmation = document.getElementById("confirm_password").value;
+			 
+			 if (password == confirmation || password == 0){
+				 document.getElementById("message").innerHTML = "" 
+				 document.getElementById("enregistrer").disabled = false
+				 document.getElementById("enregistrer").style.background = "#3898EC"
+			 } else {
+				 document.getElementById("message").innerHTML = "La confirmation et le mot de passe ne sont pas identiques"
+				 document.getElementById("enregistrer").disabled = true
+				 document.getElementById("enregistrer").style.background = "#c4b7b9"
+			 }
+		}
+		
+		function alerteSupprimer() {
+			  if(!confirm("Do you really want to do this?")) {
+			    return false;
+			  }
+		  this.form.submit();
+		}
+		
+		
+		
+	</script>
 </body>
 </html>
