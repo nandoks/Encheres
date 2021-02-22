@@ -30,81 +30,13 @@ private ArticleVenduDAO articleVenduDAO;
 		
 		return listeArticlesRecherches;
 	}
-
-	public List<ArticleVendu> getArticlesByMotCle2(String motCle, List<ArticleVendu> liste){
-		List<ArticleVendu> listeArticlesRecherches = null;
-		
-		for (ArticleVendu a : liste) {
-			listeArticlesRecherches = new ArrayList<>();
-			String nomArticle = a.getNomArticle();
-			if(nomArticle.contains(motCle)) {
-				listeArticlesRecherches.add(a);
-			}
-		}
-		return listeArticlesRecherches;
-		}
 	
-	
-public List<ArticleVendu> getArticlesByLibelleCategorieEtMotCle(String libelle, String motCle){
-		
-		List<ArticleVendu> listeArticlesCategorie = null;
-		List<ArticleVendu> listeArticlesRecherches = null;
-
-		switch("categorie") {
-			case "Toutes" : listeArticlesCategorie = articleVenduDAO.selectAll();
-				listeArticlesRecherches = new ArrayList<>();
-				for (ArticleVendu a : listeArticlesCategorie) {
-					
-					String nomArticle = a.getNomArticle();
-					if(nomArticle.contains(motCle)) {
-						listeArticlesRecherches.add(a);
-					}
-			}
-			break;
-			case "Informatique" : listeArticlesCategorie = articleVenduDAO.selectArticlesByLibelleCategorie(libelle);
-				listeArticlesRecherches = new ArrayList<>();
-				for (ArticleVendu a : listeArticlesCategorie) {
-					
-					String nomArticle = a.getNomArticle();
-					if(nomArticle.contains(motCle)) {
-						listeArticlesRecherches.add(a);
-					}
-				}
-			break;
-			case "Ameublement" : listeArticlesCategorie = articleVenduDAO.selectArticlesByLibelleCategorie(libelle);
-				listeArticlesRecherches = new ArrayList<>();
-				for (ArticleVendu a : listeArticlesCategorie) {
-					
-					String nomArticle = a.getNomArticle();
-					if(nomArticle.contains(motCle)) {
-						listeArticlesRecherches.add(a);
-					}
-			}
-			break;
-			case "Vêtement" : listeArticlesCategorie = articleVenduDAO.selectArticlesByLibelleCategorie(libelle);
-				listeArticlesRecherches = new ArrayList<>();
-				for (ArticleVendu a : listeArticlesCategorie) {
-					String nomArticle = a.getNomArticle();
-					if(nomArticle.contains(motCle)) {
-						listeArticlesRecherches.add(a);
-					}
-			}
-			break;
-			case "Sport&Loisirs" : listeArticlesCategorie = articleVenduDAO.selectArticlesByLibelleCategorie(libelle);
-				listeArticlesRecherches = new ArrayList<>();
-				for (ArticleVendu a : listeArticlesCategorie) {
-					
-					String nomArticle = a.getNomArticle();
-					if(nomArticle.contains(motCle)) {
-						listeArticlesRecherches.add(a);
-					}
-				}
-			break;
+	public List<ArticleVendu> getArticlesByCategorie(String categorie) {
+		return articleVenduDAO.selectArticlesByCategorie(categorie);
 	}
-		
-		return listeArticlesRecherches;
+	
+	public List<ArticleVendu> getArticlesByMotCleEtCategorie(String motCle, String categorie) {
+		return articleVenduDAO.selectArticlesByMotCleEtCategorie(motCle, categorie);
 	}
 
-		
-	
 }

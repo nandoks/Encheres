@@ -21,136 +21,46 @@
             <a href="index.html" aria-current="page" class="lien-block ligne-block rangee1">
                 <h1 class="titre">ENI Enchères</h1>
             </a>
-            <a href="#" class="lien">Connection</a>
-            <a href="#" class="lien">Inscription</a>
+            <a href="${pageContext.request.contextPath}/authentification" class="lien">Connection</a>
+            <a href="${pageContext.request.contextPath}/creationCompte" class="lien">Inscription</a>
         </div>
     </div>
     <div class="conteneur conteneur-1">
         <h1 class="titre1">Liste des enchères</h1>
     </div>
     <div class="conteneur">
-        <form action="/search" class="correction formulaire">
+        <form action="${pageContext.request.contextPath}/accueil" class="correction formulaire" method="post">
             <div class="div-block-4">
-                <input type="search" class="entree" maxlength="256" name="query" placeholder="Le nom de l'article contient…">
+                <input type="search" class="entree" maxlength="256" name="recherche" placeholder="Le nom de l'article contient…">
                 <br>
                 <div class="select">
-                    <select name="select" id="select">
-                            <option value="categories">Catégories (toutes)</option>
-                            <option value="ameublement">Ameublement</option>
-                            <option value="informatique">Informatique</option>
-                            <option value="sport">Sport et Loisirs</option>
-                            <option value="vetements">Vêtements</option>
-                        </select>
+                    <select name="categorie" id="select">
+                       <option value="toutes">Catégories (toutes)</option>
+                       <option value="ameublement">Ameublement</option>
+                       <option value="informatique">Informatique</option>
+                       <option value="sport">Sport et Loisirs</option>
+                       <option value="vetements">Vêtements</option>
+                    </select>
                 </div>
             </div>
-            <input type="submit" value="Recherche" class="bouton-recherche ">
+            <input type="submit" value="recherche" class="bouton-recherche ">
         </form>
     </div>
     <div class="conteneur-grille conteneur ">
-        <div class="grille-acceuil ">
-            <div class="rangee ">
-                <div class="col col-3 ">
+         <c:forEach var="article" items="${listeArticles}">
+            
                     <div>
-                        <img src="images/ENIEcole-1.jpg " loading="lazy " sizes="75px " alt=" " class="image-4 ">
+                        <img src="img/ENIEcole-1.jpg" loading="lazy" sizes="75px" alt="" class="image-4">
                     </div>
-                </div>
-                <div class="col col-9 ">
-                    <ul role="list " class="liste-style ">
-                        <li class="liste-item-3">
-                            <h5>PC Gamer pour travailler</h5>
-                        </li>
-                        <li>Prix : 210 points</li>
-                        <li>Fin de l'enchère : 10/08/2018</li>
-                        <li>Vendeur : jojo44</li>
+                
+                    <ul role="list" class="liste-style">
+                    
+                        <li class="liste-item-3">${article.nomArticle}</li>
+                        <li>Prix : ${article.miseAPrix} points</li>
+                        <li>Fin de l'enchère : ${article.dateFinEncheres}</li>
+                        <li>Vendeur : ${article.pseudoVendeur}</li>
                     </ul>
-                </div>
-            </div>
-            <div class="rangee ">
-                <div class="col col-3 ">
-                    <div>
-                        <img src="images/ENIEcole-1.jpg " loading="lazy " sizes="75px " alt=" " class="image-4 ">
-                    </div>
-                </div>
-                <div class="col col-9 ">
-                    <ul role="list " class="liste-style ">
-                        <li class="liste-item-4">
-                            <h5>PC Gamer pour travailler</h5>
-                        </li>
-                        <li>Prix : 210 points</li>
-                        <li>Fin de l'enchère : 10/08/2018</li>
-                        <li>Vendeur : jojo44</li>
-                    </ul>
-                </div>
-            </div>
-            <div class="rangee ">
-                <div class="col col-3 ">
-                    <div>
-                        <img src="images/ENIEcole-1.jpg " loading="lazy " sizes="75px " alt=" " class="image-4 ">
-                    </div>
-                </div>
-                <div class="col col-9 ">
-                    <ul role="list " class="liste-style ">
-                        <li class="liste-item-8">
-                            <h5>PC Gamer pour travailler</h5>
-                        </li>
-                        <li>Prix : 210 points</li>
-                        <li>Fin de l'enchère : 10/08/2018</li>
-                        <li>Vendeur : jojo44</li>
-                    </ul>
-                </div>
-            </div>
-            <div class="rangee ">
-                <div class="col col-3 ">
-                    <div>
-                        <img src="images/ENIEcole-1.jpg " loading="lazy " sizes="75px " alt=" " class="image-4 ">
-                    </div>
-                </div>
-                <div class="col col-9 ">
-                    <ul role="list " class="liste-style ">
-                        <li class="liste-item-5">
-                            <h5>PC Gamer pour travailler</h5>
-                        </li>
-                        <li>Prix : 210 points</li>
-                        <li>Fin de l'enchère : 10/08/2018</li>
-                        <li>Vendeur : jojo44</li>
-                    </ul>
-                </div>
-            </div>
-            <div class="rangee ">
-                <div class="col col-3 ">
-                    <div>
-                        <img src="images/ENIEcole-1.jpg " loading="lazy " sizes="75px " alt=" " class="image-4 ">
-                    </div>
-                </div>
-                <div class="col col-9 ">
-                    <ul role="list " class="liste-style ">
-                        <li class="liste-item-7">
-                            <h5>PC Gamer pour travailler</h5>
-                        </li>
-                        <li>Prix : 210 points</li>
-                        <li>Fin de l'enchère : 10/08/2018</li>
-                        <li>Vendeur : jojo44</li>
-                    </ul>
-                </div>
-            </div>
-            <div class="rangee ">
-                <div class="col col-3 ">
-                    <div>
-                        <img src="images/ENIEcole-1.jpg " loading="lazy " sizes="75px " alt=" " class="image-4 ">
-                    </div>
-                </div>
-                <div class="col col-9 ">
-                    <ul role="list " class="liste-style ">
-                        <li class="liste-item-6 ">
-                            <h5>PC Gamer pour travailler</h5>
-                        </li>
-                        <li>Prix : 210 points</li>
-                        <li>Fin de l'enchère : 10/08/2018</li>
-                        <li>Vendeur : jojo44</li>
-                    </ul>
-                </div>
-            </div>
-        </div>
+            </c:forEach>
     </div>
     <div class="div-block-5 ">
         <footer id="footer " class="pied-2 ">
