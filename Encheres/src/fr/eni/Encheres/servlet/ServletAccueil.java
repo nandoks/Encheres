@@ -41,9 +41,18 @@ public class ServletAccueil extends HttpServlet {
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		ArticleVenduManager articleManager = new ArticleVenduManager();
 		
-		//Récupération du champ de recherche
+		//Récupération des paramètres
 		String motCle = request.getParameter("recherche");
-		List<ArticleVendu> listeArticles = articleManager.getArticlesByMotCle(motCle);
+		String categorie = request.getParameter("categorie");
+		//List<ArticleVendu> listeArticles = articleManager.getArticlesByMotCle(motCle);
+		List<ArticleVendu> listeArticles;
+		if(motCle == null|| motCle.length() == 0 ) {
+		listeArticles = articleManager.getArticlesByCategorie(categorie);
+
+		}else {
+		listeArticles = articleManager.getArticlesByMotCleEtCategorie(motCle, categorie);
+		}
+		
 		request.setAttribute("listeArticles", listeArticles);
 		
 		//Transfert de l'affichage à la JSP

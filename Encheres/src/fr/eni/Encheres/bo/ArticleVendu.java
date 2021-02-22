@@ -18,6 +18,7 @@ public class ArticleVendu implements Serializable {
 	private String etatVente;
 	private String libelleCategorie;
 	private String pseudoVendeur;
+	private int numeroUtilisateur;
 	private Retrait adresseRetrait;
 	private List<Enchere> listeEncheres;
 
@@ -121,4 +122,12 @@ public class ArticleVendu implements Serializable {
 	public void setPseudoVendeur(String pseudoVendeur) {
 		this.pseudoVendeur = pseudoVendeur;
 	}
+	
+	public int getNumeroUtilisateur() {
+		return numeroUtilisateur;
+	}
+	public void setNumeroUtilisateur(int noUtilisateur) {
+		this.numeroUtilisateur = noUtilisateur;
+	}
+
 }
