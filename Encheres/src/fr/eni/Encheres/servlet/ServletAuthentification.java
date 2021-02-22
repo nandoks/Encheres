@@ -34,19 +34,25 @@ public class ServletAuthentification extends HttpServlet {
 			throws ServletException, IOException {
 
 		String url = "/WEB-INF/jsp/Connexion.jsp";
+		HttpSession session = request.getSession();
+		if (session.getAttribute("utilisateurConnecte") == null) {
+			Cookie[] cookies = request.getCookies();
+			if (cookies != null) {
+				for (Cookie cookie : cookies) {
+					String name = cookie.getName();
+					if (name.equals("seRappelerDeMoi")) {
+						String identifiant = cookie.getValue();
+						Utilisateur utilisateur = utilisateurManager.getUtilisateurParIdentifiantOuMail(identifiant,
+								identifiant);
 
-		Cookie[] cookies = request.getCookies();
-		for (Cookie cookie : cookies) {
-			String name = cookie.getName();
-			if (name.equals("seRappelerDeMoi")) {
-				String identifiant = cookie.getValue();
-				Utilisateur utilisateur = utilisateurManager.getUtilisateurParIdentifiantOuMail(identifiant,
-						identifiant);
-				HttpSession session = request.getSession();
-				utilisateur.setMotDePasse("");
-				session.setAttribute("utilisateurConnecte", utilisateur);
-				url = "/accueil";
+						utilisateur.setMotDePasse("");
+						session.setAttribute("utilisateurConnecte", utilisateur);
+						url = "/accueil";
+					}
+				}
 			}
+		} else {
+			url = "accueil";
 		}
 
 		RequestDispatcher rd = request.getRequestDispatcher(url);
@@ -100,7 +106,7 @@ public class ServletAuthentification extends HttpServlet {
 			session.setAttribute("utilisateurConnecte", utilisateur);
 			url = "/WEB-INF/jsp/index.jsp";
 		} else {
-			request.setAttribute("messageErreur", "Mot de passe ou mail incorrect");
+			request.setAttribute("messageErreur", "Mot de passe ou identifiant incorrect");
 			url = "/WEB-INF/jsp/Connexion.jsp";
 		}
 

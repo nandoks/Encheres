@@ -43,14 +43,19 @@ public class ServletAccueil extends HttpServlet {
 		
 		//Récupération des paramètres
 		String motCle = request.getParameter("recherche");
+		System.out.println(motCle.isEmpty() ? motCle.isEmpty() : motCle );
 		String categorie = request.getParameter("categorie");
+		System.out.println(categorie);
 		//List<ArticleVendu> listeArticles = articleManager.getArticlesByMotCle(motCle);
 		List<ArticleVendu> listeArticles;
-		if(motCle == null|| motCle.length() == 0 ) {
-		listeArticles = articleManager.getArticlesByCategorie(categorie);
-
-		}else {
-		listeArticles = articleManager.getArticlesByMotCleEtCategorie(motCle, categorie);
+		if(categorie.equals("toutes") && motCle.isEmpty()) {
+			listeArticles = articleManager.getAllArticles();
+		} else if(categorie.equals("toutes") && !motCle.isEmpty()){
+			listeArticles = articleManager.getArticlesByMotCle(motCle);
+		} else if(motCle == null || motCle.isEmpty()) {
+			listeArticles = articleManager.getArticlesByCategorie(categorie);
+		} else {
+			listeArticles = articleManager.getArticlesByMotCleEtCategorie(motCle, categorie);
 		}
 		
 		request.setAttribute("listeArticles", listeArticles);
