@@ -30,23 +30,25 @@ public class ServletAuthentification extends HttpServlet {
 		utilisateurManager = new UtilisateurManager();
 	}
 
-	
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
+
 		String url = "/WEB-INF/jsp/Connexion.jsp";
+
 		Cookie[] cookies = request.getCookies();
 		for (Cookie cookie : cookies) {
 			String name = cookie.getName();
-			if(name.equals("seRappelerDeMoi")) {
+			if (name.equals("seRappelerDeMoi")) {
 				String identifiant = cookie.getValue();
-				Utilisateur utilisateur = utilisateurManager.getUtilisateurParIdentifiantOuMail(identifiant, identifiant);
+				Utilisateur utilisateur = utilisateurManager.getUtilisateurParIdentifiantOuMail(identifiant,
+						identifiant);
 				HttpSession session = request.getSession();
 				utilisateur.setMotDePasse("");
 				session.setAttribute("utilisateurConnecte", utilisateur);
 				url = "/accueil";
 			}
 		}
-		
+
 		RequestDispatcher rd = request.getRequestDispatcher(url);
 		rd.forward(request, response);
 	}
@@ -83,10 +85,9 @@ public class ServletAuthentification extends HttpServlet {
 			 */
 			boolean seRappelerDeMoi = request.getParameter("Se-souvenir-de-moi") != null;
 			/*
-			 * on va créer une session pour 
-			 * l'utilisateur qui se terminera une fois la page fermé // sinon on va créer un
-			 * cookie qui sera gardé chez le client jusqu'à ce que le // cookie expire ou
-			 * qu'il demande la deconnexion
+			 * on va créer une session pour l'utilisateur qui se terminera une fois la page
+			 * fermé // sinon on va créer un cookie qui sera gardé chez le client jusqu'à ce
+			 * que le // cookie expire ou qu'il demande la deconnexion
 			 */
 			if (seRappelerDeMoi) {
 				Cookie resterConnecte = new Cookie("seRappelerDeMoi", utilisateur.getPseudo());
