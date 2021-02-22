@@ -191,7 +191,7 @@ public class ArticleVenduDAOJdbcImpl implements ArticleVenduDAO {
 		List<ArticleVendu> listeArticles = new ArrayList<ArticleVendu>();
 		try(Connection cnx = ConnectionProvider.getConnection()){
 			PreparedStatement stmt = cnx.prepareStatement(SQL_SELECT_BY_MOT_CLE_ET_CATEGORIE);
-			stmt.setString(1, "&" + motCle + "&");
+			stmt.setString(1, "%" + motCle + "%");
 			stmt.setString(2, categorie);
 			ResultSet rs = stmt.executeQuery();
 			ArticleVendu articleCourant = null;
