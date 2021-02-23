@@ -2,6 +2,7 @@ package fr.eni.Encheres.servlet;
 
 import java.io.IOException;
 import java.time.LocalDate;
+import java.util.List;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -11,7 +12,8 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import fr.eni.Encheres.bll.ArticleVenduManager;
-import fr.eni.Encheres.bll.UtilisateurManager;
+import fr.eni.Encheres.bo.ArticleVendu;
+import fr.eni.Encheres.bo.Retrait;
 
 /**
  * Servlet implementation class ServletNouvelleVente
@@ -20,19 +22,20 @@ import fr.eni.Encheres.bll.UtilisateurManager;
 public class ServletModificationVente extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
-	private static UtilisateurManager utilisateurManager;
 	private static ArticleVenduManager articleVenduManager;
 
 	public void init() {
 		articleVenduManager = new ArticleVenduManager();
-		utilisateurManager = new UtilisateurManager();
 	}
 
 	protected void doGet(HttpServletRequest request,
 			HttpServletResponse response) throws ServletException, IOException {
+		List<ArticleVendu> articleVendu = articleVenduManager
+				.getArticlesByNumeroUtilisateur(1);
+		request.setAttribute("articleVendu", articleVendu);
+
 		RequestDispatcher rd = request
 				.getRequestDispatcher("/WEB-INF/jsp/Nouvelle-vente.jsp");
-
 		rd.forward(request, response);
 	}
 
@@ -54,6 +57,21 @@ public class ServletModificationVente extends HttpServlet {
 		String rue = request.getParameter("rue");
 		String codePostal = request.getParameter("codePostal");
 		String ville = request.getParameter("ville");
+
+		ArticleVendu articleVendu = new ArticleVendu();
+
+		articleVendu.setNomArticle(nomArticle);
+		articleVendu.setDescription(description);
+		articleVendu.setLibelleCategorie(libelleCategorie);
+		articleVendu.setMiseAPrix(miseAPrix);
+		articleVendu.setDateDebutEncheres(dateDebutEncheres);
+		articleVendu.setDateFinEncheres(dateFinEncheres);
+
+		Retrait retrait = new Retrait();
+
+		retrait.setCode_postal(codePostal);
+		retrait.setRue(rue);
+		retrait.setVille(ville);
 
 		String url = ("/WEB-INF/jsp/Nouvelle-vente.jsp");
 

@@ -15,7 +15,7 @@ body {
     font-size: 14px;
     line-height: 20px;
     min-height: 100%;
-    background-color: #fff;
+    background-color: rgba(255, 235, 205, .4);
 }
 
 h1,
@@ -76,6 +76,38 @@ p {
     background-image: linear-gradient(180deg, rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url('../images/tingey-injury-law-firm-veNb0DDegzE-unsplash.jpg');
     background-position: 0px 0px, 50% 50%;
     background-size: auto, cover;
+}
+
+.S-section {
+    height: 250px;
+    margin-top: 0px;
+    background-image: -webkit-gradient(linear, left top, left bottom, from(rgba(0, 0, 0, 0.5)), to(rgba(0, 0, 0, 0.5))), url('../images/tingey-injury-law-firm-veNb0DDegzE-unsplash.jpg');
+    background-image: linear-gradient(180deg, rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url('../images/tingey-injury-law-firm-veNb0DDegzE-unsplash.jpg');
+    background-position: 0px 0px, 50% 50%;
+    background-size: auto, cover;
+}
+
+.S-div-block {
+    position: relative;
+    top: 73px;
+    display: -webkit-box;
+    display: -webkit-flex;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-pack: center;
+    -webkit-justify-content: center;
+    -ms-flex-pack: center;
+    justify-content: center;
+    -webkit-box-align: center;
+    -webkit-align-items: center;
+    -ms-flex-align: center;
+    align-items: center;
+    margin-right: 300px;
+}
+
+.S-liens {
+    position: absolute;
+    margin-left: 800px;
 }
 
 .div-block {
@@ -140,12 +172,12 @@ select {
     appearance: none;
     outline: 0;
     box-shadow: none;
-    border: 0!important;
-    background: #286499;
+    border-width: 1px;
+    background: #F5DEB3;
     background-image: none;
     flex: 1;
     padding: 0 2em;
-    color: #fff;
+    color: #000000;
     cursor: pointer;
     font-size: 1.15em;
 }
@@ -174,7 +206,7 @@ select::-ms-expand {
     top: 0;
     right: 0;
     padding: 0 1em;
-    background: rgb(0, 0, 0);
+    background: rgb(188, 143, 143);
     cursor: pointer;
     pointer-events: none;
     transition: .25s all ease;
@@ -281,16 +313,20 @@ select::-ms-expand {
 
 .entree {
     display: block;
-    width: 100%;
+    width: 70%;
     height: 38px;
+    margin-left: 120px;
     padding: 8px 12px;
-    margin-bottom: 10px;
+    margin-bottom: 30px;
     font-size: 16px;
-    line-height: 1.428571429;
+    line-height: 1.42;
+    border-radius: 10%;
     color: #333333;
     vertical-align: middle;
+    text-align: center;
     background-color: rgb(255, 255, 255);
-    border: 1px solid #3898EC;
+    border: 1.5px solid #000000;
+    background-color: rgba(245, 222, 179, 0.4);
 }
 
 .entreedouble {
@@ -315,10 +351,15 @@ select::-ms-expand {
 .bouton-recherche {
     display: inline-block;
     padding: 20px;
-    width: 15%;
-    background-color: #3898EC;
-    color: white;
-    border: 0;
+    width: 13%;
+    margin-right: 120px;
+    margin-top: -50px;
+    background-color: #F5DEB3;
+    color: rgb(0, 0, 0);
+    border: 5;
+    border-width: 1px;
+    border-color: rgb(109, 89, 52);
+    ;
     line-height: inherit;
     text-decoration: none;
     cursor: pointer;
@@ -455,7 +496,7 @@ footer {
     border: 1px solid #000;
     border-radius: 20px;
     background-color: #000;
-    background-image: radial-gradient(circle farthest-corner at 50% 50%, #000, #8d8d8d);
+    background-image: radial-gradient(circle farthest-corner at 50% 50%, rgb(222, 184, 135), rgb(244, 164, 96, .5));
     text-align: center;
 }
 
@@ -475,7 +516,7 @@ footer {
 .pied-titre {
     margin-top: 20px;
     margin-bottom: 20px;
-    color: #fff;
+    color: #000;
     font-size: 20px;
     line-height: 1.5;
     font-weight: 700;
@@ -490,7 +531,7 @@ footer {
 .pied-lien {
     display: block;
     margin-bottom: 10px;
-    color: #fff;
+    color: rgba(0, 0, 0, 0.8);
     text-decoration: none;
 }
 
@@ -513,7 +554,9 @@ footer {
     color: #fff;
 }
 
-//page de connection "page sécurisée"
+
+/*page de connection "page sécurisée"*/
+
 .centrer {
     justify-self: unset;
 }
@@ -867,7 +910,9 @@ input.s-bouton {
     clear: both;
 }
 
-//vous avez remporté la vente
+
+/*vous avez remporté la vente*/
+
 .colonne {
     display: -webkit-box;
     display: -webkit-flex;
@@ -904,23 +949,13 @@ input.s-bouton {
     clear: both;
 }
 
-.colonne .colonne {
-    margin-left: 0;
-    margin-right: 0;
-}
-
-.w-col {
+.colonne-Article {
     position: relative;
     float: left;
     width: 100%;
     min-height: 1px;
-    padding-left: 10px;
+    margin-left: -85px;
     padding-right: 10px;
-}
-
-.w-col .w-col {
-    padding-left: 0;
-    padding-right: 0;
 }
 
 .conteneur-7 {
@@ -951,11 +986,11 @@ input.s-bouton {
     margin-left: 50px;
 }
 
-.col-3 {
+.image-article {
     width: 25%;
 }
 
-.col-9 {
+.texte-article {
     width: 75%;
     margin-left: 120px;
 }
@@ -1043,7 +1078,9 @@ input.s-bouton {
     clear: both;
 }
 
-//modification d'un compte
+
+/*modification d'un compte*/
+
 .conteneur-13 {
     display: block;
     margin-top: 60px;
@@ -1093,7 +1130,9 @@ input.s-bouton {
     display: inline-block;
 }
 
-//Nouvelle vente
+
+/*Nouvelle vente*/
+
 .contact-formulaire {
     display: block;
     margin-top: 40px;
