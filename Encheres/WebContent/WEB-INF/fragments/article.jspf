@@ -1,0 +1,18 @@
+<meta charset="utf-8">
+<div class="rangee ">
+    <div class="colonne-article image-article">
+        <div>
+            <img src="images/ENIEcole-1.jpg " loading="lazy " sizes="75px " alt=" " class="image-4 ">
+        </div>
+    </div>
+    <div class="colonne-article texte-article">
+        <ul role="list " class="liste-style ">
+            <li class="liste-item-3">
+                <h5 name="h5">PC Gamer pour travailler</h5>
+            </li>
+            <li name="prix">Prix : 210 points</li>
+            <li name="fin">Fin de l'enchère : 10/08/2018</li>
+            <li name="vendeur">Vendeur : jojo44</li>
+        </ul>
+    </div>
+</div>
