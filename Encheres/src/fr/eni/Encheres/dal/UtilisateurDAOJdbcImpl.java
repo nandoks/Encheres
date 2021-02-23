@@ -25,7 +25,7 @@ public class UtilisateurDAOJdbcImpl implements UtilisateurDAO {
 	private final String sqlUpdate = "UPDATE utilisateurs set pseudo=?, nom=?, prenom=?, email=?, telephone=?, rue=?, code_postal=?, "
 			+ " ville=?, mot_de_passe=? where no_utilisateur = ?";
 
-	private final String sqlDelete = "delete from utilisateur where no_utilisateur=?";
+	private final String sqlDelete = "delete from utilisateurs where no_utilisateur=?";
 
 	private final String sqlUtilisateurExiste = "select * from utilisateurs where pseudo=? or email=?";
 

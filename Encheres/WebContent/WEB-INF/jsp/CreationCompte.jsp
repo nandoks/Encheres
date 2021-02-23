@@ -68,8 +68,9 @@
 				</div>
 			</form>
 				<div class="conteneur-2 conteneur">
-					<input type="submit" value="Annuler" class="soumettre-bouton annulerCréationCompte bouton">
-					<a class = "btn" href = "ServletAccueil" ></a>
+					<button name="annuler" class="soumettre-bouton annulerCréationCompte bouton">
+					<a class = "btn" href = "${pageContext.request.contextPath}/accueil" >Annuler</a>
+					</button>
 				</div>
 		</div>
 

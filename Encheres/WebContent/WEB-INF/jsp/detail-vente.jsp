@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html>
 
@@ -32,36 +33,30 @@
         </div>
         <div class="col">
             <div class="conteneur-7 conteneur">
-                <h3 class="titre-4">PC Gamer pour travailler</h3>
+                <h3 class="titre-4">${article.nomArticle}</h3>
                 <div class="div-block-11">
                     <h4 class="titre-3">Description</h4>
-                    <p class="paragraphe">
-                        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse varius enim in eros elementum tristique. Duis cursus, mi quis viverra ornare, eros dolor interdum nulla, ut commodo diam libero vitae erat. Aenean faucibus nibh et justo cursus id rutrum
-                        lorem imperdiet. Nunc ut sem vitae risus tristique posuere.
-                    </p>
+                    <p class="paragraphe">${article.description}</p>
                 </div>
                 <div class="disposition-grille grille">
                     <h4>Catégorie</h4>
-                    <p class="paragraphe">Informatique</p>
+                    <p class="paragraphe">${article.libelleCategorie}</p>
                     <h4>Meilleure offre</h4>
                     <p class="paragraphe">210 points par Bob</p>
                     <h4>Mise à prix</h4>
-                    <p class="paragraphe">185 points</p>
+                    <p class="paragraphe">${article.miseAPrix} points</p>
                     <h4>Fin de l'enchère</h4>
-                    <p class="paragraphe">09/10/2018</p>
+                    <p class="paragraphe">${article.dateFinEncheres}</p>
                     <h4>Retrait</h4>
-                    <p class="paragraphe">
-                        10 allée des Alouettes
-                        <br> 44 800 Saint Herblain
-                    </p>
+                    <p class="paragraphe">${article.adresseRetrait}</p>
                     <h4>Vendeur</h4>
-                    <p class="paragraphe">jojo44</p>
+                    <p class="paragraphe">${pseudoVendeur}</p>
                 </div>
             </div>
         </div>
     </div>
     <div class="conteneur-10 conteneur">
-        <a href="#" class="bouton">Retour à l'accueil</a>
+      <a href="index.jsp" class="bouton">Retour à l'accueil</a>
     </div>
     <div class="div-block-5">
         <footer id="footer" class="pied-2">
