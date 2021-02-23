@@ -52,7 +52,7 @@
 			<ul role="list" class="liste-style">
 
 				<li class="liste-item-3"><a
-					href="ServletInformationUtilisateur?article=${article.noArticle}">
+					href="ServletDetailArticleVendu?article=${article.noArticle}">
 						${article.nomArticle}</a></li>
 				<li>Prix : ${article.miseAPrix} points</li>
 				<li>Fin de l'enchère : ${article.dateFinEncheres}</li>

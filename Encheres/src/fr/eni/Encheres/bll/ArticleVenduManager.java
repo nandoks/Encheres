@@ -39,4 +39,8 @@ private ArticleVenduDAO articleVenduDAO;
 		return articleVenduDAO.selectArticlesByMotCleEtCategorie(motCle, categorie);
 	}
 
+	public ArticleVendu getArticlesByNumeroArticle(int numeroArticle) {
+		return articleVenduDAO.selectById(numeroArticle);
+	}
+
 }
