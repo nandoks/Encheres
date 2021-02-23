@@ -58,8 +58,6 @@ public class ServletNouvelleVente extends HttpServlet {
 		String codePostal = request.getParameter("codePostal");
 		String ville = request.getParameter("ville");
 
-		String url = ("/WEB-INF/jsp/Nouvelle-vente.jsp");
-
 		ArticleVendu articleVendu = new ArticleVendu();
 
 		articleVendu.setNomArticle(nomArticle);
@@ -75,10 +73,12 @@ public class ServletNouvelleVente extends HttpServlet {
 		retrait.setRue(rue);
 		retrait.setVille(ville);
 
-		// TODO retraitdao
+		// TODO retraitdao ligne à rajouter
 
-		RequestDispatcher rd = request.getRequestDispatcher(url);
+		RequestDispatcher rd = request
+				.getRequestDispatcher("/WEB-INF/jsp/Nouvelle-vente.jsp");
 		rd.forward(request, response);
+		return;
 	}
 
 }
