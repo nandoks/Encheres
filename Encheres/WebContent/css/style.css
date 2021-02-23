@@ -78,6 +78,38 @@ p {
     background-size: auto, cover;
 }
 
+.S-section {
+    height: 250px;
+    margin-top: 0px;
+    background-image: -webkit-gradient(linear, left top, left bottom, from(rgba(0, 0, 0, 0.5)), to(rgba(0, 0, 0, 0.5))), url('../images/tingey-injury-law-firm-veNb0DDegzE-unsplash.jpg');
+    background-image: linear-gradient(180deg, rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url('../images/tingey-injury-law-firm-veNb0DDegzE-unsplash.jpg');
+    background-position: 0px 0px, 50% 50%;
+    background-size: auto, cover;
+}
+
+.S-div-block {
+    position: relative;
+    top: 73px;
+    display: -webkit-box;
+    display: -webkit-flex;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-pack: center;
+    -webkit-justify-content: center;
+    -ms-flex-pack: center;
+    justify-content: center;
+    -webkit-box-align: center;
+    -webkit-align-items: center;
+    -ms-flex-align: center;
+    align-items: center;
+    margin-right: 300px;
+}
+
+.S-liens {
+    position: absolute;
+    margin-left: 800px;
+}
+
 .div-block {
     position: relative;
     top: 73px;
