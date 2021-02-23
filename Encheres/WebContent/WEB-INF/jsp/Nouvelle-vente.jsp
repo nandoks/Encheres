@@ -58,9 +58,9 @@
                         <br>
                         <span class="champs-label-4">Retrait</span>
                         <div class="br1"></div>
-                        <input type="text" class="entree" maxlength="256" name="rue" data-name="rue" placeholder="Rue" id="Rue" required="">
-                        <input type="text" class="entree" maxlength="256" name="codePostal" data-name="code postal" placeholder="Code postal" id="Code-postal" required="">
-                        <input type="text" class="entree" maxlength="256" name="ville" data-name="ville" placeholder="Ville" id="Ville" required="">
+                        <input type="text" class="entree" value = "${utilisateur.rue}" maxlength="256" name="rue" data-name="rue" placeholder="Rue" id="Rue" required="">
+                        <input type="text" class="entree" value = "${utilisateur.codePostal}" maxlength="256" name="codePostal" data-name="code postal" placeholder="Code postal" id="Code-postal" required="">
+                        <input type="text" class="entree" value = "${utilisateur.ville}"maxlength="256" name="ville" data-name="ville" placeholder="Ville" id="Ville" required="">
                     </div>
                     <div>
                         <input type="submit" value="Annuler" data-wait="Veuillez patienter..." class="bouton-soumettre-3 bouton">

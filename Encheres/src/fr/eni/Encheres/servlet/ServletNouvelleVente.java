@@ -10,8 +10,10 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import fr.eni.Encheres.bll.ArticleVenduManager;
 import fr.eni.Encheres.bll.UtilisateurManager;
+import fr.eni.Encheres.bo.ArticleVendu;
+import fr.eni.Encheres.bo.Retrait;
+import fr.eni.Encheres.bo.Utilisateur;
 
 /**
  * Servlet implementation class ServletNouvelleVente
@@ -21,15 +23,17 @@ public class ServletNouvelleVente extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
 	private static UtilisateurManager utilisateurManager;
-	private static ArticleVenduManager articleVenduManager;
 
 	public void init() {
-		articleVenduManager = new ArticleVenduManager();
 		utilisateurManager = new UtilisateurManager();
 	}
 
 	protected void doGet(HttpServletRequest request,
 			HttpServletResponse response) throws ServletException, IOException {
+
+		Utilisateur utilisateur = utilisateurManager.getUtilisateurById(1);
+		request.setAttribute("utilisateur", utilisateur);
+
 		RequestDispatcher rd = request
 				.getRequestDispatcher("/WEB-INF/jsp/Nouvelle-vente.jsp");
 		rd.forward(request, response);
@@ -55,6 +59,23 @@ public class ServletNouvelleVente extends HttpServlet {
 		String ville = request.getParameter("ville");
 
 		String url = ("/WEB-INF/jsp/Nouvelle-vente.jsp");
+
+		ArticleVendu articleVendu = new ArticleVendu();
+
+		articleVendu.setNomArticle(nomArticle);
+		articleVendu.setDescription(description);
+		articleVendu.setLibelleCategorie(libelleCategorie);
+		articleVendu.setMiseAPrix(miseAPrix);
+		articleVendu.setDateDebutEncheres(dateDebutEncheres);
+		articleVendu.setDateFinEncheres(dateFinEncheres);
+
+		Retrait retrait = new Retrait();
+
+		retrait.setCode_postal(codePostal);
+		retrait.setRue(rue);
+		retrait.setVille(ville);
+
+		// TODO retraitdao
 
 		RequestDispatcher rd = request.getRequestDispatcher(url);
 		rd.forward(request, response);
