@@ -47,6 +47,7 @@ public class ServletAuthentification extends HttpServlet {
 
 						utilisateur.setMotDePasse("");
 						session.setAttribute("utilisateurConnecte", utilisateur);
+						session.setAttribute("no_utilisateur", utilisateur.getNumeroUtilisateur());
 						url = "/accueil";
 					}
 				}
@@ -105,6 +106,7 @@ public class ServletAuthentification extends HttpServlet {
 			utilisateur.setMotDePasse("");
 			session.setAttribute("utilisateurConnecte", utilisateur);
 			url = "/WEB-INF/jsp/index.jsp";
+			session.setAttribute("no_utilisateur", utilisateur.getNumeroUtilisateur());
 		} else {
 			request.setAttribute("messageErreur", "Mot de passe ou identifiant incorrect");
 			url = "/WEB-INF/jsp/Connexion.jsp";

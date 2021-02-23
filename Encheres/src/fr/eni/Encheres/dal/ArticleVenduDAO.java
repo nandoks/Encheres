@@ -16,5 +16,4 @@ public interface ArticleVenduDAO extends DAO<ArticleVendu> {
 	public List<ArticleVendu> selectArticlesByMotCleEtCategorie(String motCle, String categorie);
 
 
-
 }
