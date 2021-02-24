@@ -6,3 +6,4 @@
 /Encheres/.classpath
 /Encheres/.settings/
 /Encheres/build/*.class
+*.class
