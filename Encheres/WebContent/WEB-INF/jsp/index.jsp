@@ -5,7 +5,7 @@
 <html>
 
 <head>
-<meta charset="utf-8">
+<meta charset="UTF-8">
 <title>ENI Enchères</title>
 <meta content="width=device-width, initial-scale=1" name="viewport">
 <link href="css/style.css" rel="stylesheet" type="text/css">
@@ -13,17 +13,19 @@
 
 <body>
 	<div class="section">
-		<div class="div-block">
 			<c:if test="${empty utilisateurConnecte}">
 				<jsp:include page="/WEB-INF/fragments/enteteDeconnecte.jsp" />
 			</c:if>
-		</div>
+			<c:if test="${not empty utilisateurConnecte}">
+				<jsp:include page="/WEB-INF/fragments/enteteConnecte.jsp" />
+			</c:if>
 	</div>
 	<div class="conteneur conteneur-1">
 		<h1 class="titre1">Liste des enchères</h1>
 	</div>
 	<div class="conteneur">
-		<form action="${pageContext.request.contextPath}/accueil"
+		
+		<form action="${pageContext.request.contextPath}/accueilConecte"
 			class="correction formulaire" method="post">
 			<div class="div-block-4">
 				<input type="search" class="entree" maxlength="256" name="recherche"
@@ -38,9 +40,38 @@
 					</select>
 				</div>
 			</div>
+			<c:if test="${not empty utilisateurConnecte}">
+			<div class="">
+				<div>
+					<input type="radio" name="choix" id="achat" checked onclick="toggle(this);">
+					<label for="achat">Achat</label>
+					<input type="checkbox" name="achat"   id="ouvertes" value="ouvertes" checked 	>
+					<label for="ouvertes">encheres ouvertes</label>
+					<input type="checkbox" name="achat"    id="achat-en-cours" value="achat-en-cours" >
+					<label for="achat-en-cours">mes encheres en cours</label>
+					<input type="checkbox" name="achat"    id="remportes" value="remportes" >
+					<label for="remportes">mes encheres remportés</label>
+					
+				</div>
+				<div>
+					<input type="radio" name="choix" id="vente" onclick="toggle(this);">
+					<label for="vente">Mes Ventes</label>
+					<input type="checkbox" name="mes-ventes"   id="vente-en-cours" value="vente-en-cours" disabled >
+					<label for="vente-en-cours">mes ventes en cours</label>
+					<input type="checkbox" name="mes-ventes"   id="debutes" value="debutes" disabled >
+					<label for="debutes">ventes non débutés</label>
+					<input type="checkbox" name="mes-ventes"   id="termines" value="termines" disabled >
+					<label for="terimes">ventes termines</label>
+				</div>
+			</div>
+			<input type="hidden" name="no_utilisateur" value="${sessionScope.no_utilisateur}">
+
+			</c:if>
 			<input type="submit" value="recherche" class="bouton-recherche ">
 		</form>
 	</div>
+
+
 	<div class="conteneur-grille conteneur ">
 		<c:forEach var="article" items="${listeArticles}">
 
@@ -52,52 +83,47 @@
 			<ul role="list" class="liste-style">
 
 				<li class="liste-item-3"><a
-					href="ServletDetailArticleVendu?article=${article.noArticle}">
+					href="detailArticleVendu?article=${article.noArticle}">
 						${article.nomArticle}</a></li>
 				<li>Prix : ${article.miseAPrix} points</li>
 				<li>Fin de l'enchère : ${article.dateFinEncheres}</li>
 				<li>Vendeur : <a
-					href="ServletInformationUtilisateur?no_utilisateur=${article.numeroUtilisateur}">
+					href="informationUtilisateur?no_utilisateur=${article.numeroUtilisateur}">
 						${article.pseudoVendeur}</a></li>
 			</ul>
 		</c:forEach>
 	</div>
 	<div class="div-block-5 ">
-		<footer id="footer " class="pied-2 ">
-			<div class="conteneur ">
-				<div class="pied-conteneur-2 ">
-					<div>
-						<h2 class="pied-titre ">Nos sujets</h2>
-						<ul role="list " class="liste liste-style ">
-							<li><a href="# " class="pied-lien ">Commerce equitable</a></li>
-							<li><a href="# " class="pied-lien ">Circuit-courts</a></li>
-							<li><a href="# " class="pied-lien ">Recyclage</a></li>
-							<li><a href="# " class="pied-lien ">Associatif</a></li>
-							<li><a href="# " class="pied-lien ">Troc</a></li>
-						</ul>
-					</div>
-					<div>
-						<h2 class="pied-titre ">Nous contacter</h2>
-						<ul role="list " class="liste-2 liste-style ">
-							<li><a href="# " class="pied-lien ">Par mail</a></li>
-							<li><a href="# " class="pied-lien ">Par courrier</a></li>
-						</ul>
-					</div>
-					<div>
-						<h2 class="pied-titre ">Partenaires</h2>
-						<ul role="list " class="liste-3 liste-style ">
-							<li><a href="# " class="pied-lien ">Collectivités
-									territoriales</a></li>
-							<li><a href="# " class="pied-lien ">Associations</a></li>
-							<li><a href="# " class="pied-lien ">Entreprises</a></li>
-						</ul>
-					</div>
-				</div>
-				<div class="texte-block-2 ">Copyright © 2021 Groupe E Project
-					1 ENI. Tous droits réservés.</div>
-			</div>
-		</footer>
+		<jsp:include page="/WEB-INF/fragments/piedDePage.jsp" />
 	</div>
+	
+	<script type="text/javascript">
+		
+		var toggle = (item) => {
+			console.log(item);
+			console.log(item.id == ("achat"))
+			if(item.id == ("achat")){
+				document.getElementById("vente-en-cours").disabled = true;
+				document.getElementById("debutes").disabled = true;
+				document.getElementById("termines").disabled = true;
+				
+				document.getElementById("ouvertes").disabled = false;
+				document.getElementById("achat-en-cours").disabled = false;
+				document.getElementById("remportes").disabled = false;
+			} else if(item.id == "vente") {
+				document.getElementById("ouvertes").disabled = true;
+				document.getElementById("achat-en-cours").disabled = true;
+				document.getElementById("remportes").disabled = true;
+				
+				document.getElementById("vente-en-cours").disabled = false;
+				document.getElementById("debutes").disabled = false;
+				document.getElementById("termines").disabled = false;
+			}
+			
+		}
+
+	</script>
+	
 </body>
 
 </html>
