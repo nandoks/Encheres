@@ -33,7 +33,7 @@ public class ServletAuthentification extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 
-		String url = "/WEB-INF/jsp/Connexion.jsp";
+		String url = "/WEB-INF/jsp/connexion.jsp";
 		HttpSession session = request.getSession();
 		if (session.getAttribute("utilisateurConnecte") == null) {
 			Cookie[] cookies = request.getCookies();

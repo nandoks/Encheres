@@ -33,7 +33,15 @@ public class ServletDetailArticleVendu extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		ArticleVenduManager articleManager = new ArticleVenduManager();
-		int numeroArticle = Integer.parseInt(request.getParameter("noArticle"));
+		String numeroArticleString = request.getParameter("noArticle");
+		int numeroArticle = 0;
+		if(numeroArticleString != null) {
+			try {
+			numeroArticle = Integer.parseInt(numeroArticleString.trim());
+			} catch (NumberFormatException ex){
+				ex.printStackTrace();
+			}
+		}
 		ArticleVendu article = articleManager.getArticlesByNumeroArticle(numeroArticle);
 		
 		request.setAttribute("article", article);
@@ -44,7 +52,7 @@ public class ServletDetailArticleVendu extends HttpServlet {
 			
 		//}
 		
-		RequestDispatcher rd = request.getRequestDispatcher("/WEB-INF/jsp/detail-vente.jsp");
+		RequestDispatcher rd = request.getRequestDispatcher("/WEB-INF/jsp/detailVente.jsp");
 		rd.forward(request, response);
 	}
 
