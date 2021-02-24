@@ -318,6 +318,7 @@ select::-ms-expand {
     margin-left: 120px;
     padding: 8px 12px;
     margin-bottom: 30px;
+    margin-top: 20px;
     font-size: 16px;
     line-height: 1.42;
     border-radius: 10%;
@@ -342,6 +343,7 @@ select::-ms-expand {
     vertical-align: middle;
     background-color: rgb(255, 255, 255);
     border: 1px solid #3898EC;
+    background-color: rgba(245, 222, 179, 0.4);
 }
 
 .texte-block {
@@ -424,8 +426,8 @@ s-entree.R-bouton {
     float: left;
     width: 100%;
     min-height: 1px;
-    padding-left: 10px;
-    padding-right: 10px;
+    padding-left: 20px;
+    padding-right: 20px;
 }
 
 .liste-style {
@@ -928,9 +930,6 @@ input.s-bouton {
     align-items: center;
     -o-object-fit: cover;
     object-fit: cover;
-}
-
-.w-conteneur .colonne {
     margin-left: -10px;
     margin-right: -10px;
 }
@@ -1082,7 +1081,6 @@ input.s-bouton {
 /*modification d'un compte*/
 
 .conteneur-13 {
-    display: block;
     margin-top: 60px;
 }
 
@@ -1111,6 +1109,7 @@ input.s-bouton {
     background-color: #bb0003;
     text-align: center;
     font-size: 16px;
+    color: #ccc;
 }
 
 .bouton-soumettre-3 {
@@ -1125,7 +1124,7 @@ input.s-bouton {
     font-size: 16px;
 }
 
-.jojo {
+.utilisateur {
     color: #3898EC;
     display: inline-block;
 }
@@ -1176,7 +1175,8 @@ input.s-bouton {
 .div-block-10 {
     margin-top: 60px;
     margin-bottom: 20px;
-    padding: 10px 50px 20px 20px;
+    justify-self: auto;
+    padding: 0px 150px 0px 0px;
     border: 1px solid #000;
     border-radius: 20px;
 }
