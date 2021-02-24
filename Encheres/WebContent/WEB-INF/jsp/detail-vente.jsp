@@ -51,6 +51,17 @@
                     <p class="paragraphe">${article.adresseRetrait}</p>
                     <h4>Vendeur</h4>
                     <p class="paragraphe">${pseudoVendeur}</p>
+                    <c:choose>
+                    	<c:when test="${sessionScope.utilisateurConnecte.numeroUtilisateur == utilisateur.numeroUtilisateur}">
+							 <button><a href="ServletModificationVente?no_article=${article.noArticle}">Modifier</a></button>
+						</c:when>
+						<c:otherwise>
+							<input type="number" name="enchere" value="${article.miseAPrix}" min="${article.miseAPrix}">
+							<button><a href = "">Enchérir</a></button>
+						</c:otherwise>
+				
+				
+					</c:choose>
                 </div>
             </div>
         </div>

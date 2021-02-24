@@ -32,11 +32,11 @@ public class ServletDetailArticleVendu extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		//ArticleVenduManager articleManager = new ArticleVenduManager();
+		ArticleVenduManager articleManager = new ArticleVenduManager();
 		int numeroArticle = Integer.parseInt(request.getParameter("noArticle"));
-		//ArticleVendu article = articleManager.getArticlesByNumeroArticle(numeroArticle);
+		ArticleVendu article = articleManager.getArticlesByNumeroArticle(numeroArticle);
 		
-		//request.setAttribute("article", article);
+		request.setAttribute("article", article);
 		
 		
 		//HttpSession session = request.getSession();
