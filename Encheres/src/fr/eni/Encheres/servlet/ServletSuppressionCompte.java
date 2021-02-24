@@ -29,7 +29,7 @@ public class ServletSuppressionCompte extends HttpServlet {
 		
 		UtilisateurManager utilisateurManager = new UtilisateurManager();
 		//On récupère le paramètre id
-		int numeroUtilisateur = Integer.parseInt(request.getParameter("no_utilisateur"));
+		int numeroUtilisateur = Integer.valueOf(request.getParameter("no_utilisateur"));
 		
 		//On passe à la couche BLL
 		utilisateurManager.supprimeUtilisateur(numeroUtilisateur);

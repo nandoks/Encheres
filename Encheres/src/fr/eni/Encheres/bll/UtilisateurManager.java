@@ -36,8 +36,7 @@ public class UtilisateurManager {
 	}
 
 	public void supprimeUtilisateur(int numeroUtilisateur) {
-		utilisateurDAO.delete(numeroUtilisateur);
-		
+		utilisateurDAO.delete(numeroUtilisateur);		
 	}
 
 }
