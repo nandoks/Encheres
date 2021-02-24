@@ -44,7 +44,7 @@ public class ServletModificationCompte extends HttpServlet {
 		// ajoute à la réponse l'utilisateur pour être récupéré sur la JSP
 		request.setAttribute("utilisateur", utilisateur);
 				
-		RequestDispatcher rd = request.getRequestDispatcher("WEB-INF/jsp/modification-du-compte.jsp");
+		RequestDispatcher rd = request.getRequestDispatcher("/WEB-INF/jsp/modification-du-compte.jsp");
 		rd.forward(request, response);
 		
 	}

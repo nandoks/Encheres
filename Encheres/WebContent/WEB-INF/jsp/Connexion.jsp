@@ -13,15 +13,7 @@
 
 <body>
 	<div class="section">
-		<div class="div-block">
-			<div class="div-block-2">
-				<img src="../img/ENIEcole-1.jpg" loading="lazy"
-					sizes="(max-width: 479px) 100vw, 75px" alt="" class="image-5">
-			</div>
-			<a href="index.html" class="lien-block ligne-block">
-				<h1 class="titre">ENI Enchères</h1>
-			</a> <a href="#" class="lien">Connection</a> <a href="#" class="lien">Inscription</a>
-		</div>
+		<jsp:include page="/WEB-INF/fragments/enteteDeconnecte.jsp" />
 	</div>
 	<div class="centrer">
 		<div class="page-utilitaire">

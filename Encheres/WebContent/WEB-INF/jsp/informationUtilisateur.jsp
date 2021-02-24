@@ -4,14 +4,21 @@
 <!DOCTYPE html>
 <html>
 <head>
-<meta charset="ISO-8859-1">
+<meta charset="utf-8">
 <meta content="width=device-width, initial-scale=1" name="viewport">
-<link href="css/main.css" rel="stylesheet" type="text/css">
-<link href="css/eni1.css" rel="stylesheet" type="text/css">
+<link href="css/style.css" rel="stylesheet" type="text/css">
 <title>Utilisateur - ${utilisateur.pseudo}</title>
 </head>
 <body>
-
+	
+	<div class="section">
+			<c:if test="${empty utilisateurConnecte}">
+				<jsp:include page="/WEB-INF/fragments/enteteDeconnecte.jsp" />
+			</c:if>
+			<c:if test="${not empty utilisateurConnecte}">
+				<jsp:include page="/WEB-INF/fragments/enteteConnecte.jsp" />
+			</c:if>
+	</div>
 
 	<div>
 	<div>
@@ -48,6 +55,10 @@
 	<c:if test="${sessionScope.utilisateurConnecte.numeroUtilisateur == utilisateur.numeroUtilisateur}">
 		<a href="modificationCompte?no_utilisateur=${utilisateur.numeroUtilisateur}" > <button> Modifier </button> </a>
 	</c:if>
+	
+	<div class="div-block-5 ">
+		<jsp:include page="/WEB-INF/fragments/piedDePage.jsp" />
+	</div>
 	
 </body>
 </html>

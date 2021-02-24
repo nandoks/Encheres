@@ -105,15 +105,15 @@ public class ServletAuthentification extends HttpServlet {
 			HttpSession session = request.getSession();
 			utilisateur.setMotDePasse("");
 			session.setAttribute("utilisateurConnecte", utilisateur);
-			url = "/WEB-INF/jsp/index.jsp";
+			response.sendRedirect("accueil");
 			session.setAttribute("no_utilisateur", utilisateur.getNumeroUtilisateur());
 		} else {
 			request.setAttribute("messageErreur", "Mot de passe ou identifiant incorrect");
 			url = "/WEB-INF/jsp/Connexion.jsp";
+			RequestDispatcher rd = request.getRequestDispatcher(url);
+			rd.forward(request, response);
 		}
 
-		RequestDispatcher rd = request.getRequestDispatcher(url);
-
-		rd.forward(request, response);
+		
 	}
 }

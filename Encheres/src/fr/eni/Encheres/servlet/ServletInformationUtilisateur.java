@@ -15,7 +15,7 @@ import fr.eni.Encheres.bo.Utilisateur;
 /**
  * Servlet implementation class ServletInformationUtilisateur
  */
-@WebServlet("/ServletInformationUtilisateur")
+@WebServlet("/informationUtilisateur")
 public class ServletInformationUtilisateur extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
