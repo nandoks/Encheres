@@ -58,7 +58,6 @@
                         <button class="bouton"> Modifier </button> </a>
                 </c:if>
             </div>
-            </div>
             <div class="div-block-5 ">
                 <jsp:include page="/WEB-INF/fragments/piedDePage.jsp" />
             </div>

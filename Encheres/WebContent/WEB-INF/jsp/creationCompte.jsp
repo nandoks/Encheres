@@ -6,7 +6,7 @@
 <%-- head de la Connexion.jsp--%>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>Page sécurisée</title>
+<title>Création du compte</title>
 <meta content="width=device-width, initial-scale=1" name="viewport">
 <link href="css/main.css" rel="stylesheet" type="text/css">
 <link href="css/eni1.css" rel="stylesheet" type="text/css">
