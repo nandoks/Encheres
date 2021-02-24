@@ -83,7 +83,7 @@
 			<ul role="list" class="liste-style">
 
 				<li class="liste-item-3"><a
-					href="detailArticleVendu?article=${article.noArticle}">
+					href="detailArticleVendu?no_article=${article.noArticle}">
 						${article.nomArticle}</a></li>
 				<li>Prix : ${article.miseAPrix} points</li>
 				<li>Fin de l'enchère : ${article.dateFinEncheres}</li>
