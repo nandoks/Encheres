@@ -342,6 +342,7 @@ select::-ms-expand {
     vertical-align: middle;
     background-color: rgb(255, 255, 255);
     border: 1px solid #3898EC;
+    background-color: rgba(245, 222, 179, 0.4);
 }
 
 .texte-block {
@@ -928,9 +929,6 @@ input.s-bouton {
     align-items: center;
     -o-object-fit: cover;
     object-fit: cover;
-}
-
-.w-conteneur .colonne {
     margin-left: -10px;
     margin-right: -10px;
 }
@@ -1082,7 +1080,6 @@ input.s-bouton {
 /*modification d'un compte*/
 
 .conteneur-13 {
-    display: block;
     margin-top: 60px;
 }
 
@@ -1125,7 +1122,7 @@ input.s-bouton {
     font-size: 16px;
 }
 
-.jojo {
+.utilisateur {
     color: #3898EC;
     display: inline-block;
 }
@@ -1176,7 +1173,8 @@ input.s-bouton {
 .div-block-10 {
     margin-top: 60px;
     margin-bottom: 20px;
-    padding: 10px 50px 20px 20px;
+    justify-self: auto;
+    padding: 0px 150px 0px 0px;
     border: 1px solid #000;
     border-radius: 20px;
 }
