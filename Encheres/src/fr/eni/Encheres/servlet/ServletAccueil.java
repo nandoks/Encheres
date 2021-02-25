@@ -17,7 +17,8 @@ import fr.eni.Encheres.bo.ArticleVendu;
 /**
  * Servlet implementation class ServletAccueil
  */
-@WebServlet(urlPatterns={"/accueil",
+@WebServlet(urlPatterns={
+					"/accueil",
 					"/"})
 public class ServletAccueil extends HttpServlet {
 	private static final long serialVersionUID = 1L;

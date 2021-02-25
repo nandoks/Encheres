@@ -124,6 +124,15 @@ public class Utilisateur {
 		return true;
 	}
 
+	public boolean encherire(int enchere) {
+		if(this.credit - enchere < 0) {
+			System.out.println("pas assez de credit");
+			return false;
+		}
+		this.credit -= enchere;
+		return true;
+	}
+
 //	@Override
 //	public String toString() {
 //		return "Utilisateur [numeroUtilisateur=" + numeroUtilisateur + ", pseudo=" + pseudo + ", nom=" + nom
