@@ -69,7 +69,7 @@ public class ServletModificationVente extends HttpServlet {
 
 		Retrait retrait = new Retrait();
 
-		retrait.setCode_postal(codePostal);
+		retrait.setCodePostal(codePostal);
 		retrait.setRue(rue);
 		retrait.setVille(ville);
 

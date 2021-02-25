@@ -41,7 +41,7 @@ public class ArticleVenduDAOJdbcImpl implements ArticleVenduDAO {
 			+ " FROM articles_vendus a INNER JOIN utilisateurs u ON a.no_utilisateur = u.no_utilisateur "
 			+ " INNER JOIN categories c ON a.no_categorie = c.no_categorie where  (select getdate()) <= date_fin_encheres;";
 
-	private final String SQL_SELECT_BY_ID = "SELECT nom_article, description, libelle, prix_initial, date_fin_encheres, pseudo, r.rue, r.code_postal, r.ville  "
+	private final String SQL_SELECT_BY_ID = "SELECT nom_article, description, libelle, prix_initial, date_fin_encheres, pseudo, a.no_utilisateur, r.rue, r.code_postal, r.ville "
 			+ " FROM articles_vendus a INNER JOIN utilisateurs u ON a.no_utilisateur = u.no_utilisateur "
 			+ " INNER JOIN categories c ON a.no_categorie = c.no_categorie "
 			+ " INNER JOIN retraits r ON a.no_article = r.no_article WHERE a.no_article = ?";
@@ -200,6 +200,10 @@ public class ArticleVenduDAOJdbcImpl implements ArticleVenduDAO {
 				articleCourant.setMiseAPrix(rs.getInt("prix_initial"));
 				articleCourant.setDateFinEncheres(rs.getDate("date_fin_encheres").toLocalDate());
 				articleCourant.setPseudoVendeur(rs.getString("pseudo"));
+				articleCourant.setNumeroUtilisateur(rs.getInt("no_utilisateur"));
+				articleCourant.adresseRetrait.setRue(rs.getString("rue"));
+				articleCourant.adresseRetrait.setCodePostal(rs.getString("rue"));
+				articleCourant.adresseRetrait.setVille(rs.getString("rue"));
 			}else {
 				System.out.println("pas d'article");
 			}

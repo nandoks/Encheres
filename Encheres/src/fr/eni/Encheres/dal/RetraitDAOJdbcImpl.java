@@ -30,7 +30,7 @@ public class RetraitDAOJdbcImpl implements RetraitDAO{
 			ResultSet rs = prst.executeQuery();
 			if(rs.next()) {
 				retrait.setRue(rs.getString("rue"));
-				retrait.setCode_postal(rs.getString("code_postal"));
+				retrait.setCodePostal(rs.getString("code_postal"));
 				retrait.setVille(rs.getString("ville"));
 			}
 		} catch (SQLException e) {
@@ -46,7 +46,7 @@ public class RetraitDAOJdbcImpl implements RetraitDAO{
 			int index = 1;
 			prst.setInt(index++, retrait.getNumeroArticle());
 			prst.setString(index++, retrait.getRue());
-			prst.setString(index++, retrait.getCode_postal());
+			prst.setString(index++, retrait.getCodePostal());
 			prst.setString(index++, retrait.getVille());
 			prst.executeUpdate();
 		} catch (SQLException e) {

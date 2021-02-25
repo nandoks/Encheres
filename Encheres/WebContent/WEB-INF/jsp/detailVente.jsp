@@ -42,7 +42,7 @@
                     <h4>Catégorie</h4>
                     <p class="paragraphe">${article.libelleCategorie}</p>
                     <h4>Meilleure offre</h4>
-                    <p class="paragraphe">210 points par Bob</p>
+                    <p class="paragraphe">X points par Bob</p>
                     <h4>Mise à prix</h4>
                     <p class="paragraphe">${article.miseAPrix} points</p>
                     <h4>Fin de l'enchère</h4>
@@ -52,12 +52,14 @@
                     <h4>Vendeur</h4>
                     <p class="paragraphe">${pseudoVendeur}</p>
                     <c:choose>
-                    	<c:when test="${sessionScope.utilisateurConnecte.numeroUtilisateur == utilisateur.numeroUtilisateur}">
+                    	<c:when test="${sessionScope.utilisateurConnecte.numeroUtilisateur == article.numeroUtilisateur}">
 							 <button><a href="ServletModificationVente?no_article=${article.noArticle}">Modifier</a></button>
 						</c:when>
 						<c:otherwise>
-							<input type="number" name="enchere" value="${article.miseAPrix}" min="${article.miseAPrix}">
-							<button><a href = "">Enchérir</a></button>
+							<form method="post" action="${pageContext.request.contextPath}/ServletEncherir">
+								<input type="number" name="enchere" value="${article.miseAPrix}" min="${article.miseAPrix}">
+								<input type="submit" value="Enchérir">
+							</form>
 						</c:otherwise>
 				
 				

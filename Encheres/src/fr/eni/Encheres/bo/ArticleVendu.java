@@ -19,7 +19,7 @@ public class ArticleVendu implements Serializable {
 	private String libelleCategorie;
 	private String pseudoVendeur;
 	private int numeroUtilisateur;
-	private String adresseRetrait;
+	public Retrait adresseRetrait;
 	private List<Enchere> listeEncheres;
 
 
@@ -129,10 +129,10 @@ public class ArticleVendu implements Serializable {
 	public void setNumeroUtilisateur(int noUtilisateur) {
 		this.numeroUtilisateur = noUtilisateur;
 	}
-	public String getAdresseRetrait() {
+	public Retrait getAdresseRetrait() {
 		return adresseRetrait;
 	}
-	public void setAdresseRetrait(String adresseRetrait) {
+	public void setAdresseRetrait(Retrait adresseRetrait) {
 		this.adresseRetrait = adresseRetrait;
 	}
 

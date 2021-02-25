@@ -6,7 +6,7 @@ public class Retrait implements Serializable {
 	private static final long serialVersionUID = 1L;
 
 	private String rue;
-	private String code_postal;
+	private String codePostal;
 	private String ville;
 	private int numeroArticle;
 
@@ -23,10 +23,10 @@ public class Retrait implements Serializable {
 	}
 
 	// Constructeur avec tous les paramètres
-	public Retrait(String rue, String code_postal, String ville) {
+	public Retrait(String rue, String codePostal, String ville) {
 		super();
 		this.rue = rue;
-		this.code_postal = code_postal;
+		this.codePostal = codePostal;
 		this.ville = ville;
 	}
 
@@ -38,12 +38,12 @@ public class Retrait implements Serializable {
 		this.rue = rue;
 	}
 
-	public String getCode_postal() {
-		return code_postal;
+	public String getCodePostal() {
+		return codePostal;
 	}
 
-	public void setCode_postal(String code_postal) {
-		this.code_postal = code_postal;
+	public void setCodePostal(String codePostal) {
+		this.codePostal = codePostal;
 	}
 
 	public String getVille() {
