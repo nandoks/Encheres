@@ -3,9 +3,36 @@ package fr.eni.Encheres.bo;
 import java.util.Date;
 
 public class Enchere {
+	private int numeroEnchere;
 	private Date dateEnchere;
 	private int montantEnchere;
+	private int numeroUtilisateur;
+	private int numeroArticle;
 	
+	
+	public int getNumeroEnchere() {
+		return numeroEnchere;
+	}
+
+	public void setNumeroEnchere(int numeroEnchere) {
+		this.numeroEnchere = numeroEnchere;
+	}
+	public int getNumeroUtilisateur() {
+		return numeroUtilisateur;
+	}
+
+	public void setNumeroUtilisateur(int numeroUtilisateur) {
+		this.numeroUtilisateur = numeroUtilisateur;
+	}
+
+	public int getNumeroArticle() {
+		return numeroArticle;
+	}
+
+	public void setNumeroArticle(int numeroArticle) {
+		this.numeroArticle = numeroArticle;
+	}
+
 	public Enchere() {
 		
 	}
