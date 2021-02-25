@@ -19,7 +19,7 @@ import fr.eni.Encheres.bo.Utilisateur;
 /**
  * Servlet Filter implementation class FiltreAuthentifie
  */
-@WebFilter("/*")
+//@WebFilter("/*")
 public class FiltreAuthentifie implements Filter {
 
      /**

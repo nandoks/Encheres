@@ -33,16 +33,16 @@ public class ServletDetailArticleVendu extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		ArticleVenduManager articleManager = new ArticleVenduManager();
-		String numeroArticleString = request.getParameter("noArticle");
-		int numeroArticle = 0;
-		if(numeroArticleString != null) {
-			try {
-			numeroArticle = Integer.parseInt(numeroArticleString.trim());
-			} catch (NumberFormatException ex){
-				ex.printStackTrace();
-			}
-		}
-		ArticleVendu article = articleManager.getArticlesByNumeroArticle(numeroArticle);
+		//String numeroArticleString = request.getParameter("noArticle");
+		//int numeroArticle = 0;
+//		if(numeroArticleString != null) {
+//			try {
+//			numeroArticle = Integer.parseInt(numeroArticleString.trim());
+//			} catch (NumberFormatException ex){
+//				ex.printStackTrace();
+//			}
+//		}
+		ArticleVendu article = articleManager.getArticlesByNumeroArticle(23);
 		
 		request.setAttribute("article", article);
 		

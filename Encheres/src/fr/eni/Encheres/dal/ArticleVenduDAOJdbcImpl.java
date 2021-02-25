@@ -182,6 +182,8 @@ public class ArticleVenduDAOJdbcImpl implements ArticleVenduDAO {
 		return null;
 	}
 
+	
+	
 	@Override
 	public ArticleVendu selectById(int id) {
 		ArticleVendu articleCourant = null;
@@ -191,12 +193,15 @@ public class ArticleVenduDAOJdbcImpl implements ArticleVenduDAO {
 			stmt.setInt(1, id);
 			ResultSet rs = stmt.executeQuery();
 			if(rs.next()) {
+				articleCourant = new ArticleVendu();
 				articleCourant.setNomArticle(rs.getString("nom_article"));
 				articleCourant.setDescription(rs.getString("description"));
 				articleCourant.setLibelleCategorie(rs.getString("libelle"));
 				articleCourant.setMiseAPrix(rs.getInt("prix_initial"));
 				articleCourant.setDateFinEncheres(rs.getDate("date_fin_encheres").toLocalDate());
 				articleCourant.setPseudoVendeur(rs.getString("pseudo"));
+			}else {
+				System.out.println("pas d'article");
 			}
 			rs.close();
 			stmt.close();
@@ -206,6 +211,7 @@ public class ArticleVenduDAOJdbcImpl implements ArticleVenduDAO {
 		}
 		return articleCourant;
 	}
+
 
 	@Override
 	public List<ArticleVendu> selectArticlesByMotCleEtCategorie(String motCle, String categorie) {
