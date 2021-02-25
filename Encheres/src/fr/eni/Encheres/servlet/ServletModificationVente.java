@@ -35,7 +35,7 @@ public class ServletModificationVente extends HttpServlet {
 		request.setAttribute("articleVendu", articleVendu);
 
 		RequestDispatcher rd = request
-				.getRequestDispatcher("/WEB-INF/jsp/Nouvelle-vente.jsp");
+				.getRequestDispatcher("/WEB-INF/jsp/nouvelleVente.jsp");
 		rd.forward(request, response);
 	}
 
@@ -73,7 +73,7 @@ public class ServletModificationVente extends HttpServlet {
 		retrait.setRue(rue);
 		retrait.setVille(ville);
 
-		String url = ("/WEB-INF/jsp/Nouvelle-vente.jsp");
+		String url = ("/WEB-INF/jsp/nouvelleVente.jsp");
 
 		RequestDispatcher rd = request.getRequestDispatcher(url);
 		rd.forward(request, response);
