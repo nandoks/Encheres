@@ -6,13 +6,8 @@
 <html>
 
 <div class="section">
-			<c:if test="${empty utilisateurConnecte}">
-				<jsp:include page="/WEB-INF/fragments/enteteDeconnecte.jsp" />
-			</c:if>
-			<c:if test="${not empty utilisateurConnecte}">
-				<jsp:include page="/WEB-INF/fragments/enteteConnecte.jsp" />
-			</c:if>
-	</div>
+	<jsp:include page="/WEB-INF/fragments/enteteConnecte.jsp" />
+</div>
  <div class="section-2">
         <h1 class="conteneur conteneur-1 titre1">Mon Profil</h1>
     </div>
