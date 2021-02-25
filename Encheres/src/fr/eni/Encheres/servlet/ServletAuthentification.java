@@ -109,7 +109,7 @@ public class ServletAuthentification extends HttpServlet {
 			session.setAttribute("no_utilisateur", utilisateur.getNumeroUtilisateur());
 		} else {
 			request.setAttribute("messageErreur", "Mot de passe ou identifiant incorrect");
-			url = "/WEB-INF/jsp/Connexion.jsp";
+			url = "/WEB-INF/jsp/connexion.jsp";
 			RequestDispatcher rd = request.getRequestDispatcher(url);
 			rd.forward(request, response);
 		}
