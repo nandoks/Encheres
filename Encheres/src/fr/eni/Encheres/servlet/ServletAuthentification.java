@@ -26,6 +26,7 @@ public class ServletAuthentification extends HttpServlet {
 	/**
 	 * @see HttpServlet#HttpServlet()
 	 */
+	
 	public ServletAuthentification() {
 		utilisateurManager = new UtilisateurManager();
 	}
@@ -71,7 +72,6 @@ public class ServletAuthentification extends HttpServlet {
 		String identifiant = (String) request.getParameter("identifiant");
 		String motDePasse = (String) request.getParameter("pass");
 
-		String url = "";
 		/*
 		 * cherche dans la BDD s'il existe un utilisateur qui possède le pseudo ou //
 		 * l'email correspondant Á l'identifiant passé en parametre de la requette
@@ -105,11 +105,11 @@ public class ServletAuthentification extends HttpServlet {
 			HttpSession session = request.getSession();
 			utilisateur.setMotDePasse("");
 			session.setAttribute("utilisateurConnecte", utilisateur);
-			response.sendRedirect("accueil");
 			session.setAttribute("no_utilisateur", utilisateur.getNumeroUtilisateur());
+			response.sendRedirect("accueil");
 		} else {
 			request.setAttribute("messageErreur", "Mot de passe ou identifiant incorrect");
-			url = "/WEB-INF/jsp/connexion.jsp";
+			String url = "/WEB-INF/jsp/connexion.jsp";
 			RequestDispatcher rd = request.getRequestDispatcher(url);
 			rd.forward(request, response);
 		}

@@ -19,7 +19,7 @@ import fr.eni.Encheres.bo.Utilisateur;
 /**
  * Servlet Filter implementation class FiltreAuthentifie
  */
-//@WebFilter("/*")
+@WebFilter("/*")
 public class FiltreAuthentifie implements Filter {
 
      /**
@@ -40,12 +40,13 @@ public class FiltreAuthentifie implements Filter {
 		HttpSession session = request.getSession();
 		boolean utilisateurConnecte = session.getAttribute("utilisateurConnecte") == null;
 		String url = ((HttpServletRequest)request).getRequestURL().toString();
-		boolean pageProtege = !(url.contains("authentification") || url.contains("accueil") || url.contains("creationCompte") || url.contains("deconnexion"));
+		boolean pageProtege = !(url.contains("authentification") || url.contains("accueil") || url.contains("creationCompte"));
 		
 		if(utilisateurConnecte && pageProtege){
 			response.sendRedirect("authentification");
 			return;
 		}
+		
 		
 		chain.doFilter(request, response);
 	}

@@ -1,12 +1,13 @@
 package fr.eni.Encheres.dal;
 
-import fr.eni.Encheres.bll.RetraitManager;
+import fr.eni.Encheres.bll.EnchereDAO;
 
 public class DAOFactory {
 	
 	private static UtilisateurDAO utilisateurDAO;
 	private static ArticleVenduDAO articleVenduDAO;
 	private static RetraitDAO retraitDAO;
+	private static EnchereDAO enchereDAO;
 	
 	public static UtilisateurDAO getUtilisateurDAO() {
 		if (utilisateurDAO == null) {
@@ -27,6 +28,13 @@ public class DAOFactory {
 			retraitDAO = new RetraitDAOJdbcImpl();
 		}
 		return retraitDAO;
+	}
+
+	public static EnchereDAO getEnchereDAO() {
+		if(enchereDAO == null) {
+			enchereDAO = new EnchereDAOJdbcImpl();
+		}
+		return null;
 	}
 	
 	
