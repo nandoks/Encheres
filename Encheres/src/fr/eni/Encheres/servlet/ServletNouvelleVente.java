@@ -35,7 +35,7 @@ public class ServletNouvelleVente extends HttpServlet {
 		request.setAttribute("utilisateur", utilisateur);
 
 		RequestDispatcher rd = request
-				.getRequestDispatcher("/WEB-INF/jsp/Nouvelle-vente.jsp");
+				.getRequestDispatcher("/WEB-INF/jsp/nouvelleVente.jsp");
 		rd.forward(request, response);
 	}
 
@@ -73,10 +73,13 @@ public class ServletNouvelleVente extends HttpServlet {
 		retrait.setRue(rue);
 		retrait.setVille(ville);
 
+		request.setAttribute("articleVendu", articleVendu);
+		request.setAttribute("retrait", retrait);
+
 		// TODO retraitdao ligne à rajouter
 
 		RequestDispatcher rd = request
-				.getRequestDispatcher("/WEB-INF/jsp/Nouvelle-vente.jsp");
+				.getRequestDispatcher("/WEB-INF/jsp/nouvelleVente.jsp");
 		rd.forward(request, response);
 		return;
 	}

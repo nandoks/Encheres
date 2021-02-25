@@ -33,37 +33,42 @@ public class ServletModificationCompte extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse
 	 *      response)
 	 */
-	protected void doGet(HttpServletRequest request, HttpServletResponse response)
-			throws ServletException, IOException {
-		//recupere le numero d'utilisateur de la requete
-		int no_utilisateur = Integer.valueOf(request.getParameter("no_utilisateur"));
+	protected void doGet(HttpServletRequest request,
+			HttpServletResponse response) throws ServletException, IOException {
+		// recupere le numero d'utilisateur de la requete
+		int no_utilisateur = Integer
+				.valueOf(request.getParameter("no_utilisateur"));
 
-		//cherche dans la DB l'utilisateur correspondant au no_utilisateur
-		Utilisateur utilisateur = utilisateurManager.getUtilisateurById(no_utilisateur);
+		// cherche dans la DB l'utilisateur correspondant au no_utilisateur
+		Utilisateur utilisateur = utilisateurManager
+				.getUtilisateurById(no_utilisateur);
 		utilisateur.setMotDePasse("");
 		// ajoute à la réponse l'utilisateur pour être récupéré sur la JSP
 		request.setAttribute("utilisateur", utilisateur);
-				
-		RequestDispatcher rd = request.getRequestDispatcher("/WEB-INF/jsp/modification-du-compte.jsp");
+
+		RequestDispatcher rd = request
+				.getRequestDispatcher("/WEB-INF/jsp/modificationDuCompte.jsp");
 		rd.forward(request, response);
-		
+
 	}
 
 	/**
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse
 	 *      response)
 	 */
-	protected void doPost(HttpServletRequest request, HttpServletResponse response)
-			throws ServletException, IOException {
-		
+	protected void doPost(HttpServletRequest request,
+			HttpServletResponse response) throws ServletException, IOException {
+
 		Utilisateur utilisateur = UtilisateurBuilder.execute(request, response);
-		utilisateur.setNumeroUtilisateur(Integer.valueOf(request.getParameter("no_utilisateur")));
+		utilisateur.setNumeroUtilisateur(
+				Integer.valueOf(request.getParameter("no_utilisateur")));
 		utilisateurManager.metAJourUtilisateur(utilisateur);
-		
+
 		utilisateur.setMotDePasse("");
 		request.setAttribute("utilisateur", utilisateur);
-		
-		RequestDispatcher rd = request.getRequestDispatcher("/WEB-INF/jsp/modification-du-compte.jsp");
+
+		RequestDispatcher rd = request
+				.getRequestDispatcher("/WEB-INF/jsp/modificationDuCompte.jsp");
 		rd.forward(request, response);
 	}
 
