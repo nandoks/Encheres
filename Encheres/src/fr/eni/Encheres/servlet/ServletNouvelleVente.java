@@ -10,6 +10,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import fr.eni.Encheres.bll.RetraitManager;
 import fr.eni.Encheres.bll.UtilisateurManager;
 import fr.eni.Encheres.bo.ArticleVendu;
 import fr.eni.Encheres.bo.Retrait;
@@ -23,9 +24,11 @@ public class ServletNouvelleVente extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
 	private static UtilisateurManager utilisateurManager;
+	private static RetraitManager retraitManager;
 
 	public void init() {
 		utilisateurManager = new UtilisateurManager();
+		retraitManager = new RetraitManager();
 	}
 
 	protected void doGet(HttpServletRequest request,
@@ -73,10 +76,10 @@ public class ServletNouvelleVente extends HttpServlet {
 		retrait.setRue(rue);
 		retrait.setVille(ville);
 
-		request.setAttribute("articleVendu", articleVendu);
-		request.setAttribute("retrait", retrait);
+		retraitManager.insertRetrait(retrait);
 
-		// TODO retraitdao ligne à rajouter
+		// request.setAttribute("articleVendu", articleVendu);
+		// request.setAttribute("retrait", retrait);
 
 		RequestDispatcher rd = request
 				.getRequestDispatcher("/WEB-INF/jsp/nouvelleVente.jsp");
